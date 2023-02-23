@@ -3,27 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package evenement_societe.Entities;
+package Entities;
 
 /**
  *
  * @author chino
  */
-public class societe {
-     private int ids,numeros ;
+public class Annonces {
+     private int ids,numeros ,idu ;
     private String noms,emails,adresses;
 
-    public societe() {
+    public Annonces() {
     }
 
-    public societe( String noms, String emails,int numeros, String adresses) {
+    public Annonces( String noms, String emails,int numeros, String adresses) {
         this.noms = noms;
         this.emails = emails;
         this.numeros = numeros;
         this.adresses = adresses;
     }
 
-    public societe(int ids,  String noms, String emails,int numeros, String adresses) {
+    public Annonces(int ids,  String noms, String emails,int numeros, String adresses) {
         this.ids = ids;
         this.noms = noms;
         this.emails = emails;
@@ -51,6 +51,10 @@ public class societe {
         return adresses;
     }
 
+    public int getIdu() {
+        return idu;
+    }
+
     public void setIds(int ids) {
         this.ids = ids;
     }
@@ -71,9 +75,13 @@ public class societe {
         this.adresses = adresses;
     }
 
+    public void setIdu(int idu) {
+        this.idu = idu;
+    }
+
     @Override
     public String toString() {
-        return "societe{" + "ids=" + ids + ", noms=" + noms + ", emails=" + emails + ", numeros=" + numeros + ", adresses=" + adresses + '}';
+        return "annonces{" + "ids=" + ids + ", noms=" + noms + ", emails=" + emails + ", numeros=" + numeros + ", adresses=" + adresses + '}';
     }
     
     

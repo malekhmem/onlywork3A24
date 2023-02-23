@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package evenement_societe.Utiles;
+package Utiles;
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -20,6 +21,9 @@ public class MyDB {
     final String PWD ="";
    private  Connection cnx;
  private static   MyDB instance;
+ 
+ 
+ 
     private MyDB(){
         try {
             cnx =DriverManager.getConnection(URL, USERNAME, PWD);
