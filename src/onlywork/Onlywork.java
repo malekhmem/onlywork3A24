@@ -9,9 +9,9 @@ package onlywork;
  *
  * @author zeine
  */
-import onlywork.Entities.prestataire;
-import onlywork.Services.ServicePrestataire;
-import onlywork.Entities.categorie;
+import onlywork.Entities.Poste;
+import onlywork.Services.ServicePoste;
+import onlywork.Entities.Categorie;
 import onlywork.Services.ServiceCategorie;
 import onlywork.Utils.MyDB;
 public class Onlywork {
@@ -21,18 +21,20 @@ public class Onlywork {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-         prestataire p = new prestataire(28,"test", "hello", "hahaha", "benkhalifa@gmail.com");
-         categorie c = new categorie(3,"heey");
-        ServicePrestataire sp = new ServicePrestataire();
+                 Categorie c = new Categorie(4,"test");
+                 Poste p = new Poste(32,23,"lllmmmmlll", "tttttt", "hahaha", "offf",c);
+//Poste p = new Poste(29,"zeeeeineb", "hello", "hahaha", "benkhalifa@gmail.com");
+
+        ServicePoste sp = new ServicePoste();
         ServiceCategorie sc = new ServiceCategorie();
-       // sp.add(p);
-        sc.add(c);
-      ////sp.modifier(p);
-        //sp.supprimer(28);
-        //System.out.println( sp.afficher());
-       // sc.supprimer(2);
+       sp.add(p);
+       // sc.add(c);
+      //sp.modifier(p);
+       //sp.supprimer(32);
+       //System.out.println( sp.afficher());
+        //sc.supprimer(20);
        // sc.modifier(c);
-        System.out.println( sc.afficher());
+        //System.out.println( sc.afficher());
     }
     
 }

@@ -9,13 +9,13 @@ package onlywork.Entities;
  *
  * @author zeine
  */
-public class categorie {
+public class Categorie {
   int idc;
 String nomc;
-   public categorie() {
+   public Categorie() {
     }
 
-    public categorie(int idc,String nomc) {
+    public Categorie(int idc,String nomc) {
         this.idc=idc;
         this.nomc = nomc;
     }

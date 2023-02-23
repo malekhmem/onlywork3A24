@@ -9,20 +9,44 @@ package onlywork.Entities;
  *
  * @author zeine
  */
-public class prestataire {
-    int idp;
+public class Poste {
+    int idp,idcc,idu;
     String nomp,domaine,descp,emailp;
+    public Categorie categorie; 
+    
 
-    public prestataire() {
+    public Poste() {
     }
 
-    public prestataire(int idp, String nomp, String domaine, String descp, String emailp) {
-        this.idp=idp;
+    public Poste(int idp, int idcc, String nomp, String domaine, String descp, String emailp, Categorie categorie) {
+        this.idp = idp;
+        this.idcc = idcc;
         this.nomp = nomp;
         this.domaine = domaine;
         this.descp = descp;
         this.emailp = emailp;
+        this.categorie = categorie;
     }
+
+    public int getIdu() {
+        return idu;
+    }
+
+    public void setIdu(int idu) {
+        this.idu = idu;
+    }
+
+    
+    
+    public int getIdcc() {
+        return idcc;
+    }
+
+    public void setIdcc(int idcc) {
+        this.idcc = idcc;
+    }
+
+   
     
 
     public int getIdp() {
@@ -64,10 +88,28 @@ public class prestataire {
     public void setEmailp(String emailp) {
         this.emailp = emailp;
     }
+    public Categorie getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
+    }
+    
+    public Poste(int idp, String nomp, String domaine, String descp, String emailp) {
+        this.idp = idp;
+        this.nomp = nomp;
+        this.domaine = domaine;
+        this.descp = descp;
+        this.emailp = emailp;
+    }
 
     @Override
     public String toString() {
-        return "prestataire{" + "idp=" + idp + ", nomp=" + nomp + ", domaine=" + domaine + ", descp=" + descp + ", emailp=" + emailp + '}';
+        return "Poste{" + "idcc=" + idcc + ", nomp=" + nomp + ", domaine=" + domaine + ", descp=" + descp + ", emailp=" + emailp + '}';
     }
+
+   
+ 
     
-}
+ }
