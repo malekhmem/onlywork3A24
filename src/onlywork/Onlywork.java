@@ -4,8 +4,10 @@
  * and open the template in the editor.
  */
 package onlywork;
-import entities.fournisseur;
-import Services.Servicefournisseur;
+import entities.Annoncef;
+import Services.Serviceannoncef;
+import entities.Materiel;
+import Services.Servicemateriel;
 import Utils.MyDB;
 /**
  *
@@ -20,12 +22,17 @@ public class Onlywork {
  
        public static void main(String[] args) {
         // TODO code application logic here
-         fournisseur f = new fournisseur( "imtinen", "ariena", "imtinenabrougui@gmail.com","pc ASUS");
-        Servicefournisseur sp = new Servicefournisseur();
-       sp.add(f);
-      System.out.println( sp.afficher());
-       //sp.modifier(f);
-      //sp.supprimer(f);
-       
-    }
-}
+        // Annoncef f = new Annoncef("zeineb", "ariena", "imtinenabrougui@gmail.com","aaaaa","3");
+        //Serviceannoncef sp = new Serviceannoncef();
+     //sp.add(f);
+      //System.out.println( sp.afficher());
+      // sp.modifier(f);
+    // sp.supprimer(2);
+       //Materiel m = new Materiel(32,23,"lllmmmmlll", "tttttt", "hahaha",f);
+    // Servicemateriel sm = new Servicemateriel();
+        //sm.add(m,3);
+      // System.out.println( sm.afficher());
+        // sm.modifier(m); 
+        // sm.supprimer(55);
+
+       }}

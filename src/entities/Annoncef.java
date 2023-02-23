@@ -9,17 +9,34 @@ package entities;
  *
  * @author imtinen
  */
-public class fournisseur {
-    int idf;
-    String nomf,adresse,emailf,nomma;
-    public fournisseur(){}
-    public fournisseur(String nomf, String adresse, String emailf, String nomma) {
+public class Annoncef {
+    int idf,idu;
+    String nomf,adresse,emailf,descf;
+    public Annoncef(){}
+
+    public Annoncef(int idf, String nomf) {
+        this.idf = idf;
+        this.nomf = nomf;
+    }
+    
+   
+    public Annoncef(int idf ,String nomf, String adresse, String emailf, String descf) {
+        this.idf = idf;
         this.nomf = nomf;
         this.adresse = adresse;
         this.emailf = emailf;
-        this.nomma = nomma;
+        this.descf = descf;
+  
     }
 
+ public Annoncef(String nomf, String adresse, String emailf, String descf) {
+        this.nomf = nomf;
+        this.adresse = adresse;
+        this.emailf = emailf;
+        this.descf = descf;
+
+        
+    }
     public int getIdf() {
         return idf;
     }
@@ -52,18 +69,28 @@ public class fournisseur {
         this.emailf = emailf;
     }
 
-    public String getNomma() {
-        return nomma;
+    public String getDescf() {
+        return descf;
     }
 
-    public void setNomma(String nomma) {
-        this.nomma = nomma;
+    public void setDescf(String descf) {
+        this.descf = descf;
     }
 
+
+    public void setIdu(int idu) {
+        this.idu = idu;
+    }
+
+    public int getIdu() {
+        return idu;
+    }
     @Override
     public String toString() {
-        return "fournisseur{" + "idf=" + idf + ", nomf=" + nomf + ", adresse=" + adresse + ", emailf=" + emailf + ", nomma=" + nomma + '}';
+        return "Annoncef{" + "nomf=" + nomf + ", adresse=" + adresse + ", emailf=" + emailf + ", descf=" + descf + '}';
     }
+
+
 
   
     
