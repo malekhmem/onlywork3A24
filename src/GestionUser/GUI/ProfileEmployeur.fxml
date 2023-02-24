@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="535.0" prefWidth="679.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.GUI.ProfileDeveloppeurController">
+   <children>
+      <AnchorPane prefHeight="535.0" prefWidth="211.0" style="-fx-background-color: #494d6e;">
+         <children>
+            <Button fx:id="btnAcceuil" alignment="BOTTOM_CENTER" layoutY="312.0" mnemonicParsing="false" onAction="#Acceuil" prefHeight="50.0" prefWidth="211.0" style="-fx-background-color: #494d6e;" text="Acceuil" textFill="WHITE" />
+            <Button fx:id="btnProfile" alignment="BOTTOM_CENTER" layoutY="362.0" mnemonicParsing="false" onAction="#profile" prefHeight="50.0" prefWidth="211.0" style="-fx-background-color: #494d6e;" text="Profile" textFill="WHITE">
+               <effect>
+                  <Lighting diffuseConstant="2.0">
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant />
+                     </light>
+                  </Lighting>
+               </effect>
+            </Button>
+            <Button fx:id="btnOffre" alignment="BOTTOM_CENTER" layoutY="412.0" mnemonicParsing="false" onAction="#offres" prefHeight="50.0" prefWidth="211.0" style="-fx-background-color: #494d6e;" text="Les Demandes" textFill="WHITE" />
+            <Button fx:id="btnDiscussion" alignment="BOTTOM_CENTER" layoutY="462.0" mnemonicParsing="false" onAction="#discussion" prefHeight="50.0" prefWidth="211.0" style="-fx-background-color: #494d6e;" text="Discussions" textFill="WHITE" />
+            <Label fx:id="UserNameLabel" layoutX="92.0" layoutY="231.0" text="Label" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
