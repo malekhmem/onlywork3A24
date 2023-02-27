@@ -26,6 +26,7 @@ import Entities.Annonces;
 import Entities.Evenement;
 import Services.ServiceAnnonces;
 import static java.lang.Integer.parseInt;
+import java.util.List;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.HBox;
@@ -115,6 +116,8 @@ public class AnnoncesFrontController implements Initializable {
     private Label lbidAnnonces;
     @FXML
     private HBox hboxbutton;
+    @FXML
+    private TextField Recherche;
 
    
     /**
@@ -369,6 +372,21 @@ tfNom1.setText("");
     private void fnMenuMesAnnonces(MouseEvent event) {
     }
 
+   /* @FXML
+    private void Recherche(ActionEvent event) {
+      ServiceAnnonces sp=new ServiceAnnonces();
+      String chaine = Recherche.getText();
+        populateTable(sp.chercherAnnonces(chaine));
+    }
+
+    private void populateTable(List<Annonces> RechercheAnnonces) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+*/
+
+    @FXML
+    private void recherche(ActionEvent event) {
+    }
     
 }
 

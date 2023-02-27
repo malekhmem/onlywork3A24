@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 /**s
  *
  * @author chino
@@ -166,7 +168,81 @@ try {
         } catch (SQLException ex) {
              System.out.println(ex.getMessage());
         }    }
-     
+    
+    
+       
+   // @Override
+
+    /**
+     *
+     * @param noms
+     * @return
+     */
+   /* public List<Annonces> RechercheAnnonces(String noms) {
+List<Annonces> Annoncess = new ArrayList<>();        try {
+            String req ="select * from annonces WHERE noms = '"+noms+"'";
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while(rs.next())
+            {
+               Annonces v = new Annonces();
+               v.setIds(rs.getInt("ids"));
+               v.setNoms(rs.getString("noms"));
+               v.setEmails(rs.getString("emails"));
+               v.setNumeros(rs.getInt("numeros"));
+               v.setAdresses(rs.getString("adresses"));
+               
+               Annoncess.add(v);
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());        }
+            
+return Annoncess;    }
+    
+    
+            public ObservableList<Annonces> chercherAnnonces( String noms){
+            String req ="select * from annonces WHERE noms = '"+noms+"'";
+            
+             Connection cnx= MyDB.getInstance().getCnx();
+            String ch=""+noms+"%";
+         System.out.println(req);
+            ObservableList<Annonces> myList= FXCollections.observableArrayList();
+        try {
+           
+            Statement ste= cnx.createStatement();
+           // PreparedStatement pst = myCNX.getCnx().prepareStatement(requete6);
+            PreparedStatement stee =cnx.prepareStatement(req);  
+            stee.setString(1, ch);
+            stee.setString(2, ch);
+
+         System.out.println(stee);
+
+            ResultSet rs = stee.executeQuery();
+            while (rs.next()){
+                Annonces v = new Annonces();
+               v.setIds(rs.getInt("ids"));
+               v.setNoms(rs.getString("noms"));
+               v.setEmails(rs.getString("emails"));
+               v.setNumeros(rs.getInt("numeros"));
+               v.setAdresses(rs.getString("adresses"));
+               
+                myList.add(v);
+                System.out.println("titre trouvé! ");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return myList;
+      }*/
 }
+    
+    
+    
+    
+ 
+
+    
+     
+
   
 
