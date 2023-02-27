@@ -167,7 +167,29 @@ try {
         return list ;
     }
     
+   public ObservableList<Evenement> getAllTriTitre() {
+        ObservableList<Evenement> list = FXCollections.observableArrayList();
+        try {
+         //   String req = "Select * from espacetalent where roles like '%[]%' order by nom";
+                String qry = "Select * from evenement  order by titre";
+                  System.out.println(qry);
+            cnx = MyDB.getInstance().getCnx();
+            Statement stm = cnx.createStatement();
+            ResultSet rs = stm.executeQuery(qry);
+            while (rs.next()) {
+            //    EspaceTalent u = new EspaceTalent(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"), rs.getString("username"), rs.getString("email"), rs.getString("file"), rs.getInt("etat"), rs.getDate("created_at"));
+        Evenement a = new Evenement(rs.getString(2), rs.getString(3),rs.getString(4)); 
+      
    
+        list.add(a) ;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return list;
+    }
+    
 }
 
 

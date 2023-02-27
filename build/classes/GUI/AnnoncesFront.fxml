@@ -104,6 +104,7 @@
                   <Label fx:id="lbidAnnonces" layoutX="439.0" layoutY="70.0" visible="false" />
                   <HBox alignment="CENTER" layoutX="449.0" layoutY="6.0" prefHeight="27.0" prefWidth="198.0" AnchorPane.rightAnchor="7.0" />
                   <TextField fx:id="chercher" layoutX="365.0" layoutY="46.0" onKeyPressed="#Recherche" promptText="Recherche" />
+                  <Button fx:id="TriNom" layoutX="462.0" layoutY="79.0" mnemonicParsing="false" onAction="#TriNom" text="TriNom" />
                </children>
             </Pane>
          </children>

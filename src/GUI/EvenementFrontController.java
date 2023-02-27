@@ -100,6 +100,7 @@ public class EvenementFrontController implements Initializable {
 
     @FXML
     private TableColumn<Evenement, String> colNom_societe;
+ ObservableList<Evenement> list ;
 
     @FXML
     private Button btnAjouter;
@@ -118,15 +119,17 @@ public class EvenementFrontController implements Initializable {
     private Label lbidevenement;
     @FXML
     private TextField chercher;
+    @FXML
+    private Button TriTitre;
+   ServiceEvenement sp = new ServiceEvenement();
 
-    
     /**
      * Initializes the controller class.
      * @param url
      * @param rb
      */
     
-       @Override
+       //@Override
     public void initialize(URL url, ResourceBundle rb) {
         pnMesEvenement.toFront();
         System.out.println("+++++++++++++++++");
@@ -355,6 +358,17 @@ tfTitre.setText("");
          Evenement p=new Evenement();
 ServiceEvenement sp = new ServiceEvenement();
        tvMesEvenement.setItems(sp.searchByEvenement(chercher.getText()))  ;
+    }
+
+    @FXML
+    private void TriTitre(ActionEvent event) {
+        colTitre.setCellValueFactory(new PropertyValueFactory<Evenement,String>("titre"));
+      colDescription.setCellValueFactory(new PropertyValueFactory<Evenement,String>("description"));
+   colNom_societe.setCellValueFactory(new PropertyValueFactory<Evenement,String>("nomss"));
+
+
+  list=sp.getAllTriTitre();
+       tvMesEvenement.setItems(list)  ;
     }
 
 

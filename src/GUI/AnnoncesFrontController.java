@@ -63,7 +63,7 @@ public class AnnoncesFrontController implements Initializable {
     @FXML
     private TableColumn<Annonces, String> colAdresse;
 
-    
+    ObservableList<Annonces> list ;
     
 
 
@@ -120,7 +120,9 @@ public class AnnoncesFrontController implements Initializable {
     private HBox hboxbutton;
     @FXML
     private TextField chercher;
-
+    @FXML
+    private Button TriNom;
+ ServiceAnnonces sp=new ServiceAnnonces();
    
     /**
      * Initializes the controller class.
@@ -393,6 +395,19 @@ tfNom1.setText("");
 ServiceAnnonces sp = new ServiceAnnonces();
        tvMesAnnonces.setItems(sp.searchByAnnonces(chercher.getText()))  ;
         
+    }
+
+    @FXML
+    private void TriNom(ActionEvent event) throws SQLException {
+     
+   colNom.setCellValueFactory(new PropertyValueFactory<Annonces,String>("noms"));
+      colEmail.setCellValueFactory(new PropertyValueFactory<Annonces,String>("emails"));
+colNumero.setCellValueFactory(new PropertyValueFactory<Annonces, Integer>("numeros"));
+   colAdresse.setCellValueFactory(new PropertyValueFactory<Annonces,String>("adresses"));
+
+
+  list=sp.getAllTriNom();
+       tvMesAnnonces.setItems(list)  ;
     }
     
 

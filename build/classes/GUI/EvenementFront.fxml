@@ -100,6 +100,7 @@
                   </VBox>
                   <Label fx:id="lbidevenement" layoutX="439.0" layoutY="70.0" visible="false" />
                   <TextField fx:id="chercher" layoutX="390.0" layoutY="39.0" onKeyPressed="#Recherche" promptText="Recherche" />
+                  <Button fx:id="TriTitre" layoutX="487.0" layoutY="68.0" mnemonicParsing="false" onAction="#TriTitre" text="TriTitre" />
                </children>
             </Pane>
          </children>
