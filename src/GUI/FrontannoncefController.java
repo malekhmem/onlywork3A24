@@ -276,7 +276,7 @@ if (nom == null || nom.isEmpty() || !nom.matches("[a-zA-Z]+")) {
     return; 
 }
 
-// Vérification de l'adresse
+
 if (adresse == null || adresse.isEmpty()) {
     Alert alert = new Alert(AlertType.ERROR);
     alert.setTitle("Erreur de saisie");
