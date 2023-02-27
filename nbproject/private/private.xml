@@ -4,17 +4,18 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/xampp/htdocs/onlywork/src/GUI/BackController.java</file>
-            <file>file:/C:/xampp/htdocs/onlywork/nbproject/build-impl.xml</file>
-            <file>file:/C:/xampp/htdocs/onlywork/src/GUI/EvenementFrontController.java</file>
             <file>file:/C:/xampp/htdocs/onlywork/src/Services/ServiceEvenement.java</file>
-            <file>file:/C:/xampp/htdocs/onlywork/src/Utiles/MyDB.java</file>
             <file>file:/C:/xampp/htdocs/onlywork/src/Entities/Evenement.java</file>
-            <file>file:/C:/xampp/htdocs/onlywork/src/Services/ServiceAnnonces.java</file>
             <file>file:/C:/xampp/htdocs/onlywork/src/Services/IService.java</file>
-            <file>file:/C:/xampp/htdocs/onlywork/src/GUI/AnnoncesFront.fxml</file>
-            <file>file:/C:/xampp/htdocs/onlywork/src/GUI/FrontController.java</file>
             <file>file:/C:/xampp/htdocs/onlywork/src/GUI/NewFXMain.java</file>
             <file>file:/C:/xampp/htdocs/onlywork/src/GUI/AnnoncesFrontController.java</file>
+            <file>file:/C:/xampp/htdocs/onlywork/nbproject/build-impl.xml</file>
+            <file>file:/C:/xampp/htdocs/onlywork/src/GUI/EvenementFrontController.java</file>
+            <file>file:/C:/xampp/htdocs/onlywork/src/Utiles/MyDB.java</file>
+            <file>file:/C:/xampp/htdocs/onlywork/src/Services/ServiceAnnonces.java</file>
+            <file>file:/C:/xampp/htdocs/onlywork/src/GUI/AnnoncesFront.fxml</file>
+            <file>file:/C:/xampp/htdocs/onlywork/src/GUI/FrontController.java</file>
+            <file>file:/C:/xampp/htdocs/onlywork/src/GUI/EvenementFront.fxml</file>
         </group>
     </open-files>
 </project-private>

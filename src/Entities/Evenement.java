@@ -43,6 +43,13 @@ public class Evenement {
         this.ids = ids;
     }
 
+    public Evenement(String titre, String description, String nomss) {
+        this.titre = titre;
+        this.description = description;
+        this.nomss = nomss;
+    }
+
+   
     public int getIde() {
         return ide;
     }

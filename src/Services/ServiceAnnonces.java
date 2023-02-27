@@ -175,8 +175,11 @@ try {
 
     /**
      *
+     * @param nom
+     * @param e
      * @param noms
      * @return
+     * @throws java.sql.SQLException
      */
    /* public List<Annonces> RechercheAnnonces(String noms) {
 List<Annonces> Annoncess = new ArrayList<>();        try {
@@ -234,6 +237,25 @@ return Annoncess;    }
         }
         return myList;
       }*/
+    public ObservableList<Annonces> searchByAnnonces(String nom) throws SQLException{
+        String qry="SELECT * FROM annonces where noms LIKE '%"+nom+"%'" ;
+                  System.out.println(qry);
+            cnx = MyDB.getInstance().getCnx();
+            Statement stm = cnx.createStatement();
+            ResultSet rs = stm.executeQuery(qry);
+        ObservableList<Annonces>  list = FXCollections.observableArrayList()  ; 
+        while(rs.next()){
+        Annonces a = new Annonces(rs.getString(2), rs.getString(3), rs.getInt(4),rs.getString(5)); 
+        list.add(a) ;
+        
+        }
+         
+
+        return list ;
+    }
+    
+    
+    
 }
     
     

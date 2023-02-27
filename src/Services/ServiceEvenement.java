@@ -16,6 +16,8 @@ import Entities.Evenement;
 
 import Utiles.MyDB;
 import java.sql.PreparedStatement;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -146,6 +148,25 @@ try {
         } catch (SQLException ex) {
              System.out.println(ex.getMessage());
         }    }
+    
+    
+    public ObservableList<Evenement> searchByEvenement(String titre) throws SQLException{
+        String qry="SELECT * FROM evenement where titre LIKE '%"+titre+"%'" ;
+                  System.out.println(qry);
+            cnx = MyDB.getInstance().getCnx();
+            Statement stm = cnx.createStatement();
+            ResultSet rs = stm.executeQuery(qry);
+        ObservableList<Evenement>  list = FXCollections.observableArrayList()  ; 
+        while(rs.next()){
+        Evenement a = new Evenement(rs.getString(2), rs.getString(3),rs.getString(4)); 
+        list.add(a) ;
+        
+        }
+         
+
+        return list ;
+    }
+    
    
 }
 

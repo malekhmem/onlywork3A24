@@ -26,9 +26,11 @@ import Entities.Annonces;
 import Entities.Evenement;
 import Services.ServiceAnnonces;
 import static java.lang.Integer.parseInt;
+import java.sql.SQLException;
 import java.util.List;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 
 
@@ -117,7 +119,7 @@ public class AnnoncesFrontController implements Initializable {
     @FXML
     private HBox hboxbutton;
     @FXML
-    private TextField Recherche;
+    private TextField chercher;
 
    
     /**
@@ -385,9 +387,16 @@ tfNom1.setText("");
 */
 
     @FXML
-    private void recherche(ActionEvent event) {
+    
+    private void Recherche(KeyEvent event) throws SQLException {
+                Annonces p=new Annonces();
+ServiceAnnonces sp = new ServiceAnnonces();
+       tvMesAnnonces.setItems(sp.searchByAnnonces(chercher.getText()))  ;
+        
     }
     
+
+   
 }
 
 

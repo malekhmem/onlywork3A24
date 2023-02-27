@@ -32,9 +32,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import Services.ServiceEvenement;
+import java.sql.SQLException;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.KeyEvent;
 
 /**
  *
@@ -104,8 +106,6 @@ public class EvenementFrontController implements Initializable {
 
     @FXML
     private VBox vboxDetail;
-    @FXML
-    private Label lbDescription;
 
     @FXML
     private Button btnSupprimer;
@@ -115,9 +115,9 @@ public class EvenementFrontController implements Initializable {
 
     private Label lbidEvenement;
     @FXML
-    private Label lbCategorie;
-    @FXML
     private Label lbidevenement;
+    @FXML
+    private TextField chercher;
 
     
     /**
@@ -347,6 +347,14 @@ tfTitre.setText("");
         Evenement f = tvMesEvenement.getSelectionModel().getSelectedItem();
          lbidevenement.setText(f.getIde()+"");
          vboxDetail.setVisible(true);
+    }
+
+    @FXML
+    private void Recherche(KeyEvent event) throws SQLException {
+        
+         Evenement p=new Evenement();
+ServiceEvenement sp = new ServiceEvenement();
+       tvMesEvenement.setItems(sp.searchByEvenement(chercher.getText()))  ;
     }
 
 
