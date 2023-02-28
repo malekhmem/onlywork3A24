@@ -32,12 +32,54 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import Services.ServiceEvenement;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
+import java.awt.image.BufferedImage;
 import java.sql.SQLException;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.image.ImageView;
 
+import java.awt.image.BufferedImage;
+
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+import com.google.zxing.qrcode.decoder.Mode;
+import com.google.zxing.qrcode.decoder.Version;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
 /**
  *
  * @author chino
@@ -122,6 +164,8 @@ public class EvenementFrontController implements Initializable {
     @FXML
     private Button TriTitre;
    ServiceEvenement sp = new ServiceEvenement();
+    @FXML
+    private Button QrCode;
 
     /**
      * Initializes the controller class.
@@ -362,16 +406,95 @@ ServiceEvenement sp = new ServiceEvenement();
 
     @FXML
     private void TriTitre(ActionEvent event) {
-        colTitre.setCellValueFactory(new PropertyValueFactory<Evenement,String>("titre"));
-      colDescription.setCellValueFactory(new PropertyValueFactory<Evenement,String>("description"));
-   colNom_societe.setCellValueFactory(new PropertyValueFactory<Evenement,String>("nomss"));
+        colTitre.setCellValueFactory(new PropertyValueFactory<>("titre"));
+      colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
+   colNom_societe.setCellValueFactory(new PropertyValueFactory<>("nomss"));
 
 
   list=sp.getAllTriTitre();
        tvMesEvenement.setItems(list)  ;
     }
 
+    /*
+    
+  private void setChosenEvent(Evenement e) throws IOException {
+        Evenement EventPie = new Evenement();
+        int nbPie = 0;
+        colTitre.setText(e.getTitre());
+        colTitre.setText(e.getTitre());
+        colNom_societe.setText(e.getNomss());
 
+        try {
+
+        ServiceEvenement sp=new ServiceEvenement();
+            String filename = sp.GenerateQrEvent(e);
+            System.out.println("filename lenaaa " + filename);
+            Image image = new Image(getClass().getResourceAsStream("/tn/esprit/utils/img/" + filename));
+            QrCode.setImage(image);
+
+        } catch (Exception ex) {
+            System.out.println("mafamesh qr");
+        }
+
+        tvMesEvenement.setStyle("-fx-background-color: #DEEFBD" + ";\n"
+                + "    -fx-background-radius: 30;");
+    }
+
+*/
+
+    @FXML
+    private void btnGenPDF(ActionEvent event) throws DocumentException, FileNotFoundException, IOException  {
+        long millis = System.currentTimeMillis();
+        java.sql.Date DateRapport = new java.sql.Date(millis);
+
+        String DateLyoum = new SimpleDateFormat("yyyyMMddHHmmss", Locale.ENGLISH).format(DateRapport);//yyyyMMddHHmmss
+        System.out.println("Date d'aujourdhui : " + DateLyoum);
+
+        com.itextpdf.text.Document document = new com.itextpdf.text.Document();
+
+        try {
+            PdfWriter.getInstance(document, new FileOutputStream(String.valueOf(DateLyoum + ".pdf")));//yyyy-MM-dd
+            document.open();
+            Paragraph ph1 = new Paragraph("Voici un rapport détaillé de notre application qui contient tous les événements . Pour chaque événement, nous fournissons des informations telles que la date d'aujourdhui :" + DateRapport );
+            Paragraph ph2 = new Paragraph(".");
+            PdfPTable table = new PdfPTable(3);
+
+            //On créer l'objet cellule.
+            PdfPCell cell;
+
+            //contenu du tableau.
+            table.addCell("titre");
+            table.addCell("description");
+            table.addCell("nom_societe");
+            Evenement r = new Evenement();
+            sp.afficher().forEach(e
+                    -> {
+                table.setHorizontalAlignment(Element.ALIGN_CENTER);
+                table.addCell(String.valueOf(e.getTitre()));
+                table.addCell(String.valueOf(e.getDescription()));
+                table.addCell(String.valueOf(e.getNomss()));
+
+            }
+            );
+            document.add(ph1);
+            document.add(ph2);
+            document.add(table);
+            //  document.addAuthor("Bike");
+            // AlertDialog.showNotification("Creation PDF ", "Votre fichier PDF a ete cree avec success", AlertDialog.image_checked);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        document.close();
+
+        ///Open FilePdf
+        File file = new File(DateLyoum + ".pdf");
+        Desktop desktop = Desktop.getDesktop();
+        if (file.exists()) //checks file exists or not  
+        {
+            desktop.open(file); //opens the specified file   
+        }
+        
+    }
     
 }
 

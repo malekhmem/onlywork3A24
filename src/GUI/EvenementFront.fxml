@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.EvenementFrontController">
-   <children>
+    <children>
       <StackPane layoutX="254.0" layoutY="5.0" prefHeight="600.0" prefWidth="582.0">
          <children>
             <Pane fx:id="pnNouveau" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
@@ -101,6 +101,7 @@
                   <Label fx:id="lbidevenement" layoutX="439.0" layoutY="70.0" visible="false" />
                   <TextField fx:id="chercher" layoutX="390.0" layoutY="39.0" onKeyPressed="#Recherche" promptText="Recherche" />
                   <Button fx:id="TriTitre" layoutX="487.0" layoutY="68.0" mnemonicParsing="false" onAction="#TriTitre" text="TriTitre" />
+                  <Button fx:id="QrCode" layoutX="474.0" layoutY="113.0" mnemonicParsing="false" onAction="#btnGenPDF" text="Generer pdf" />
                </children>
             </Pane>
          </children>

@@ -13,11 +13,19 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import Entities.Evenement;
-
 import Utiles.MyDB;
+import com.google.zxing.qrcode.encoder.QRCode;
+import com.sun.javafx.iio.ImageStorage.ImageType;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.PreparedStatement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+//import net.glxn.qrgen.core.image.ImageType;
+//import net.glxn.qrgen.javase.QRCode;
 
 /**
  *
@@ -189,6 +197,19 @@ try {
 
         return list;
     }
+    /*public String GenerateQrEvent(Evenement event) throws FileNotFoundException, IOException {
+
+        String eventTitre = "evenement titre: " + event.getTitre() + "\n" + "evenement nom_societ: " + event.getDescription() + "\n" + "evenement nom_societe: " + event.getNomss() + "\n";
+        ByteArrayOutputStream out = QRCode.from(eventTitre).to(ImageType.JPG).stream();
+        String filename = event.getTitre() + "_QrCode.jpg";
+        File f = new File("src\\tn\\esprit\\utils\\img\\" + filename);
+        FileOutputStream fos = new FileOutputStream(f);
+        fos.write(out.toByteArray());
+        fos.flush();
+        System.out.println("qr yemshi");
+        return filename;
+    }
+*/
     
 }
 
