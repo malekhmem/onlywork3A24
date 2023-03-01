@@ -73,7 +73,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="pnMesEvenement" prefHeight="610.0" prefWidth="582.0" style="-fx-background-color: #ffffff;">
+            <Pane fx:id="pnMesEvenement" prefHeight="600.0" prefWidth="597.0" style="-fx-background-color: #ffffff;">
                <children>
                   <Label layoutX="25.0" layoutY="22.0" prefHeight="58.0" prefWidth="249.0" text="Mes Evenement :">
                      <font>
@@ -100,14 +100,14 @@
                   </VBox>
                   <Label fx:id="lbidevenement" layoutX="439.0" layoutY="70.0" visible="false" />
                   <TextField fx:id="chercher" layoutX="390.0" layoutY="39.0" onKeyPressed="#Recherche" promptText="Recherche" />
-                  <Button fx:id="TriTitre" layoutX="487.0" layoutY="68.0" mnemonicParsing="false" onAction="#TriTitre" text="TriTitre" />
-                  <Button fx:id="QrCode" layoutX="474.0" layoutY="113.0" mnemonicParsing="false" onAction="#btnGenPDF" text="Generer pdf" />
+                  <Button fx:id="TriTitre" layoutX="480.0" layoutY="68.0" mnemonicParsing="false" onAction="#TriTitre" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #4e5e64;" text="TriTitre" textFill="WHITE" />
+                  <Button fx:id="QrCode" layoutX="480.0" layoutY="100.0" mnemonicParsing="false" onAction="#btnGenPDF" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #4e5e64;" text="pdf" textFill="WHITE" />
                   <ImageView fx:id="QRcode" fitHeight="150.0" fitWidth="200.0" layoutX="374.0" layoutY="284.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </Pane>
          </children>
       </StackPane>
-      <VBox prefHeight="610.0" prefWidth="229.0" style="-fx-background-color: #4e5e64;">
+      <VBox layoutX="-5.0" prefHeight="610.0" prefWidth="249.0" style="-fx-background-color: #4e5e64;">
          <children>
             <ImageView fitHeight="158.0" fitWidth="219.0" pickOnBounds="true" preserveRatio="true" />
             <Label fx:id="lbMesEvenement" alignment="CENTER" onMouseClicked="#fnMenuMesEvenement" prefHeight="97.0" prefWidth="219.0" text="Mes Evenement" textFill="WHITE">

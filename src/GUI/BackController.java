@@ -4,32 +4,30 @@
  * and open the template in the editor.
  */
 package GUI;
+import Services.ServiceAnnonces;
+import Services.ServiceEvenement;
+
 
 import Entities.Annonces;
 import Entities.Evenement;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import Entities.Annonces;
-import Services.ServiceAnnonces;
-import Entities.Evenement;
-import Services.ServiceEvenement;
-import java.io.IOException;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 
 /**
  * FXML Controller class
@@ -38,6 +36,8 @@ import javafx.scene.Parent;
  */
 public class BackController implements Initializable {
 
+    @FXML
+    private Label lbLesAnnonces;
     @FXML
     private Label lbLesEvenements;
     @FXML
@@ -49,7 +49,7 @@ public class BackController implements Initializable {
     @FXML
     private TableColumn<Annonces, String> colNom;
     @FXML
-    private TableColumn<Annonces, String> colMail;
+    private TableColumn<Annonces, String> colEmail;
     @FXML
     private TableColumn<Annonces, String> colNumero;
     @FXML
@@ -59,11 +59,13 @@ public class BackController implements Initializable {
     @FXML
     private Button btnSupprimer;
     @FXML
+    private Label lbidannonces;
+    @FXML
     private Pane pnLesEvenements;
     @FXML
-    private TableView<Evenement> tvLesEvenements;
+    private TableView<Evenement> tvLesEvenement;
     @FXML
-    private TableColumn<Evenement, String> coltitre;
+    private TableColumn<Evenement, String> colTitre;
     @FXML
     private TableColumn<Evenement, String> colDescription;
     @FXML
@@ -71,83 +73,81 @@ public class BackController implements Initializable {
     @FXML
     private VBox vboxDetaill;
     @FXML
+    private Label lbAnnonces;
+    @FXML
     private Button btnSupprimerr;
     @FXML
     private Label lbidevenement;
-     @FXML
-    private Label lbidannonces;
-    @FXML
-    private Label lbLesAnnonces;
+       
 
     /**
      * Initializes the controller class.
-     * @param url
-     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-                pnLesAnnonces.toFront();
-                fnshow();
+           pnLesAnnonces.toFront();
+        fnshow();
         // TODO
     }    
- public void fnshow(){
+public void fnshow(){
         ServiceAnnonces sp=new ServiceAnnonces();
          ObservableList<Annonces> list =FXCollections.observableList(sp.afficher());   
      colAdresse.setCellValueFactory(new PropertyValueFactory<>("adresses"));
-     colMail.setCellValueFactory(new PropertyValueFactory<>("emails"));
+     colEmail.setCellValueFactory(new PropertyValueFactory<>("emails"));
       colNom.setCellValueFactory(new PropertyValueFactory<>("noms"));
-      colNumero.setCellValueFactory(new PropertyValueFactory<>("numeros"));
+      colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
       tvLesAnnonces.setItems(list);
      
      
    }
-  public void fnshowtout(){
+ public void fnshowtout(){
         ServiceEvenement sp=new ServiceEvenement();
          ObservableList<Evenement> list =FXCollections.observableList(sp.afficher()); 
      
      
-     coltitre.setCellValueFactory(new PropertyValueFactory<>("titre"));
-     colDescription.setCellValueFactory(new PropertyValueFactory<>("Description"));
-          colNoms.setCellValueFactory(new PropertyValueFactory<>("nom_societe"));
-     tvLesEvenements.setItems(list);
+     colTitre.setCellValueFactory(new PropertyValueFactory<>("titre"));
+     colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
+          colNoms.setCellValueFactory(new PropertyValueFactory<>("nomss"));
+     tvLesEvenement.setItems(list);
      
      
       
     }
+
     @FXML
-    private void fnMenuLesAnnonces   (MouseEvent event) {
+    private void fnMenuLesAnnonces(MouseEvent event) {
                  pnLesAnnonces.toFront();
 
     }
 
     @FXML
     private void fnMenuLesEvenements(MouseEvent event) {
-         pnLesEvenements.toFront();
+        pnLesEvenements.toFront();
             fnshowtout();
     }
 
     @FXML
     private void fnfront(MouseEvent event) {
-           try {
+         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("front.fxml"));
             Parent root = loader.load();
             lbRetour.getScene().setRoot(root);
            } catch (IOException ex) {
-               System.out.print(ex.getMessage());}
+               System.out.print(ex.getMessage());
+        }
     }
 
     @FXML
-    private void fnSelectiannonces (MouseEvent event) {
-                Annonces s = tvLesAnnonces.getSelectionModel().getSelectedItem();
-         lbidannonces.setText(s.getIds()+"");
+    private void fnSelectiannonces(MouseEvent event) {
+         Annonces f = tvLesAnnonces.getSelectionModel().getSelectedItem();
+         lbidannonces.setText(f.getIds()+"");
          vboxDetail.setVisible(true);
                  fnshow();
     }
 
     @FXML
     private void fnSupprimer(ActionEvent event) {
-         ServiceAnnonces sp=new ServiceAnnonces();
+        ServiceAnnonces sp=new ServiceAnnonces();
         System.out.println(lbidannonces.getText());
         sp.supprimer(Integer.parseInt(lbidannonces.getText()));
         fnshow();
@@ -156,22 +156,24 @@ public class BackController implements Initializable {
 
     @FXML
     private void fnSelectionevenement(MouseEvent event) {
-          Evenement m = tvLesEvenements.getSelectionModel().getSelectedItem();
+         Evenement m = tvLesEvenement.getSelectionModel().getSelectedItem();
          lbidevenement.setText(m.getIde()+"");
          vboxDetaill.setVisible(true);
          ServiceAnnonces sc=new ServiceAnnonces();
-         Annonces f = sc.SelectOneAnnonces(m.getIds());
-         lbLesAnnonces.setText(f.getNoms());
+         Annonces f=sc.SelectOneAnnonces(m.getIds());
+         lbAnnonces.setText(f.getNoms());
     }
 
     @FXML
     private void fnSupprimerr(ActionEvent event) {
-          ServiceEvenement sp=new ServiceEvenement();
+         ServiceEvenement sp=new ServiceEvenement();
         System.out.println(lbidevenement.getText());
         sp.supprimer(Integer.parseInt(lbidevenement.getText()));
         fnshowtout();
         vboxDetaill.setVisible(false);
-    
     }
+    }
+
     
-}
+    
+

@@ -296,6 +296,7 @@ if (tfDescription.getText().isEmpty()) {
 Alert alert = new Alert(AlertType.ERROR, "Le champ description est obligatoire !");
 alert.showAndWait();
 return;
+
 }
 Evenement p=new Evenement();
 p.setNomss(tfNom_societe.getText());

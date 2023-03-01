@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -14,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.BackController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.BackController">
      <children>
       <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0">
          <children>
@@ -45,24 +44,23 @@
                <children>
                   <Pane fx:id="pnLesAnnonces" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
                      <children>
-                        <Label layoutX="25.0" layoutY="22.0" prefHeight="58.0" prefWidth="219.0" text="Les Annonces societes :">
+                        <Label layoutX="25.0" layoutY="22.0" prefHeight="58.0" prefWidth="219.0" text="Les Annonces :">
                            <font>
                               <Font size="31.0" />
                            </font>
                         </Label>
-                        <TableView fx:id="tvLesAnnonces " layoutX="29.0" layoutY="125.0" onMouseClicked="#fnSelectiannonces" prefHeight="318.0" prefWidth="337.0">
+                        <TableView fx:id="tvLesAnnonces" layoutX="29.0" layoutY="125.0" onMouseClicked="#fnSelectiannonces" prefHeight="318.0" prefWidth="357.0">
                           <columns>
                             <TableColumn fx:id="colNom" prefWidth="75.0" text="nom" />
-                              <TableColumn fx:id="colMail" prefWidth="156.0" text="email" />
-                              <TableColumn fx:id="colNumero" prefWidth="156.0" text="numero" />
-                            <TableColumn fx:id="colAdresse" prefWidth="105.0" text="Adresse" />
+                            <TableColumn fx:id="colEmail" prefWidth="105.0" text="email" />
+                              <TableColumn fx:id="colNumero" prefWidth="79.0" text="numero" />
+                              <TableColumn fx:id="colAdresse" prefWidth="105.0" text="adresse" />
+                         
                           </columns>
                         </TableView>
                  
                         <VBox fx:id="vboxDetail" layoutX="374.0" layoutY="125.0" prefHeight="318.0" prefWidth="200.0" visible="false">
                            <children>
-
-                             
                               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                                  <children>
                                     <Button fx:id="btnSupprimer" mnemonicParsing="false" onAction="#fnSupprimer" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: #4e5e64;" text="Supprimer" textFill="WHITE" />
@@ -71,28 +69,29 @@
                               </HBox>
                            </children>
                         </VBox>
-                        <Label fx:id="lbidannonces " layoutX="439.0" layoutY="70.0" visible="false" />
+                        <Label fx:id="lbidannonces" layoutX="439.0" layoutY="70.0" visible="false" />
                      </children>
                   </Pane>
                   <Pane fx:id="pnLesEvenements" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
                      <children>
-                        <Label layoutX="25.0" layoutY="22.0" prefHeight="58.0" prefWidth="219.0" text="Les Evenements :">
+                        <Label layoutX="25.0" layoutY="22.0" prefHeight="58.0" prefWidth="276.0" text="Les Evenements:">
                            <font>
                               <Font size="31.0" />
                            </font>
                         </Label>
-                        <TableView fx:id="tvLesEvenements" layoutX="29.0" layoutY="125.0" onMouseClicked="#fnSelectionevenement" prefHeight="318.0" prefWidth="337.0">
+                        <TableView fx:id="tvLesEvenement" layoutX="29.0" layoutY="125.0" onMouseClicked="#fnSelectionevenement" prefHeight="318.0" prefWidth="337.0">
                           <columns>
-                            <TableColumn fx:id="coltitre" prefWidth="75.0" text="titre" />
-                            <TableColumn fx:id="colDescription" prefWidth="105.0" text="Description" />
-                              <TableColumn fx:id="colNoms" prefWidth="156.0" text="nom_societe" />
+                            <TableColumn fx:id="colTitre" prefWidth="75.0" text="titre" />
+                            <TableColumn fx:id="colDescription" prefWidth="105.0" text="description" />
+                              <TableColumn fx:id="colNoms" prefWidth="156.0" text="noms_societe" />
+                              <TableColumn fx:id="colDescriptt" prefWidth="156.0" text="description" />
                          
                           </columns>
                         </TableView>
                  
                         <VBox fx:id="vboxDetaill" layoutX="374.0" layoutY="125.0" prefHeight="318.0" prefWidth="200.0" visible="false">
                            <children>
-                       <Label fx:id="lbAnnonces " layoutX="10.0" layoutY="10.0" prefHeight="48.0" prefWidth="201.0">
+                       <Label fx:id="lbAnnonces" layoutX="10.0" layoutY="10.0" prefHeight="48.0" prefWidth="201.0">
                            <font>
                               <Font size="25.0" />
                            </font>
@@ -107,7 +106,7 @@
                               </HBox>
                            </children>
                         </VBox>
-                        <Label fx:id="lbidevenement" layoutX="439.0" layoutY="70.0" visible="false" />
+                        <Label fx:id="lbidmateriel" layoutX="439.0" layoutY="70.0" visible="false" />
                      </children>
                   </Pane>
                </children>
