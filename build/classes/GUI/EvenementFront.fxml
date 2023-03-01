@@ -102,6 +102,7 @@
                   <TextField fx:id="chercher" layoutX="390.0" layoutY="39.0" onKeyPressed="#Recherche" promptText="Recherche" />
                   <Button fx:id="TriTitre" layoutX="487.0" layoutY="68.0" mnemonicParsing="false" onAction="#TriTitre" text="TriTitre" />
                   <Button fx:id="QrCode" layoutX="474.0" layoutY="113.0" mnemonicParsing="false" onAction="#btnGenPDF" text="Generer pdf" />
+                  <ImageView fx:id="QRcode" fitHeight="150.0" fitWidth="200.0" layoutX="374.0" layoutY="284.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </Pane>
          </children>

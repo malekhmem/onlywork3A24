@@ -62,24 +62,34 @@ import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import com.google.zxing.qrcode.decoder.Mode;
 import com.google.zxing.qrcode.decoder.Version;
+import com.google.zxing.qrcode.encoder.QRCode;
+import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import java.awt.Color;
 import java.awt.Desktop;
+import java.awt.Graphics2D;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
+import javafx.scene.layout.StackPane;
 /**
  *
  * @author chino
@@ -166,6 +176,8 @@ public class EvenementFrontController implements Initializable {
    ServiceEvenement sp = new ServiceEvenement();
     @FXML
     private Button QrCode;
+    @FXML
+    private ImageView QRcode;
 
     /**
      * Initializes the controller class.
@@ -394,6 +406,7 @@ tfTitre.setText("");
         Evenement f = tvMesEvenement.getSelectionModel().getSelectedItem();
          lbidevenement.setText(f.getIde()+"");
          vboxDetail.setVisible(true);
+         start(f);
     }
 
     @FXML
@@ -442,7 +455,7 @@ ServiceEvenement sp = new ServiceEvenement();
 
 */
 
-    @FXML
+   /* @FXML
     private void btnGenPDF(ActionEvent event) throws DocumentException, FileNotFoundException, IOException  {
         long millis = System.currentTimeMillis();
         java.sql.Date DateRapport = new java.sql.Date(millis);
@@ -494,161 +507,238 @@ ServiceEvenement sp = new ServiceEvenement();
             desktop.open(file); //opens the specified file   
         }
         
+    }*/
+@FXML
+private void btnGenPDF(ActionEvent event) throws DocumentException, FileNotFoundException, IOException {
+    long millis = System.currentTimeMillis();
+    java.sql.Date DateRapport = new java.sql.Date(millis);
+
+    String DateLyoum = new SimpleDateFormat("yyyyMMddHHmmss", Locale.ENGLISH).format(DateRapport);
+    System.out.println("Date d'aujourdhui : " + DateLyoum);
+
+    com.itextpdf.text.Document document = new com.itextpdf.text.Document();
+
+    try {
+        PdfWriter.getInstance(document, new FileOutputStream(String.valueOf(DateLyoum + ".pdf")));
+        document.open();
+// Ajouter le logo
+       /* Image logo = Image.getInstance("C://xampp//htdocs//onlywork/logo.png");
+        logo.scaleAbsolute(100, 100);
+        logo.setAlignment(Element.ALIGN_CENTER);
+        document.add(logo);*/
+        // Ajouter un titre avec un style personnalisé
+        Font titleFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18, BaseColor.BLACK);
+        Paragraph title = new Paragraph("Rapport détaillé de notre application", titleFont);
+        title.setAlignment(Element.ALIGN_CENTER);
+        document.add(title);
+
+        // Ajouter un paragraphe avec un style personnalisé
+        Font paragraphFont = FontFactory.getFont(FontFactory.TIMES, 12, BaseColor.BLACK);
+        Paragraph ph1 = new Paragraph("Voici un rapport détaillé de notre application qui contient tous les événements. Pour chaque événement, nous fournissons des informations telles que la date d'aujourd'hui : " + DateRapport, paragraphFont);
+        ph1.setSpacingAfter(10);
+        document.add(ph1);
+
+        PdfPTable table = new PdfPTable(3);
+        table.setWidthPercentage(100);
+
+        // Créer une cellule avec un style personnalisé
+        Font cellFont = FontFactory.getFont(FontFactory.TIMES, 12, BaseColor.WHITE);
+        PdfPCell cell = new PdfPCell(new Phrase("Titre", cellFont));
+        cell.setBackgroundColor(BaseColor.BLACK);
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        table.addCell(cell);
+
+        cell = new PdfPCell(new Phrase("Description", cellFont));
+        cell.setBackgroundColor(BaseColor.BLACK);
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        table.addCell(cell);
+
+        cell = new PdfPCell(new Phrase("Nom société", cellFont));
+        cell.setBackgroundColor(BaseColor.BLACK);
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        table.addCell(cell);
+
+        Evenement r = new Evenement();
+        sp.afficher().forEach(e -> {
+            table.addCell(String.valueOf(e.getTitre()));
+            table.addCell(String.valueOf(e.getDescription()));
+            table.addCell(String.valueOf(e.getNomss()));
+        });
+
+        document.add(table);
+    } catch (Exception e) {
+        System.out.println(e);
+    }
+    document.close();
+
+    // Ouvrir le fichier PDF
+    File file = new File(DateLyoum + ".pdf");
+    Desktop desktop = Desktop.getDesktop();
+    if (file.exists()) {
+        desktop.open(file);
+    }
+}
+
+
+public void start(Evenement u) {
+
+    QRCodeWriter QRCodeWriter;
+    
+    QRCodeWriter qrCodeWriter = new QRCodeWriter();
+    String myWeb = "titre evenemment : " +u.getTitre()+"\n"+"description : "+u.getDescription()+"\n"+"nom société : "+u.getNomss();
+    int width = 300;
+    int height = 300;
+    String fileType = "png";
+    
+    BufferedImage bufferedImage = null;
+    try {
+        BitMatrix byteMatrix = qrCodeWriter.encode(myWeb, BarcodeFormat.QR_CODE, width, height);
+        //BitMatrix byteMatrix = qrCodeWriter.encode(myData, BarcodeFormat.QR_CODE, width, height);
+        bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        bufferedImage.createGraphics();
+        
+        Graphics2D graphics = (Graphics2D) bufferedImage.getGraphics();
+        graphics.setColor(Color.WHITE);
+        graphics.fillRect(0, 0, width, height);
+        graphics.setColor(Color.BLACK);
+        
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                if (byteMatrix.get(i, j)) {
+                    graphics.fillRect(i, j, 1, 1);
+                }
+            }
+        }
+
+        ImageView qrView = new ImageView();
+        qrView.setImage(SwingFXUtils.toFXImage(bufferedImage, null));
+
+        StackPane root = new StackPane();
+        root.getChildren().add(qrView);
+
+        Scene scene = new Scene(root, 350, 350);
+
+        Stage stage = new Stage();
+        stage.setTitle("QR Code");
+        stage.setScene(scene);
+        stage.show();
+
+        System.out.println("Success...");
+        
+    } catch (WriterException ex) {
+        Logger.getLogger(NewFXMain.class.getName()).log(Level.SEVERE, null, ex);
+    }
+}
+ 
+    /*public void start(Evenement u) {
+        
+        QRCodeWriter QRCodeWriter;
+        
+        QRCodeWriter qrCodeWriter = new QRCodeWriter();
+        String myWeb = u.getTitre();
+        int width = 300;
+        int height = 300;
+        String fileType = "png";
+        
+        BufferedImage bufferedImage = null;
+        try {
+            BitMatrix byteMatrix = qrCodeWriter.encode(myWeb, BarcodeFormat.QR_CODE, width, height);
+            bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+            bufferedImage.createGraphics();
+            
+            Graphics2D graphics = (Graphics2D) bufferedImage.getGraphics();
+            graphics.setColor(Color.WHITE);
+            graphics.fillRect(0, 0, width, height);
+            graphics.setColor(Color.BLACK);
+            if(bufferedImage!=null){
+                System.out.println("hello world");
+            }else{
+                System.out.println("null");
+            }
+            ImageView qrView = new ImageView();
+        qrView.setImage(SwingFXUtils.toFXImage(bufferedImage, null));
+                
+        QRcode.setImage(qrView.getImage());
+            
+            for (int i = 0; i < height; i++) {
+                for (int j = 0; j < width; j++) {
+                    if (byteMatrix.get(i, j)) {
+                        graphics.fillRect(i, j, 1, 1);
+                    }
+                }
+            }
+
+
+System.out.println("Success...");
+            
+        } catch (WriterException ex) {
+            Logger.getLogger(NewFXMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+        //StackPane root = new StackPane();
+        /*root.getChildren().add(qrView);
+        
+        Scene scene = new Scene(root, 350, 350);
+        
+        primaryStage.setTitle("Hello World!");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }*/
+    private void QR(ActionEvent event) {
+          Evenement u = tvMesEvenement.getSelectionModel().getSelectedItem();
+        if (u == null) {
+            //veuillez selectionner une liiiiiiiiiiiiiiiigne
+            Alert alert1 = new Alert(Alert.AlertType.ERROR);
+            alert1.setTitle("Erreur !");
+            alert1.setHeaderText(null);
+            alert1.setContentText("veuillez selectionner une ligne du tableau puis appuyez sur le bouton recuperer");
+            alert1.show();
+
+        } else {
+        
+        start(u);
+    }
     }
     
 }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/*package evenement_societe.GUI;
-
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-
-/**
- * FXML Controller class
- *
- * @author chino
- */
-/*public class EvenementFrontController implements Initializable {
-
-    @FXML
-    private Label lbMesEvenement;
-    @FXML
-    private Label lbNouveau;
-    @FXML
-    private Label lbRetour;
-    @FXML
-    private Pane pnNouveau;
-    @FXML
-    private Label lbTItreNouveau;
-    @FXML
-    private TextField tfTitre;
-    @FXML
-    private TextField tfDescription;
-    @FXML
-    private TextField tfNom_societe;
-    @FXML
-    private Button btnAnuller;
-    @FXML
-    private Button btnConfModifier;
-    @FXML
-    private Button btnConfAjouter;
-    @FXML
-    private Label lbTItreUpdate;
-    @FXML
-    private Pane pnMesEvenement;
-    @FXML
-    private TableView<?> tvMesPostes;
-    @FXML
-    private TableColumn<?, ?> colTitre;
-    @FXML
-    private TableColumn<?, ?> colDescription;
-    @FXML
-    private TableColumn<?, ?> colNom_societe;
-    @FXML
-    private Button btnAjouter;
-    @FXML
-    private VBox vboxDetail;
-    @FXML
-    private Label lbCategorie;
-    @FXML
-    private Label lbDescription;
-    @FXML
-    private Button btnSupprimer;
-    @FXML
-    private Button btnModifier;
-    @FXML
-    private Label lbidposte;
-
-    /**
-     * Initializes the controller class.
-     */
-    /*@Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-
-    @FXML
-    private void fnMenuMesEvenement(MouseEvent event) {
-    }
-
-    @FXML
-    private void fnMenuNouveau(MouseEvent event) {
-    }
-
-    @FXML
-    private void fnAnnuler(ActionEvent event) {
-    }
-
-    @FXML
-    private void fnConfModifier(ActionEvent event) {
-    }
-
-    @FXML
-    private void fnConfAjouter(ActionEvent event) {
-    }
-
-    @FXML
-    private void fnSelectionPoste(MouseEvent event) {
-    }
-
-    @FXML
-    private void fnAjouter(ActionEvent event) {
-    }
-
-    @FXML
-    private void fnSupprimer(ActionEvent event) {
-    }
-
-    @FXML
-    private void fnModifier(ActionEvent event) {
-    }
     
-}*/
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
