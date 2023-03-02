@@ -67,6 +67,7 @@ import javafx.stage.Stage;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import java.io.FileOutputStream;
+import static java.util.Collections.list;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.util.List;
@@ -159,7 +160,9 @@ public class FrontannoncefController implements Initializable {
     @FXML
     private TextField cherche;
     @FXML
-    private Button exportButton;
+    private Button btntri;
+    @FXML
+    private Button btntrier;
  
 
     /**
@@ -537,4 +540,27 @@ Serviceannoncef sp = new Serviceannoncef();
                writer.flush();
                writer.close();
 }  */
+    @FXML
+    private void TriNom(ActionEvent event) throws SQLException {
+     
+   colNom.setCellValueFactory(new PropertyValueFactory<Annoncef,String>("nomf"));
+      colMail.setCellValueFactory(new PropertyValueFactory<Annoncef,String>("emailf"));
+colAdresse.setCellValueFactory(new PropertyValueFactory<Annoncef, String>("adresse"));
+   colDescript.setCellValueFactory(new PropertyValueFactory<Annoncef,String>("descf"));
+               Annoncef p=new Annoncef();
+Serviceannoncef sp = new Serviceannoncef();
+       tvMesAnnoncef.setItems(sp.getAllTriNom())  ;
+    }
+
+    @FXML
+    private void TriNomm(ActionEvent event) {
+           colNomm.setCellValueFactory(new PropertyValueFactory<Annoncef,String>("nomf"));
+      colMaill.setCellValueFactory(new PropertyValueFactory<Annoncef,String>("emailf"));
+colAdressee.setCellValueFactory(new PropertyValueFactory<Annoncef, String>("adresse"));
+   colDescriptt.setCellValueFactory(new PropertyValueFactory<Annoncef,String>("descf"));
+               Annoncef p=new Annoncef();
+Serviceannoncef sp = new Serviceannoncef();
+       tvLesAnnoncef.setItems(sp.getAllTriNom())  ;
+    }
+    
 }

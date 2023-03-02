@@ -23,7 +23,7 @@
                         <Label fx:id="lbidmateriel" layoutX="439.0" layoutY="70.0" visible="false" />
                           <Label layoutX="21.0" layoutY="2.0" prefHeight="48.0" prefWidth="496.0" text="Saisir le nom du matériel:" />
                           <TextField fx:id="materialNameTextField" layoutX="21.0" layoutY="50.0" prefHeight="25.0" prefWidth="315.0" />
-                          <Button layoutX="353.0" layoutY="50.0" mnemonicParsing="false" onAction="#showStatistics" prefHeight="25.0" prefWidth="200.0" text="Afficher les statistiques" />
+                          <Button layoutX="353.0" layoutY="50.0" mnemonicParsing="false" onAction="#showStatistics" prefHeight="25.0" prefWidth="200.0" text="Afficher les statistiques"  style="-fx-background-color: #4e5e64;"  textFill="WHITE" />
                           <PieChart fx:id="statisticsChart" layoutX="66.0" layoutY="96.0" prefHeight="442.0" prefWidth="487.0" title="Statistiques du matériel" />
                      </children>
                   </Pane>

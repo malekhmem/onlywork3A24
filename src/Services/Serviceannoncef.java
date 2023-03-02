@@ -211,5 +211,26 @@ public class Serviceannoncef implements IService<Annoncef>{
 
         return list ;
     }
-       
+       public ObservableList<Annoncef> getAllTriNom() {
+        ObservableList<Annoncef> list = FXCollections.observableArrayList();
+        try {
+         //   String req = "Select * from espacetalent where roles like '%[]%' order by nom";
+                String qry = "Select * from annoncef  order by nomf";
+                  System.out.println(qry);
+            cnx = MyDB.getInstance().getCnx();
+            Statement stm = cnx.createStatement();
+            ResultSet rs = stm.executeQuery(qry);
+            while (rs.next()) {
+            //    EspaceTalent u = new EspaceTalent(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"), rs.getString("username"), rs.getString("email"), rs.getString("file"), rs.getInt("etat"), rs.getDate("created_at"));
+             Annoncef a = new Annoncef(rs.getString(2), rs.getString(3), rs.getString(4),rs.getString(5)); 
+      
+   
+        list.add(a) ;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return list;
+    }
 }
