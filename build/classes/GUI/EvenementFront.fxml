@@ -18,7 +18,7 @@
     <children>
       <StackPane layoutX="254.0" layoutY="5.0" prefHeight="600.0" prefWidth="582.0">
          <children>
-            <Pane fx:id="pnNouveau" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+            <Pane fx:id="pnNouveau" prefHeight="600.0" prefWidth="590.0" style="-fx-background-color: #d2dde0;">
                <children>
                   <Label fx:id="lbTItreNouveau" layoutX="24.0" layoutY="33.0" prefHeight="58.0" prefWidth="360.0" text="un nouveau evenement:">
                      <font>
@@ -66,14 +66,14 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <Label fx:id="lbTItreUpdate" layoutX="24.0" layoutY="33.0" prefHeight="58.0" prefWidth="299.0" text="modifier ce poste:" visible="false">
+                  <Label fx:id="lbTItreUpdate" layoutX="24.0" layoutY="33.0" prefHeight="58.0" prefWidth="443.0" text="modifier cet evenement:" visible="false">
                      <font>
                         <Font size="31.0" />
                      </font>
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="pnMesEvenement" prefHeight="600.0" prefWidth="597.0" style="-fx-background-color: #ffffff;">
+            <Pane fx:id="pnMesEvenement" prefHeight="600.0" prefWidth="601.0" style="-fx-background-color: #d2dde0;">
                <children>
                   <Label layoutX="25.0" layoutY="22.0" prefHeight="58.0" prefWidth="249.0" text="Mes Evenement :">
                      <font>
@@ -101,7 +101,7 @@
                   <Label fx:id="lbidevenement" layoutX="439.0" layoutY="70.0" visible="false" />
                   <TextField fx:id="chercher" layoutX="390.0" layoutY="39.0" onKeyPressed="#Recherche" promptText="Recherche" />
                   <Button fx:id="TriTitre" layoutX="480.0" layoutY="68.0" mnemonicParsing="false" onAction="#TriTitre" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #4e5e64;" text="TriTitre" textFill="WHITE" />
-                  <Button fx:id="QrCode" layoutX="480.0" layoutY="100.0" mnemonicParsing="false" onAction="#btnGenPDF" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #4e5e64;" text="pdf" textFill="WHITE" />
+                  <Button fx:id="PDF" layoutX="480.0" layoutY="100.0" mnemonicParsing="false" onAction="#btnGenPDF" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #4e5e64;" text="pdf" textFill="WHITE" />
                   <ImageView fx:id="QRcode" fitHeight="150.0" fitWidth="200.0" layoutX="374.0" layoutY="284.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </Pane>
@@ -120,7 +120,7 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="lbRetour" alignment="CENTER" layoutX="10.0" layoutY="107.0" prefHeight="97.0" prefWidth="219.0" text="Retour" textFill="WHITE">
+            <Label fx:id="lbRetour" alignment="CENTER" layoutX="10.0" layoutY="107.0" onMouseClicked="#fnfront" prefHeight="97.0" prefWidth="219.0" text="Retour" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>

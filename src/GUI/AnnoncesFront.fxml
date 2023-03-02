@@ -14,11 +14,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AnnoncesFrontController">
+<AnchorPane id="AnchorPane" prefHeight="609.0" prefWidth="801.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AnnoncesFrontController">
  <children>
       <StackPane layoutX="219.0" prefHeight="600.0" prefWidth="582.0">
          <children>
-            <Pane fx:id="pnNouveau1" prefHeight="600.0" prefWidth="572.0" style="-fx-background-color: #ffffff;">
+            <Pane fx:id="pnNouveau1" prefHeight="609.0" prefWidth="582.0" style="-fx-background-color: #d2dde0;">
                <children>
                   <Label fx:id="lbTItreNouveau1" layoutX="14.0" layoutY="19.0" prefHeight="58.0" prefWidth="421.0" text="un nouveau annonce societe:">
                      <font>
@@ -79,7 +79,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="pnMesAnnonces" prefHeight="622.0" prefWidth="603.0" style="-fx-background-color: #ffffff;">
+            <Pane fx:id="pnMesAnnonces" prefHeight="622.0" prefWidth="603.0" style="-fx-background-color: #d2dde0;">
                <children>
                   <Label layoutX="29.0" layoutY="29.0" prefHeight="58.0" prefWidth="237.0" text="Mes Annonces :">
                      <font>
@@ -104,7 +104,7 @@
                   <Label fx:id="lbidAnnonces" layoutX="439.0" layoutY="70.0" visible="false" />
                   <HBox alignment="CENTER" layoutX="449.0" layoutY="6.0" prefHeight="27.0" prefWidth="198.0" AnchorPane.rightAnchor="7.0" />
                   <TextField fx:id="chercher" layoutX="365.0" layoutY="46.0" onKeyPressed="#Recherche" promptText="Recherche" />
-                  <Button fx:id="TriNom" layoutX="462.0" layoutY="79.0" mnemonicParsing="false" onAction="#TriNom" text="TriNom" />
+                  <Button fx:id="TriNom" layoutX="462.0" layoutY="79.0" mnemonicParsing="false" onAction="#TriNom" style="-fx-background-color: #4e5e64;" text="TriNom" textFill="WHITE" />
                </children>
             </Pane>
          </children>
@@ -122,7 +122,7 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="lbRetour" alignment="CENTER" layoutX="10.0" layoutY="107.0" prefHeight="110.0" prefWidth="219.0" text="Retour" textFill="WHITE">
+            <Label fx:id="lbRetour" alignment="CENTER" layoutX="10.0" layoutY="107.0" onMouseClicked="#fnfront" prefHeight="110.0" prefWidth="219.0" text="Retour" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>

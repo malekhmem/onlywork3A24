@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -42,7 +43,46 @@
             </VBox>
             <StackPane layoutX="218.0" prefHeight="600.0" prefWidth="582.0">
                <children>
-                  <Pane fx:id="pnLesAnnonces" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+                  <Pane fx:id="pnLesEvenements" prefHeight="600.0" prefWidth="594.0" style="-fx-background-color: #d2dde0;">
+                     <children>
+                        <Label layoutX="25.0" layoutY="22.0" prefHeight="58.0" prefWidth="276.0" text="Les Evenements:">
+                           <font>
+                              <Font size="31.0" />
+                           </font>
+                        </Label>
+                        <TableView fx:id="tvLesEvenement" layoutX="29.0" layoutY="125.0" onMouseClicked="#fnSelectionevenement" prefHeight="318.0" prefWidth="337.0" style="-fx-background-color: #ffff;">
+                          <columns>
+                            <TableColumn fx:id="colTitre" prefWidth="75.0" text="titre" />
+                            <TableColumn fx:id="colDescription" prefWidth="105.0" text="description" />
+                              <TableColumn fx:id="colNoms" prefWidth="156.0" text="noms_societe" />
+                         
+                          </columns>
+                        </TableView>
+                 
+                        <VBox fx:id="vboxDetaill" layoutX="374.0" layoutY="125.0" prefHeight="318.0" prefWidth="200.0" visible="false">
+                           <children>
+                       <Label fx:id="lbAnnonces" layoutX="10.0" layoutY="10.0" prefHeight="48.0" prefWidth="201.0">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+
+        
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+                                 <children>
+                                    <Button fx:id="btnSupprimerr" mnemonicParsing="false" onAction="#fnSupprimerr" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: #4e5e64;" text="Supprimer" textFill="WHITE" />
+                             
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <Label fx:id="lbidannonces" layoutX="439.0" layoutY="70.0" visible="false" />
+                        <Button fx:id="TriTitre" layoutX="484.0" layoutY="68.0" mnemonicParsing="false" onAction="#TriTitre" style="-fx-background-color: #4e5e64;" text="TriTitre" textFill="WHITE" />
+                        <Button fx:id="PDF" layoutX="485.0" layoutY="100.0" mnemonicParsing="false" onAction="#btnGenPDF" prefHeight="25.0" prefWidth="53.0" style="-fx-background-color: #4e5e64;" text="pdf" textFill="WHITE" />
+                        <TextField fx:id="mayasine" layoutX="388.0" layoutY="39.0" onKeyPressed="#mayasine" promptText="Recherche" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="pnLesAnnonces" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #d2dde0;">
                      <children>
                         <Label layoutX="25.0" layoutY="22.0" prefHeight="58.0" prefWidth="219.0" text="Les Annonces :">
                            <font>
@@ -69,44 +109,10 @@
                               </HBox>
                            </children>
                         </VBox>
-                        <Label fx:id="lbidannonces" layoutX="439.0" layoutY="70.0" visible="false" />
-                     </children>
-                  </Pane>
-                  <Pane fx:id="pnLesEvenements" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
-                     <children>
-                        <Label layoutX="25.0" layoutY="22.0" prefHeight="58.0" prefWidth="276.0" text="Les Evenements:">
-                           <font>
-                              <Font size="31.0" />
-                           </font>
-                        </Label>
-                        <TableView fx:id="tvLesEvenement" layoutX="29.0" layoutY="125.0" onMouseClicked="#fnSelectionevenement" prefHeight="318.0" prefWidth="337.0">
-                          <columns>
-                            <TableColumn fx:id="colTitre" prefWidth="75.0" text="titre" />
-                            <TableColumn fx:id="colDescription" prefWidth="105.0" text="description" />
-                              <TableColumn fx:id="colNoms" prefWidth="156.0" text="noms_societe" />
-                              <TableColumn fx:id="colDescriptt" prefWidth="156.0" text="description" />
-                         
-                          </columns>
-                        </TableView>
-                 
-                        <VBox fx:id="vboxDetaill" layoutX="374.0" layoutY="125.0" prefHeight="318.0" prefWidth="200.0" visible="false">
-                           <children>
-                       <Label fx:id="lbAnnonces" layoutX="10.0" layoutY="10.0" prefHeight="48.0" prefWidth="201.0">
-                           <font>
-                              <Font size="25.0" />
-                           </font>
-                        </Label>
+                        <Label fx:id="lbidevenement" layoutX="439.0" layoutY="70.0" visible="false" />
+                        <Button fx:id="TriNom" layoutX="494.0" layoutY="71.0" mnemonicParsing="false" onAction="#TriNom" style="-fx-background-color: #4e5e64;" text="TriNom" textFill="WHITE" />
+                        <TextField fx:id="ann" layoutX="400.0" layoutY="39.0" onKeyPressed="#ann" promptText="Recherche" />
 
-        
-                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
-                                 <children>
-                                    <Button fx:id="btnSupprimerr" mnemonicParsing="false" onAction="#fnSupprimerr" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: #4e5e64;" text="Supprimer" textFill="WHITE" />
-                             
-                                 </children>
-                              </HBox>
-                           </children>
-                        </VBox>
-                        <Label fx:id="lbidmateriel" layoutX="439.0" layoutY="70.0" visible="false" />
                      </children>
                   </Pane>
                </children>

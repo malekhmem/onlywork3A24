@@ -86,6 +86,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javafx.embed.swing.SwingFXUtils;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
@@ -175,9 +177,9 @@ public class EvenementFrontController implements Initializable {
     private Button TriTitre;
    ServiceEvenement sp = new ServiceEvenement();
     @FXML
-    private Button QrCode;
-    @FXML
     private ImageView QRcode;
+    @FXML
+    private Button PDF;
 
     /**
      * Initializes the controller class.
@@ -216,7 +218,17 @@ public class EvenementFrontController implements Initializable {
     }
 
 
-  
+   @FXML
+    private void fnfront(MouseEvent event) {
+                       try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("front.fxml"));
+            Parent root = loader.load();
+            lbRetour.getScene().setRoot(root);
+           } catch (IOException ex) {
+               System.out.print(ex.getMessage());
+        }
+    }
+
 
 
     @FXML
@@ -528,14 +540,14 @@ private void btnGenPDF(ActionEvent event) throws DocumentException, FileNotFound
         logo.setAlignment(Element.ALIGN_CENTER);
         document.add(logo);*/
         // Ajouter un titre avec un style personnalisé
-        Font titleFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18, BaseColor.BLACK);
-        Paragraph title = new Paragraph("Rapport détaillé de notre application", titleFont);
+        Font titleFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18, BaseColor.BLUE);
+        Paragraph title = new Paragraph("LES EVENEMENTS DISPONIBLE DANS NOTRE APPLICATION", titleFont);
         title.setAlignment(Element.ALIGN_CENTER);
         document.add(title);
 
         // Ajouter un paragraphe avec un style personnalisé
-        Font paragraphFont = FontFactory.getFont(FontFactory.TIMES, 12, BaseColor.BLACK);
-        Paragraph ph1 = new Paragraph("Voici un rapport détaillé de notre application qui contient tous les événements. Pour chaque événement, nous fournissons des informations telles que la date d'aujourd'hui : " + DateRapport, paragraphFont);
+        Font paragraphFont = FontFactory.getFont(FontFactory.TIMES, 14, BaseColor.BLACK);
+        Paragraph ph1 = new Paragraph("Voici un rapport détaillé des evenements disponobles de notre application . Pour chaque événement, nous fournissons des informations telles que la date d'aujourd'hui : " + DateRapport, paragraphFont);
         ph1.setSpacingAfter(10);
         document.add(ph1);
 
@@ -545,17 +557,17 @@ private void btnGenPDF(ActionEvent event) throws DocumentException, FileNotFound
         // Créer une cellule avec un style personnalisé
         Font cellFont = FontFactory.getFont(FontFactory.TIMES, 12, BaseColor.WHITE);
         PdfPCell cell = new PdfPCell(new Phrase("Titre", cellFont));
-        cell.setBackgroundColor(BaseColor.BLACK);
+        cell.setBackgroundColor(BaseColor.DARK_GRAY);
         cell.setHorizontalAlignment(Element.ALIGN_CENTER);
         table.addCell(cell);
 
         cell = new PdfPCell(new Phrase("Description", cellFont));
-        cell.setBackgroundColor(BaseColor.BLACK);
+        cell.setBackgroundColor(BaseColor.DARK_GRAY);
         cell.setHorizontalAlignment(Element.ALIGN_CENTER);
         table.addCell(cell);
 
         cell = new PdfPCell(new Phrase("Nom société", cellFont));
-        cell.setBackgroundColor(BaseColor.BLACK);
+        cell.setBackgroundColor(BaseColor.DARK_GRAY);
         cell.setHorizontalAlignment(Element.ALIGN_CENTER);
         table.addCell(cell);
 
@@ -702,38 +714,10 @@ System.out.println("Success...");
         start(u);
     }
     }
+
+ 
     
 }
-
-
-
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

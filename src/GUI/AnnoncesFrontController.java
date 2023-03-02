@@ -25,9 +25,12 @@ import javafx.scene.layout.VBox;
 import Entities.Annonces;
 import Entities.Evenement;
 import Services.ServiceAnnonces;
+import java.io.IOException;
 import static java.lang.Integer.parseInt;
 import java.sql.SQLException;
 import java.util.List;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.KeyEvent;
@@ -143,7 +146,7 @@ public class AnnoncesFrontController implements Initializable {
     public void fnshow(){
         ServiceAnnonces sp=new ServiceAnnonces();
          ObservableList<Annonces> list =FXCollections.observableList(sp.afficher()); 
-     
+
      colNom.setCellValueFactory(new PropertyValueFactory<>("noms"));
      colEmail.setCellValueFactory(new PropertyValueFactory<>("emails"));
      colNumero.setCellValueFactory(new PropertyValueFactory<>("numeros"));
@@ -163,7 +166,18 @@ public class AnnoncesFrontController implements Initializable {
         pnNouveau.toFront();
     }
 
-
+ @FXML
+    private void fnfront(MouseEvent event) {
+                       try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("front.fxml"));
+            Parent root = loader.load();
+            lbRetour.getScene().setRoot(root);
+           } catch (IOException ex) {
+               System.out.print(ex.getMessage());
+        }
+    }
+    
+    
     @FXML
     private void fnSelectiannonces(MouseEvent event) {
          Annonces p = tvMesAnnonces.getSelectionModel().getSelectedItem();
@@ -409,7 +423,9 @@ colNumero.setCellValueFactory(new PropertyValueFactory<Annonces, Integer>("numer
   list=sp.getAllTriNom();
        tvMesAnnonces.setItems(list)  ;
     }
+
     
+       
 
    
 }
