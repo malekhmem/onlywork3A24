@@ -51,6 +51,99 @@
       </VBox>
       <StackPane layoutX="218.0" prefHeight="600.0" prefWidth="582.0">
          <children>
+            <Pane fx:id="pnMesPostes1" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <Label layoutX="32.0" layoutY="21.0" prefHeight="58.0" prefWidth="207.0" text="Les Postes :">
+                     <font>
+                        <Font size="31.0" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="tvMesPostes1" layoutX="32.0" layoutY="141.0" onMouseClicked="#fnSelectionPoste1" prefHeight="318.0" prefWidth="337.0">
+                     <columns>
+                        <TableColumn fx:id="colNom1" prefWidth="75.0" text="nom" />
+                        <TableColumn fx:id="colDomain1" prefWidth="105.0" text="domaine" />
+                        <TableColumn fx:id="colMail1" prefWidth="156.0" text="mail" />
+                     </columns>
+                  </TableView>
+                  <VBox fx:id="vboxDetail1" layoutX="378.0" layoutY="141.0" prefHeight="318.0" prefWidth="200.0" visible="false">
+                     <children>
+                        <Label prefHeight="48.0" prefWidth="201.0" text="Categorie: ">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbCategorie1" layoutX="10.0" layoutY="10.0" prefHeight="48.0" prefWidth="201.0">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="10.0" prefHeight="48.0" prefWidth="201.0" text="Description:">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbDescription1" layoutX="10.0" layoutY="58.0" prefHeight="87.0" prefWidth="200.0">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0" />
+                     </children>
+                  </VBox>
+                  <TextField fx:id="tfRecherchePost" layoutX="32.0" layoutY="94.0" prefHeight="31.0" prefWidth="337.0" promptText="Recherche" />
+                  <ComboBox fx:id="CbRecherchePoste" layoutX="397.0" layoutY="94.0" prefWidth="150.0" />
+               </children>
+            </Pane>
+            <Pane fx:id="pnMesPostes" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <Label layoutX="25.0" layoutY="22.0" prefHeight="58.0" prefWidth="207.0" text="Mes Postes :">
+                     <font>
+                        <Font size="31.0" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="tvMesPostes" layoutX="29.0" layoutY="125.0" onMouseClicked="#fnSelectionPoste" prefHeight="318.0" prefWidth="337.0">
+                    <columns>
+                      <TableColumn fx:id="colNom" prefWidth="75.0" text="nom" />
+                      <TableColumn fx:id="colDomain" prefWidth="105.0" text="domaine" />
+                        <TableColumn fx:id="colMail" prefWidth="156.0" text="mail" />
+                    </columns>
+                  </TableView>
+                  <Button fx:id="btnAjouter" layoutX="424.0" layoutY="514.0" mnemonicParsing="false" onAction="#fnAjouter" prefHeight="31.0" prefWidth="127.0" style="-fx-background-color: #4e5e64;" text="Ajouter" textFill="WHITE" />
+                  <VBox fx:id="vboxDetail" layoutX="374.0" layoutY="125.0" prefHeight="318.0" prefWidth="200.0" visible="false">
+                     <children>
+                        <Label prefHeight="48.0" prefWidth="201.0" text="Categorie: ">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbCategorie" layoutX="10.0" layoutY="10.0" prefHeight="48.0" prefWidth="201.0">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="10.0" prefHeight="48.0" prefWidth="201.0" text="Description:">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbDescription" layoutX="10.0" layoutY="58.0" prefHeight="87.0" prefWidth="200.0">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+                           <children>
+                              <Button fx:id="btnSupprimer" mnemonicParsing="false" onAction="#fnSupprimer" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: #4e5e64;" text="Supprimer" textFill="WHITE" />
+                              <Button fx:id="btnModifier" mnemonicParsing="false" onAction="#fnModifier" prefHeight="31.0" prefWidth="78.0" style="-fx-background-color: #4e5e64;" text="Modifier" textFill="WHITE" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <Label fx:id="lbidposte" layoutX="439.0" layoutY="70.0" visible="false" />
+                  <TextField fx:id="tfRechercheMesPost" layoutX="29.0" layoutY="81.0" prefHeight="31.0" prefWidth="337.0" promptText="Recherche" />
+                  <ComboBox fx:id="CbRechercheMesPoste" layoutX="399.0" layoutY="81.0" prefWidth="150.0" />
+               </children>
+            </Pane>
             <Pane fx:id="pnNouveau" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
                <children>
                   <Label fx:id="lbTItreNouveau" layoutX="24.0" layoutY="33.0" prefHeight="58.0" prefWidth="299.0" text="un nouveau poste:">
@@ -116,95 +209,6 @@
                         <Font size="31.0" />
                      </font>
                   </Label>
-               </children>
-            </Pane>
-            <Pane fx:id="pnMesPostes" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
-               <children>
-                  <Label layoutX="25.0" layoutY="22.0" prefHeight="58.0" prefWidth="207.0" text="Mes Postes :">
-                     <font>
-                        <Font size="31.0" />
-                     </font>
-                  </Label>
-                  <TableView fx:id="tvMesPostes" layoutX="29.0" layoutY="125.0" onMouseClicked="#fnSelectionPoste" prefHeight="318.0" prefWidth="337.0">
-                    <columns>
-                      <TableColumn fx:id="colNom" prefWidth="75.0" text="nom" />
-                      <TableColumn fx:id="colDomain" prefWidth="105.0" text="domaine" />
-                        <TableColumn fx:id="colMail" prefWidth="156.0" text="mail" />
-                    </columns>
-                  </TableView>
-                  <Button fx:id="btnAjouter" layoutX="424.0" layoutY="514.0" mnemonicParsing="false" onAction="#fnAjouter" prefHeight="31.0" prefWidth="127.0" style="-fx-background-color: #4e5e64;" text="Ajouter" textFill="WHITE" />
-                  <VBox fx:id="vboxDetail" layoutX="374.0" layoutY="125.0" prefHeight="318.0" prefWidth="200.0" visible="false">
-                     <children>
-                        <Label prefHeight="48.0" prefWidth="201.0" text="Categorie: ">
-                           <font>
-                              <Font size="25.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="lbCategorie" layoutX="10.0" layoutY="10.0" prefHeight="48.0" prefWidth="201.0">
-                           <font>
-                              <Font size="25.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="10.0" layoutY="10.0" prefHeight="48.0" prefWidth="201.0" text="Description:">
-                           <font>
-                              <Font size="25.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="lbDescription" layoutX="10.0" layoutY="58.0" prefHeight="87.0" prefWidth="200.0">
-                           <font>
-                              <Font size="25.0" />
-                           </font>
-                        </Label>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
-                           <children>
-                              <Button fx:id="btnSupprimer" mnemonicParsing="false" onAction="#fnSupprimer" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: #4e5e64;" text="Supprimer" textFill="WHITE" />
-                              <Button fx:id="btnModifier" mnemonicParsing="false" onAction="#fnModifier" prefHeight="31.0" prefWidth="78.0" style="-fx-background-color: #4e5e64;" text="Modifier" textFill="WHITE" />
-                           </children>
-                        </HBox>
-                     </children>
-                  </VBox>
-                  <Label fx:id="lbidposte" layoutX="439.0" layoutY="70.0" visible="false" />
-               </children>
-            </Pane>
-            <Pane fx:id="pnMesPostes1" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
-               <children>
-                  <Label layoutX="32.0" layoutY="21.0" prefHeight="58.0" prefWidth="207.0" text="Les Postes :">
-                     <font>
-                        <Font size="31.0" />
-                     </font>
-                  </Label>
-                  <TableView fx:id="tvMesPostes1" layoutX="32.0" layoutY="141.0" onMouseClicked="#fnSelectionPoste1" prefHeight="318.0" prefWidth="337.0">
-                     <columns>
-                        <TableColumn fx:id="colNom1" prefWidth="75.0" text="nom" />
-                        <TableColumn fx:id="colDomain1" prefWidth="105.0" text="domaine" />
-                        <TableColumn fx:id="colMail1" prefWidth="156.0" text="mail" />
-                     </columns>
-                  </TableView>
-                  <VBox fx:id="vboxDetail1" layoutX="378.0" layoutY="141.0" prefHeight="318.0" prefWidth="200.0" visible="false">
-                     <children>
-                        <Label prefHeight="48.0" prefWidth="201.0" text="Categorie: ">
-                           <font>
-                              <Font size="25.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="lbCategorie1" layoutX="10.0" layoutY="10.0" prefHeight="48.0" prefWidth="201.0">
-                           <font>
-                              <Font size="25.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="10.0" layoutY="10.0" prefHeight="48.0" prefWidth="201.0" text="Description:">
-                           <font>
-                              <Font size="25.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="lbDescription1" layoutX="10.0" layoutY="58.0" prefHeight="87.0" prefWidth="200.0">
-                           <font>
-                              <Font size="25.0" />
-                           </font>
-                        </Label>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0" />
-                     </children>
-                  </VBox>
                </children>
             </Pane>
          </children>

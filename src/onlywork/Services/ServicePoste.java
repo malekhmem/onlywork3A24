@@ -61,7 +61,7 @@ public class ServicePoste implements IService<Poste>{
                 p.setEmailp(rs.getString("emailp"));
                 Categorie tempCategorie= sc.SelectOneCategorie(rs.getInt("idcc"));
                 p.setIdcc(rs.getInt("idcc"));
-
+                p.setCategorie(tempCategorie);
                 postes.add(p);
             }
             return postes;
@@ -93,6 +93,7 @@ public class ServicePoste implements IService<Poste>{
                 Categorie tempCategorie= sc.SelectOneCategorie(rs.getInt("idcc"));
                 p.setIdcc(rs.getInt("idcc"));
                 p.setIdu(rs.getInt("idu"));
+                p.setCategorie(tempCategorie);
 
                 postes.add(p);
             }

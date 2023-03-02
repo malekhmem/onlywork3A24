@@ -9,6 +9,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,6 +20,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -28,6 +31,7 @@ import onlywork.Entities.Categorie;
 import onlywork.Entities.Poste;
 import onlywork.Services.ServiceCategorie;
 import onlywork.Services.ServicePoste;
+import org.controlsfx.control.Notifications;
 
 /**
  * FXML Controller class
@@ -106,6 +110,14 @@ public class PostFrontController implements Initializable {
     private Label lbCategorie1;
     @FXML
     private Label lbDescription1;
+    @FXML
+    private TextField tfRecherchePost;
+    @FXML
+    private ComboBox<String> CbRecherchePoste;
+    @FXML
+    private TextField tfRechercheMesPost;
+    @FXML
+    private ComboBox<String> CbRechercheMesPoste;
 
     /**
      * Initializes the controller class.
@@ -123,6 +135,13 @@ public class PostFrontController implements Initializable {
         }
     tfCategorie.setItems(list);
         fnshowLesPoste();
+        
+        
+        ObservableList<String>  listC =FXCollections.observableArrayList(sc.afficherNom()); // TODO
+    CbRecherchePoste.setItems(listC);
+    
+    ObservableList<String>  listMC =FXCollections.observableArrayList(sc.afficherNom()); // TODO
+    CbRechercheMesPoste.setItems(listMC);
         // TODO
     }    
     public void fnshow(){
@@ -134,7 +153,58 @@ public class PostFrontController implements Initializable {
      colMail.setCellValueFactory(new PropertyValueFactory<>("emailp"));
           colNom.setCellValueFactory(new PropertyValueFactory<>("nomp"));
      tvMesPostes.setItems(list);
-     
+     tvMesPostes.setRowFactory(tv -> new TableRow<Poste>() {
+    @Override
+    protected void updateItem(Poste item, boolean empty) {
+        super.updateItem(item, empty);
+        
+    }
+});
+      
+    FilteredList<Poste> filteredData = new FilteredList<>(list, b -> true);
+		
+		tfRechercheMesPost.textProperty().addListener((observable, oldValue, newValue) -> {
+			filteredData.setPredicate(Poste -> {
+								
+				if (newValue == null || newValue.isEmpty()) {
+					return true;
+				}
+				
+				String lowerCaseFilter = newValue.toLowerCase();
+				
+				if (Poste.getDomaine().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+					return true; 
+				} else if(String.valueOf(Poste.getNomp()).toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+					return true; 
+				} else if(String.valueOf(Poste.getEmailp()).toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+					return true;
+				}
+				     else  
+				    	 return false;
+			});
+		});
+                CbRechercheMesPoste.valueProperty().addListener((observable, oldValue, newValue) -> {
+			filteredData.setPredicate(Poste -> {
+								
+				if (newValue == null || newValue.isEmpty()) {
+					return true;
+				}
+				
+				String lowerCaseFilter = newValue.toLowerCase();
+				
+				if (Poste.getCategorie().getNomc().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+					return true; 
+				} 
+				     else  
+				    	 return false;
+			});
+		});
+		
+		SortedList<Poste> sortedData = new SortedList<>(filteredData);
+
+		sortedData.comparatorProperty().bind(tvMesPostes.comparatorProperty());
+		
+		tvMesPostes.setItems(sortedData);
      
       
     }
@@ -149,6 +219,63 @@ public class PostFrontController implements Initializable {
      colMail1.setCellValueFactory(new PropertyValueFactory<>("emailp"));
           colNom1.setCellValueFactory(new PropertyValueFactory<>("nomp"));
      tvMesPostes1.setItems(list);
+     tvMesPostes1.setRowFactory(tv -> new TableRow<Poste>() {
+    @Override
+    protected void updateItem(Poste item, boolean empty) {
+        super.updateItem(item, empty);
+        
+    }
+});
+      
+    FilteredList<Poste> filteredData = new FilteredList<>(list, b -> true);
+		
+		tfRecherchePost.textProperty().addListener((observable, oldValue, newValue) -> {
+			filteredData.setPredicate(Poste -> {
+								
+				if (newValue == null || newValue.isEmpty()) {
+					return true;
+				}
+				
+				String lowerCaseFilter = newValue.toLowerCase();
+				
+				if (Poste.getDomaine().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+					return true; 
+				} else if(String.valueOf(Poste.getNomp()).toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+					return true; 
+				} else if(String.valueOf(Poste.getEmailp()).toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+					return true;
+				}
+				     else  
+				    	 return false;
+			});
+		});
+                
+                CbRecherchePoste.valueProperty().addListener((observable, oldValue, newValue) -> {
+			filteredData.setPredicate(Poste -> {
+								
+				if (newValue == null || newValue.isEmpty()) {
+					return true;
+				}
+				
+				String lowerCaseFilter = newValue.toLowerCase();
+				
+				if (Poste.getCategorie().getNomc().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+					return true; 
+				} 
+				     else  
+				    	 return false;
+			});
+		});
+		
+		SortedList<Poste> sortedData = new SortedList<>(filteredData);
+
+		sortedData.comparatorProperty().bind(tvMesPostes1.comparatorProperty());
+		
+		tvMesPostes1.setItems(sortedData);
+     
+     
+     
+     
      
      
       
@@ -252,7 +379,6 @@ if (categorie == null || categorie.isEmpty()) {
     return; 
 }
 
-// Vérification de la description
 String description = tfDescript.getText();
 if (description == null || description.isEmpty()) {
     Alert alert = new Alert(AlertType.ERROR);
@@ -274,7 +400,6 @@ if (email == null || email.isEmpty() || !email.matches("\\b[\\w.%-]+@[-.\\w]+\\.
     return; 
 }
 
-// Vérification du domaine
 String domaine = tfDomaine.getText();
 if (domaine == null || domaine.isEmpty() || !domaine.matches("[a-zA-Z]+")) {
     Alert alert = new Alert(AlertType.ERROR);
@@ -307,6 +432,10 @@ p.setDomaine(domaine);
 p.setNomp(nom);
 ServicePoste sp = new ServicePoste();
 sp.add(p);
+        Notifications.create()
+              .title("Poste ajouter avec succées")
+              .text("Veuillez vérifier votre liste des postes ")
+              .showWarning();
 fnshow();
 pnMesPostes.toFront();
 tfCategorie.setValue("");
@@ -393,6 +522,8 @@ if (nom == null || nom.isEmpty() || !nom.matches("[a-zA-Z]+")) {
 Poste p = new Poste();
 ServiceCategorie sc = new ServiceCategorie();
 Categorie c = sc.SelectOneCategorieByNom(categorie);
+
+        p.setIdp(Integer.parseInt(lbidposte.getText()));
 p.setCategorie(c);
 p.setDescp(description);
 p.setIdu(1);
@@ -400,7 +531,7 @@ p.setEmailp(email);
 p.setDomaine(domaine);
 p.setNomp(nom);
 ServicePoste sp = new ServicePoste();
-sp.add(p);
+sp.modifier(p);
 fnshow();
 pnMesPostes.toFront();
 tfCategorie.setValue("");
@@ -409,8 +540,10 @@ tfDomaine.setText("");
 tfEmail.setText("");
 tfNom.setText("");
 
-
-
+lbTItreUpdate.setVisible(false);
+btnConfModifier.setVisible(false);
+lbTItreNouveau.setVisible(true);
+btnConfAjouter.setVisible(true);
 
     }
 

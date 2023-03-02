@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -90,6 +91,9 @@
                      </children>
                   </VBox>
                   <Label fx:id="lbidposte" visible="false" />
+                  <Button fx:id="btnExporter" layoutX="445.0" layoutY="522.0" mnemonicParsing="false" onAction="#fnPdf" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: #4e5e64;" text="Exporter" textFill="WHITE" />
+                  <TextField fx:id="tfRecherchePost" layoutX="32.0" layoutY="92.0" prefHeight="31.0" prefWidth="337.0" promptText="Recherche" />
+                  <ComboBox fx:id="CbRecherchePoste" layoutX="403.0" layoutY="92.0" prefWidth="150.0" />
                </children>
             </Pane>
             <Pane fx:id="pnCatAj" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
@@ -124,6 +128,7 @@
                      </children>
                   </HBox>
                   <Label fx:id="lbidcat" layoutX="444.0" layoutY="59.0" visible="false" />
+                  <TextField fx:id="tfRechercheCategorie" layoutX="50.0" layoutY="116.0" prefHeight="31.0" prefWidth="200.0" promptText="Recherche" />
                </children></Pane>
          </children>
       </StackPane>
