@@ -6,6 +6,7 @@
 
 package Services;
 
+import Utils.MyDB;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,9 +16,10 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import entities.Annoncef;
-import entities.Materiel;
-import Services.Servicemateriel;
-import Utils.MyDB;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
+
 
 /**
  *
@@ -193,5 +195,21 @@ public class Serviceannoncef implements IService<Annoncef>{
              System.out.println(ex.getMessage());
         }
     }
-   
+     public ObservableList<Annoncef> searchByNameAnnoncef(String nom) throws SQLException{
+        String qry="SELECT * FROM annoncef where nomf LIKE '%"+nom+"%'" ;
+         System.out.println(qry);
+            cnx = MyDB.getInstance().getCnx();
+            Statement stm = cnx.createStatement();
+            ResultSet rs = stm.executeQuery(qry);
+        ObservableList<Annoncef>  list = FXCollections.observableArrayList()  ; 
+        while(rs.next()){
+        Annoncef f = new Annoncef(rs.getString(2), rs.getString(3), rs.getString(4),rs.getString(5));     
+        list.add(f) ;
+        
+        }
+         
+
+        return list ;
+    }
+       
 }

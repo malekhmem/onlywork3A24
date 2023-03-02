@@ -153,6 +153,7 @@
                      </children>
                   </VBox>
                   <Label fx:id="lbidmateriel" layoutX="439.0" layoutY="70.0" visible="false" />
+                    <TextField fx:id="cherche" layoutX="29.0" layoutY="87.0" onKeyPressed="#Rechercher" prefHeight="25.0" prefWidth="162.0" promptText="Recherche" />
                </children>
             </Pane>
                         <Pane fx:id="pnLesMateriels" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
@@ -172,6 +173,7 @@
                         </TableView>
                         <Button fx:id="btnAjouterr" layoutX="424.0" layoutY="514.0" mnemonicParsing="false" onAction="#fnAjouter" prefHeight="31.0" prefWidth="127.0" style="-fx-background-color: #4e5e64;" text="Ajouter" textFill="WHITE" />
                         <Label fx:id="lbidannonceff" layoutX="439.0" layoutY="70.0" visible="false" />
+                     <TextField fx:id="chercher" layoutX="29.0" layoutY="87.0" onKeyPressed="#Recherche" prefHeight="25.0" prefWidth="162.0" promptText="Recherche" />
                      </children>
                   </Pane>
          </children>

@@ -25,9 +25,28 @@ import entities.Annoncef;
 import Services.Serviceannoncef;
 import entities.Materiel;
 import Services.Servicemateriel;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import java.io.IOException;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -82,6 +101,9 @@ public class BackController implements Initializable {
     private Label lbidmateriel;
     @FXML
     private Label lbAnnoncef;
+    @FXML
+    private Button exportButton;
+    
 
     /**
      * Initializes the controller class.
@@ -176,5 +198,58 @@ public class BackController implements Initializable {
         fnshowtout();
         vboxDetaill.setVisible(false);
     }
+
+    @FXML
+    private void handleExport(ActionEvent event) {
+          FileChooser fileChooser = new FileChooser();
+    fileChooser.setTitle("Exporter les annonces");
+    fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Fichier Excel (.xlsx)", ".xlsx"));
+    Stage stage = (Stage) exportButton.getScene().getWindow();
+    File file = fileChooser.showSaveDialog(stage);
+    if (file != null) {
+        try {
+            FileOutputStream outputStream;
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            XSSFWorkbook workbook = new XSSFWorkbook();
+            XSSFSheet sheet = workbook.createSheet("Annoncef");
+            XSSFRow headerRow = sheet.createRow(0);
+            headerRow.createCell(0).setCellValue("nomf");
+            headerRow.createCell(1).setCellValue("adresse");
+            headerRow.createCell(2).setCellValue("emailf");
+            headerRow.createCell(3).setCellValue("descf");
+            ObservableList<Annoncef> annonces = tvLesAnnoncef.getItems();
+
+            for (int i = 0; i < annonces.size(); i++) {
+                Annoncef annonce = annonces.get(i);
+                XSSFRow row = sheet.createRow(i + 1);
+                row.createCell(0).setCellValue(annonce.getNomf());
+                row.createCell(1).setCellValue(annonce.getAdresse());
+                row.createCell(2).setCellValue(annonce.getEmailf());
+                row.createCell(3).setCellValue(annonce.getDescf());
+            }
+            outputStream = new FileOutputStream(file);
+            workbook.write(outputStream);
+            outputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    }
+
+    @FXML
+    private void showStat(ActionEvent event) {
+                                       try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("stat.fxml"));
+            Parent root = loader.load();
+            lbRetour.getScene().setRoot(root);
+           } catch (IOException ex) {
+               System.out.print(ex.getMessage());
+        }
+         
+   }
+    }
+  
     
-}
+

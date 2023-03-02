@@ -27,10 +27,12 @@ import entities.Annoncef;
 import Services.Serviceannoncef;
 import Services.Servicemateriel;
 import java.io.IOException;
+import java.sql.SQLException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.KeyEvent;
 
 
 /**
@@ -111,6 +113,10 @@ public class FrontmaterielController implements Initializable {
     private Label lbidannonceff;
     @FXML
     private TableView<Materiel> tvLesMateriels;
+    @FXML
+    private TextField cherche;
+    @FXML
+    private TextField chercher;
 
 
    
@@ -316,6 +322,20 @@ if (!tfPrix.getText().isEmpty() && tfPrix.getText().matches("\\d+")
            } catch (IOException ex) {
                System.out.print(ex.getMessage());
         }
+    }
+
+    @FXML
+    private void Rechercher(KeyEvent event) throws SQLException {
+                       Materiel p=new Materiel();
+Servicemateriel sp = new Servicemateriel();
+       tvMesMateriels.setItems(sp.searchByMarqueMateriel(cherche.getText()))  ;
+    }
+
+    @FXML
+    private void Recherche(KeyEvent event) throws SQLException {
+Materiel p=new Materiel();
+Servicemateriel sp = new Servicemateriel();
+       tvLesMateriels.setItems(sp.searchByMarqueMateriel(chercher.getText()))  ;
     }
 
   

@@ -12,6 +12,9 @@ package entities;
 public class Annoncef {
     int idf,idu;
     String nomf,adresse,emailf,descf;
+    public static String pathfile; 
+    public static String filename="";
+    
     public Annoncef(){}
 
     public Annoncef(int idf, String nomf) {

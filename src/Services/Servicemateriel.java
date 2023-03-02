@@ -15,6 +15,8 @@ import java.util.List;
 import entities.Materiel;
 import Utils.MyDB;
 import entities.Annoncef;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 
 /**
@@ -23,6 +25,7 @@ import entities.Annoncef;
  */
 public class Servicemateriel implements IService<Materiel>{
     Connection cnx;
+   
 @Override
 public void add(Materiel t) {
    
@@ -142,5 +145,21 @@ catch (SQLException ex) {
              System.out.println(ex.getMessage());
         }
     }
-   
+    public ObservableList<Materiel> searchByMarqueMateriel(String marq) throws SQLException{
+        String qry="SELECT * FROM materiel where marque LIKE '%"+marq+"%'";
+         System.out.println(qry);
+            cnx = MyDB.getInstance().getCnx();
+            Statement stm = cnx.createStatement();
+            ResultSet rs = stm.executeQuery(qry);
+        ObservableList<Materiel>  list = FXCollections.observableArrayList()  ; 
+        while(rs.next()){
+        Materiel m = new Materiel(rs.getString(4), rs.getString(2), rs.getString(3),rs.getString(5));     
+        list.add(m) ;
+        
+        }
+         
+
+        return list ;
+    }
+
 }

@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -14,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.BackController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.BackController">
      <children>
       <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0">
          <children>
@@ -26,6 +25,8 @@
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
+
+   
                     <Label fx:id="lbLesMateriels" alignment="CENTER" onMouseClicked="#fnMenuLesMateriels" prefHeight="97.0" prefWidth="219.0" text="Les Mateiels" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="24.0" />
@@ -76,7 +77,9 @@
                               </HBox>
                            </children>
                         </VBox>
-                        <Label fx:id="lbidannoncef" layoutX="439.0" layoutY="70.0" visible="false" />
+                                            <Button fx:id="exportButton" layoutX="424.0" layoutY="514.0" onAction="#handleExport" prefHeight="31.0" prefWidth="127.0" style="-fx-background-color: #4e5e64;"  text="Exporter en Excel" textFill="WHITE" />
+
+                        <Label fx:id="lbidannoncef" layoutX="439.0" layoutY="70.0" prefHeight="48.0" prefWidth="125.0" visible="false" />
                      </children>
                   </Pane>
                   <Pane fx:id="pnLesMateriels" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
@@ -93,10 +96,10 @@
                               <TableColumn fx:id="colPrix" prefWidth="156.0" text="Prix" />
                               <TableColumn fx:id="colDescriptt" prefWidth="156.0" text="description" />
                          
-                          </columns>
+                                            </columns>
                         </TableView>
                  
-                        <VBox fx:id="vboxDetaill" layoutX="374.0" layoutY="125.0" prefHeight="318.0" prefWidth="200.0" visible="false">
+                                          <VBox fx:id="vboxDetaill" layoutX="374.0" layoutY="125.0" prefHeight="318.0" prefWidth="200.0" visible="false">
                            <children>
                        <Label fx:id="lbAnnoncef" layoutX="10.0" layoutY="10.0" prefHeight="48.0" prefWidth="201.0">
                            <font>
@@ -104,18 +107,22 @@
                            </font>
                         </Label>
 
-        
-                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+                          
+                                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                                  <children>
                                     <Button fx:id="btnSupprimerr" mnemonicParsing="false" onAction="#fnSupprimerr" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: #4e5e64;" text="Supprimer" textFill="WHITE" />
                              
-                                 </children>
+                                                   </children>
                               </HBox>
                            </children>
                         </VBox>
+                              
+                                            <Button layoutX="424.0" layoutY="514.0" onAction="#showStat" prefHeight="31.0" prefWidth="127.0" style="-fx-background-color: #4e5e64;"  text="statistiques" textFill="WHITE" />
+
                         <Label fx:id="lbidmateriel" layoutX="439.0" layoutY="70.0" visible="false" />
                      </children>
                   </Pane>
+                  
                </children>
             </StackPane>
          </children>
