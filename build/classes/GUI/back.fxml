@@ -43,7 +43,7 @@
             </VBox>
             <StackPane layoutX="218.0" prefHeight="600.0" prefWidth="582.0">
                <children>
-                  <Pane fx:id="pnLesEvenements" prefHeight="600.0" prefWidth="594.0" style="-fx-background-color: #d2dde0;">
+                  <Pane fx:id="pnLesEvenements" prefHeight="600.0" prefWidth="594.0" style="-fx-background-color: #ffffff;">
                      <children>
                         <Label layoutX="25.0" layoutY="22.0" prefHeight="58.0" prefWidth="276.0" text="Les Evenements:">
                            <font>
@@ -82,7 +82,7 @@
                         <TextField fx:id="mayasine" layoutX="388.0" layoutY="39.0" onKeyPressed="#mayasine" promptText="Recherche" />
                      </children>
                   </Pane>
-                  <Pane fx:id="pnLesAnnonces" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #d2dde0;">
+                  <Pane fx:id="pnLesAnnonces" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
                      <children>
                         <Label layoutX="25.0" layoutY="22.0" prefHeight="58.0" prefWidth="219.0" text="Les Annonces :">
                            <font>

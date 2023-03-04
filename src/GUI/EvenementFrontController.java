@@ -190,6 +190,7 @@ public class EvenementFrontController implements Initializable {
        //@Override
     public void initialize(URL url, ResourceBundle rb) {
         pnMesEvenement.toFront();
+        tfNom_societe.setText(AnnoncesFrontController.currentannonces.getNoms());
         System.out.println("+++++++++++++++++");
         fnshow();
 
@@ -311,9 +312,11 @@ return;
 
 }
 Evenement p=new Evenement();
+
 p.setNomss(tfNom_societe.getText());
 p.setDescription(tfDescription.getText());
 p.setTitre(tfTitre.getText());
+p.setIds(AnnoncesFrontController.currentannonces.getIds());
 ServiceEvenement sp = new ServiceEvenement();
 sp.add(p);
 fnshow();

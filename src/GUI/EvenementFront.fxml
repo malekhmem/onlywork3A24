@@ -18,7 +18,7 @@
     <children>
       <StackPane layoutX="254.0" layoutY="5.0" prefHeight="600.0" prefWidth="582.0">
          <children>
-            <Pane fx:id="pnNouveau" prefHeight="600.0" prefWidth="590.0" style="-fx-background-color: #d2dde0;">
+            <Pane fx:id="pnNouveau" prefHeight="600.0" prefWidth="590.0" style="-fx-background-color: #ffffff;">
                <children>
                   <Label fx:id="lbTItreNouveau" layoutX="24.0" layoutY="33.0" prefHeight="58.0" prefWidth="360.0" text="un nouveau evenement:">
                      <font>
@@ -73,7 +73,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="pnMesEvenement" prefHeight="600.0" prefWidth="601.0" style="-fx-background-color: #d2dde0;">
+            <Pane fx:id="pnMesEvenement" prefHeight="600.0" prefWidth="601.0" style="-fx-background-color: #ffffff;">
                <children>
                   <Label layoutX="25.0" layoutY="22.0" prefHeight="58.0" prefWidth="249.0" text="Mes Evenement :">
                      <font>

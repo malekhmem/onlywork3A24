@@ -126,6 +126,7 @@ public class AnnoncesFrontController implements Initializable {
     @FXML
     private Button TriNom;
  ServiceAnnonces sp=new ServiceAnnonces();
+ public static Annonces currentannonces;
    
     /**
      * Initializes the controller class.
@@ -183,6 +184,7 @@ public class AnnoncesFrontController implements Initializable {
          Annonces p = tvMesAnnonces.getSelectionModel().getSelectedItem();
          lbidAnnonces.setText(p.getIds()+"");
          hboxbutton.setVisible(true);
+         currentannonces = p;
         // ServiceCategorie sc=new ServiceCategorie();
          //Categorie c=sc.SelectOneCategorie(p.getIdcc());
          //lbCategorie.setText(c.getNomc());
