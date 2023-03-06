@@ -14,7 +14,7 @@ package entities;
 public class Materiel {
      Annoncef Annoncef;
     int idm,idff,idu;
-    String nomm,marque,descm,prix;
+    String nomm,marque,descm,prix,image;
     public Materiel(){}
 
     public Materiel( int idm, String prix, String nomm, String marque, String descm) {
@@ -29,7 +29,7 @@ public class Materiel {
      
     }
 
-    public Materiel( int idm ,String nomm, int idff,  String marque,String descm,String prix,Annoncef Annoncef) {
+    public Materiel( int idm ,String nomm, int idff,  String marque,String descm,String prix,Annoncef Annoncef,String image) {
         this.idm=idm;
         this.Annoncef = Annoncef;
         this.prix = prix;
@@ -37,6 +37,7 @@ public class Materiel {
         this.nomm = nomm;
         this.marque = marque;
         this.descm = descm;
+        this.image = image;
             
     }
 
@@ -112,7 +113,15 @@ public class Materiel {
         this.descm = descm;
     }
 
+    public String getImage() {
+        return image;
+    }
 
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    
 
     public int getIdff() {
         return idff;
@@ -124,7 +133,7 @@ public class Materiel {
 
     @Override
     public String toString() {
-        return "Materiel{" + "idm=" + idm + ", prix=" + prix + ", nomm=" + nomm + ", marque=" + marque + ", descm=" + descm + '}';
+        return "Materiel{" + "idm=" + idm + ", prix=" + prix + ", nomm=" + nomm + ", marque=" + marque + '}';
     }
 
 

@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FrontmaterielController">
+<AnchorPane id="AnchorPane" fx:id="anch" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FrontmaterielController">
     <children>
       <VBox layoutX="-1.0" prefHeight="600.0" prefWidth="218.0" style="-fx-background-color: #4e5e64;">
          <children>
@@ -94,6 +94,7 @@
                                     <TextField fx:id="tfPrix" layoutX="10.0" layoutY="56.0" prefHeight="46.0" prefWidth="296.0" />
                                     <TextField fx:id="tfDescript" layoutX="10.0" layoutY="102.0" prefHeight="46.0" prefWidth="296.0" />
                                     <ComboBox fx:id="tfAnnoncef" prefHeight="40.0" prefWidth="308.0" />
+                                     <Button fx:id="btnajouterimage" layoutX="10.0" layoutY="140.0" mnemonicParsing="false" onAction="#ajouterimage" prefHeight="46.0" prefWidth="296.0" style="-fx-background-color: #4e5e64;" text="ajouter image" textFill="WHITE" />
                                  </children>
                               </VBox>
                            </children>
@@ -127,6 +128,7 @@
                       <TableColumn fx:id="colMarque" prefWidth="105.0" text="Marque" />
                         <TableColumn fx:id="colPrix" prefWidth="156.0" text="Prix" />
                         <TableColumn fx:id="colDescript" prefWidth="156.0" text="Description" />
+                      <TableColumn fx:id="colImage" prefWidth="156.0" text="image" />
                     </columns>
                   </TableView>
                   <Button fx:id="btnAjouter" layoutX="424.0" layoutY="514.0" mnemonicParsing="false" onAction="#fnAjouter" prefHeight="31.0" prefWidth="127.0" style="-fx-background-color: #4e5e64;" text="Ajouter" textFill="WHITE" />
@@ -137,12 +139,15 @@
                               <Font size="25.0" />
                            </font>
                         </Label>
+                                                
+
                         <Label fx:id="lbAnnoncef" layoutX="10.0" layoutY="10.0" prefHeight="48.0" prefWidth="201.0">
                            <font>
                               <Font size="25.0" />
                            </font>
                         </Label>
-
+                  <ImageView fx:id="materielimage" fitHeight="150.0" fitWidth="186.0" />
+                  <Label fx:id="filr_path" layoutX="367.0" layoutY="602.0" opacity="0.0" prefHeight="34.0" prefWidth="278.0" />
 
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                            <children>

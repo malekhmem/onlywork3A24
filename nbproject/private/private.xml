@@ -12,10 +12,10 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/imtinen/Desktop/njareb/taa%20l%20validation/onlywork/src/Services/Serviceannoncef.java</file>
-            <file>file:/C:/Users/imtinen/Desktop/njareb/taa%20l%20validation/onlywork/src/GUI/frontannoncef.fxml</file>
-            <file>file:/C:/Users/imtinen/Desktop/njareb/taa%20l%20validation/onlywork/src/GUI/stat.fxml</file>
-            <file>file:/C:/Users/imtinen/Desktop/njareb/taa%20l%20validation/onlywork/src/GUI/FrontannoncefController.java</file>
+            <file>file:/C:/Users/imtinen/Desktop/njareb/taa%20l%20validation/only%20work/src/GUI/frontmateriel.fxml</file>
+            <file>file:/C:/Users/imtinen/Desktop/njareb/taa%20l%20validation/only%20work/src/entities/Materiel.java</file>
+            <file>file:/C:/Users/imtinen/Desktop/njareb/taa%20l%20validation/only%20work/src/Services/Servicemateriel.java</file>
+            <file>file:/C:/Users/imtinen/Desktop/njareb/taa%20l%20validation/only%20work/src/GUI/FrontmaterielController.java</file>
         </group>
     </open-files>
 </project-private>

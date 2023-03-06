@@ -26,15 +26,36 @@ import entities.Materiel;
 import entities.Annoncef;
 import Services.Serviceannoncef;
 import Services.Servicemateriel;
+import static com.microsoft.schemas.office.excel.STObjectType.Enum.table;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
+import java.util.List;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.TableCell;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
-
-
+import javafx.scene.paint.ImagePattern;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
+import javax.imageio.ImageIO;
+import static org.apache.poi.hssf.usermodel.HeaderFooter.file;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
@@ -42,6 +63,8 @@ import javafx.scene.input.KeyEvent;
  */
 public class FrontmaterielController implements Initializable {
 
+    @FXML
+    private AnchorPane anch;
     @FXML
     private Label lbMesMateriel;
     @FXML
@@ -117,6 +140,18 @@ public class FrontmaterielController implements Initializable {
     private TextField cherche;
     @FXML
     private TextField chercher;
+    @FXML
+    private Button btnajouterimage;
+    @FXML
+    private ImageView materielimage;
+
+    private File selectedFile;
+    private String imagePath;
+    @FXML
+    private TableColumn<Materiel, String> colImage;
+    @FXML
+    private Label filr_path;
+
 
 
    
@@ -135,11 +170,15 @@ public class FrontmaterielController implements Initializable {
         for(int i = 0 ; i<list.size();i++){
            list.get(i);
         }
+        
     tfAnnoncef.setItems(list);
         // TODO
-    }    
+        updateTable();
+    }
+    
     public void fnshow(){
         Servicemateriel sp=new Servicemateriel();
+        Materiel m=new Materiel();
          ObservableList<Materiel> list =FXCollections.observableList(sp.afficherByID(1)); 
      
      
@@ -147,20 +186,38 @@ public class FrontmaterielController implements Initializable {
      colPrix.setCellValueFactory(new PropertyValueFactory<>("Prix"));
           colNom.setCellValueFactory(new PropertyValueFactory<>("nomm"));
          colDescript.setCellValueFactory(new PropertyValueFactory<>("descm"));
+         colImage.setCellValueFactory(new PropertyValueFactory<>("image"));
      tvMesMateriels.setItems(list);
      
      
       
     }
+  public void afficherImage() throws IOException {
+    if (selectedFile != null) {
+        try {
+     
+            Path source = Paths.get(selectedFile.toURI());
+            // Vous pouvez changer le chemin de destination de l'image
+            Path destination = Paths.get("src/GUI/images/" + selectedFile.getName());
+            Files.copy(source, destination, StandardCopyOption.REPLACE_EXISTING);
+          imagePath = destination.toAbsolutePath().toString();
+            Image image = new Image(new FileInputStream(selectedFile));
+            materielimage.setImage(image);
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+}
     public void fnshowtout(){
         Servicemateriel sp=new Servicemateriel();
          ObservableList<Materiel> list =FXCollections.observableList(sp.afficher()); 
      
-     
+
      colMarquee.setCellValueFactory(new PropertyValueFactory<>("marque"));
      colPrixx.setCellValueFactory(new PropertyValueFactory<>("Prix"));
           colNomm.setCellValueFactory(new PropertyValueFactory<>("nomm"));
          colDescriptt.setCellValueFactory(new PropertyValueFactory<>("descm"));
+
      tvLesMateriels.setItems(list);
      
      
@@ -179,13 +236,45 @@ public class FrontmaterielController implements Initializable {
     }
 
     @FXML
-    private void fnSelectionMateriel(MouseEvent event) {
+    private void fnSelectionMateriel(MouseEvent event) throws IOException {
+        Servicemateriel sp=new Servicemateriel();
          Materiel m = tvMesMateriels.getSelectionModel().getSelectedItem();
          lbidmateriel.setText(m.getIdm()+"");
          vboxDetail.setVisible(true);
          Serviceannoncef sc=new Serviceannoncef();
          Annoncef f=sc.SelectOneAnnoncef(m.getIdff());
          lbAnnoncef.setText(f.getNomf());
+
+        int index = tvMesMateriels.getSelectionModel().getSelectedIndex();
+        if (index <= -1){
+            return;
+        }
+      
+        tfNom.setText(colNomm.getCellData(index).toString());
+        tfMarque.setText(colMarque.getCellData(index).toString());
+      //  tfPrix.setText(colPrix.getCellData(index).toString());
+         tfDescript.setText(colDescript.getCellData(index).toString());
+
+        String picture ="file:" +  colImage.getCellData(index).toString();
+        filr_path.setText(colImage.getCellData(index).toString());
+    Image image1 = new Image(picture, 110, 110, false, true);            
+            materielimage.setImage(image1);
+
+      
+   
+    }
+    public void updateTable(){
+        Servicemateriel sm = new Servicemateriel();
+        
+        List<Materiel> metiers = sm.afficher();
+        ObservableList<Materiel> listM=FXCollections.observableArrayList(metiers);
+        colNom.setCellValueFactory(new PropertyValueFactory<Materiel,String>("nomm"));
+        colMarque.setCellValueFactory(new PropertyValueFactory<Materiel,String>("marque"));
+        colPrix.setCellValueFactory(new PropertyValueFactory<Materiel,Integer>("prix"));
+        colDescript.setCellValueFactory(new PropertyValueFactory<Materiel,String>("descm"));
+        colImage.setCellValueFactory(new PropertyValueFactory<Materiel,String>("image"));
+        tvMesMateriels.setItems(listM);
+
     }
 
     @FXML
@@ -230,6 +319,7 @@ public class FrontmaterielController implements Initializable {
         pnMesMateriels.toFront();
     }
 
+
     @FXML
     private void fnConfAjouter(ActionEvent event) {
 Materiel m=new Materiel();
@@ -244,6 +334,7 @@ if (tfAnnoncef.getValue() != null && !tfDescript.getText().isEmpty() && !tfPrix.
         m.setPrix(tfPrix.getText());
         m.setMarque(tfMarque.getText());
         m.setNomm(tfNom.getText());
+        m.setImage(filr_path.getText());
         Servicemateriel sp = new Servicemateriel();
         sp.add(m);
         fnshow();
@@ -254,6 +345,9 @@ if (tfAnnoncef.getValue() != null && !tfDescript.getText().isEmpty() && !tfPrix.
         tfMarque.setText("");
         tfPrix.setText("");
         tfNom.setText("");
+ 
+        
+        
     } else {
         Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("Erreur de saisie");
@@ -283,12 +377,15 @@ if (!tfPrix.getText().isEmpty() && tfPrix.getText().matches("\\d+")
     m.setMarque(tfMarque.getText());
     m.setNomm(tfNom.getText());
     m.setDescm(tfDescript.getText());
+    m.setImage(filr_path.getText());
     m.setIdm(Integer.parseInt(lbidmateriel.getText()));
+    
     Servicemateriel sp = new Servicemateriel();
     sp.modifier(m);
     fnshowtout();
     fnshow();
     pnMesMateriels.toFront();
+    
     tfAnnoncef.setValue("");
     tfDescript.setText("");
     tfMarque.setText("");
@@ -337,6 +434,35 @@ Materiel p=new Materiel();
 Servicemateriel sp = new Servicemateriel();
        tvLesMateriels.setItems(sp.searchByMarqueMateriel(chercher.getText()))  ;
     }
+
+   @FXML
+    private void ajouterimage(ActionEvent event) {
+         FileChooser open = new FileChooser();
+        
+        Stage stage = (Stage)anch.getScene().getWindow();
+        
+        File file = open.showOpenDialog(stage);
+        
+        if(file != null){
+            
+            String path = file.getAbsolutePath();
+            
+            path = path.replace("\\", "\\\\");
+            
+            filr_path.setText(path);
+            System.out.println(filr_path);
+
+            Image image = new Image(file.toURI().toString(), 110, 110, false, true);
+            
+            materielimage.setImage(image);
+            
+        }else{
+            
+            System.out.println("NO DATA EXIST!");
+            
+        }
+    }
+
 
   
 }
