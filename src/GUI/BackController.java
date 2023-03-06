@@ -46,6 +46,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
@@ -103,6 +105,12 @@ public class BackController implements Initializable {
     private Label lbAnnoncef;
     @FXML
     private Button exportButton;
+    @FXML
+    private TableColumn<Materiel, String> colImage;
+    @FXML
+    private ImageView materielimage;
+    @FXML
+    private Label filr_path;
     
 
     /**
@@ -135,10 +143,25 @@ public class BackController implements Initializable {
      colPrix.setCellValueFactory(new PropertyValueFactory<>("Prix"));
           colNomm.setCellValueFactory(new PropertyValueFactory<>("nomm"));
          colDescriptt.setCellValueFactory(new PropertyValueFactory<>("descm"));
+           colImage.setCellValueFactory(new PropertyValueFactory<>("image"));
      tvLesMateriels.setItems(list);
      
      
       
+    }
+   
+    public void updateTable(){
+        Servicemateriel sm = new Servicemateriel();
+        
+        List<Materiel> materiel = sm.afficher();
+        ObservableList<Materiel> listM=FXCollections.observableArrayList(materiel);
+        colNomm.setCellValueFactory(new PropertyValueFactory<Materiel,String>("nomm"));
+        colMarque.setCellValueFactory(new PropertyValueFactory<Materiel,String>("marque"));
+        //colPrix.setCellValueFactory(new PropertyValueFactory<Materiel,Integer>("prix"));
+        colDescriptt.setCellValueFactory(new PropertyValueFactory<Materiel,String>("descm"));
+        colImage.setCellValueFactory(new PropertyValueFactory<Materiel,String>("image"));
+        tvLesMateriels.setItems(listM);
+
     }
     @FXML
     private void fnMenuLesAnnoncef(MouseEvent event) {
@@ -162,6 +185,7 @@ public class BackController implements Initializable {
          lbidannoncef.setText(f.getIdf()+"");
          vboxDetail.setVisible(true);
                  fnshow();
+                 
 
     }
 
@@ -182,13 +206,21 @@ public class BackController implements Initializable {
 
     @FXML
     private void fnSelectionmateriel(MouseEvent event) {
-                 Materiel m = tvLesMateriels.getSelectionModel().getSelectedItem();
+           Servicemateriel sp=new Servicemateriel();
+         Materiel m = tvLesMateriels.getSelectionModel().getSelectedItem();
          lbidmateriel.setText(m.getIdm()+"");
          vboxDetaill.setVisible(true);
-         Serviceannoncef sc=new Serviceannoncef();
-         Annoncef f=sc.SelectOneAnnoncef(m.getIdff());
-         lbAnnoncef.setText(f.getNomf());
+
+        int index = tvLesMateriels.getSelectionModel().getSelectedIndex();
+        if (index <= -1){
+            return;
+        }String picture ="file:" +  colImage.getCellData(index).toString();
+        filr_path.setText(colImage.getCellData(index).toString());
+    Image image1 = new Image(picture, 110, 110, false, true);            
+            materielimage.setImage(image1);
     }
+         
+    
 
     @FXML
     private void fnSupprimerr(ActionEvent event) {

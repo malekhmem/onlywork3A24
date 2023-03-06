@@ -133,8 +133,6 @@ public class FrontmaterielController implements Initializable {
     @FXML
     private Button btnAjouterr;
     @FXML
-    private Label lbidannonceff;
-    @FXML
     private TableView<Materiel> tvLesMateriels;
     @FXML
     private TextField cherche;
@@ -151,6 +149,16 @@ public class FrontmaterielController implements Initializable {
     private TableColumn<Materiel, String> colImage;
     @FXML
     private Label filr_path;
+    @FXML
+    private TableColumn<Materiel, String> colImagee;
+    @FXML
+    private VBox vboxDetaill;
+    @FXML
+    private Label lbAnnonceff;
+    @FXML
+    private ImageView materielimagee;
+    @FXML
+    private Label lbidmateriell;
 
 
 
@@ -192,22 +200,6 @@ public class FrontmaterielController implements Initializable {
      
       
     }
-  public void afficherImage() throws IOException {
-    if (selectedFile != null) {
-        try {
-     
-            Path source = Paths.get(selectedFile.toURI());
-            // Vous pouvez changer le chemin de destination de l'image
-            Path destination = Paths.get("src/GUI/images/" + selectedFile.getName());
-            Files.copy(source, destination, StandardCopyOption.REPLACE_EXISTING);
-          imagePath = destination.toAbsolutePath().toString();
-            Image image = new Image(new FileInputStream(selectedFile));
-            materielimage.setImage(image);
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-}
     public void fnshowtout(){
         Servicemateriel sp=new Servicemateriel();
          ObservableList<Materiel> list =FXCollections.observableList(sp.afficher()); 
@@ -217,7 +209,7 @@ public class FrontmaterielController implements Initializable {
      colPrixx.setCellValueFactory(new PropertyValueFactory<>("Prix"));
           colNomm.setCellValueFactory(new PropertyValueFactory<>("nomm"));
          colDescriptt.setCellValueFactory(new PropertyValueFactory<>("descm"));
-
+          colImage.setCellValueFactory(new PropertyValueFactory<Materiel,String>("image"));
      tvLesMateriels.setItems(list);
      
      
@@ -266,8 +258,8 @@ public class FrontmaterielController implements Initializable {
     public void updateTable(){
         Servicemateriel sm = new Servicemateriel();
         
-        List<Materiel> metiers = sm.afficher();
-        ObservableList<Materiel> listM=FXCollections.observableArrayList(metiers);
+        List<Materiel> materiel = sm.afficher();
+        ObservableList<Materiel> listM=FXCollections.observableArrayList(materiel);
         colNom.setCellValueFactory(new PropertyValueFactory<Materiel,String>("nomm"));
         colMarque.setCellValueFactory(new PropertyValueFactory<Materiel,String>("marque"));
         colPrix.setCellValueFactory(new PropertyValueFactory<Materiel,Integer>("prix"));
@@ -276,7 +268,19 @@ public class FrontmaterielController implements Initializable {
         tvMesMateriels.setItems(listM);
 
     }
+    public void updateTablee(){
+        Servicemateriel sm = new Servicemateriel();
+        
+        List<Materiel> materiel = sm.afficher();
+        ObservableList<Materiel> listM=FXCollections.observableArrayList(materiel);
+        colNomm.setCellValueFactory(new PropertyValueFactory<Materiel,String>("nomm"));
+        colMarquee.setCellValueFactory(new PropertyValueFactory<Materiel,String>("marque"));
+        //colPrixx.setCellValueFactory(new PropertyValueFactory<Materiel,Integer>("prix"));
+        colDescriptt.setCellValueFactory(new PropertyValueFactory<Materiel,String>("descm"));
+        colImage.setCellValueFactory(new PropertyValueFactory<Materiel,String>("image"));
+        tvLesMateriels.setItems(listM);
 
+    }
     @FXML
     private void fnAjouter(ActionEvent event) {
         pnNouveau.toFront();
@@ -378,8 +382,7 @@ if (!tfPrix.getText().isEmpty() && tfPrix.getText().matches("\\d+")
     m.setNomm(tfNom.getText());
     m.setDescm(tfDescript.getText());
     m.setImage(filr_path.getText());
-    m.setIdm(Integer.parseInt(lbidmateriel.getText()));
-    
+    m.setIdm(Integer.parseInt(lbidmateriel.getText()));   
     Servicemateriel sp = new Servicemateriel();
     sp.modifier(m);
     fnshowtout();
@@ -407,7 +410,18 @@ if (!tfPrix.getText().isEmpty() && tfPrix.getText().matches("\\d+")
 
     @FXML
     private void fnSelectlesmateriels(MouseEvent event) {
-        Materiel m = tvLesMateriels.getSelectionModel().getSelectedItem();
+           Servicemateriel sp=new Servicemateriel();
+         Materiel m = tvLesMateriels.getSelectionModel().getSelectedItem();
+         lbidmateriel.setText(m.getIdm()+"");
+         vboxDetaill.setVisible(true);
+
+        int index = tvLesMateriels.getSelectionModel().getSelectedIndex();
+        if (index <= -1){
+            return;
+        }String picture ="file:" +  colImage.getCellData(index).toString();
+        filr_path.setText(colImage.getCellData(index).toString());
+    Image image1 = new Image(picture, 110, 110, false, true);            
+            materielimagee.setImage(image1);
     }
 
     @FXML

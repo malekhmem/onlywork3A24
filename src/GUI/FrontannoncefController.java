@@ -227,7 +227,9 @@ public class FrontannoncefController implements Initializable {
         Serviceannoncef sp=new Serviceannoncef();
         System.out.println(lbidannoncef.getText());
         sp.supprimer(Integer.parseInt(lbidannoncef.getText()));
-        fnshow();
+
+fnshow();
+fnshowtout();
         vboxDetail.setVisible(false);
     }
 
@@ -321,65 +323,34 @@ tfNom.setText("");
 
     @FXML
     private void fnConfModifier(ActionEvent event) {
-String nom = tfNom.getText();
-String adresse = tfAdresse.getText();
-String email = tfEmail.getText();
-String description = tfDescript.getText();
+Annoncef f=new Annoncef();
+f.setIdu(1);
+if (!tfNom.getText().isEmpty() && tfNom.getText().matches("[a-zA-Z]+")
+        && !tfAdresse.getText().isEmpty() && tfAdresse.getText().matches("[a-zA-Z]+")
+        && !tfEmail.getText().isEmpty() && tfEmail.getText().matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
+    f.setNomf(tfNom.getText());
+    f.setAdresse(tfAdresse.getText());
+    f.setEmailf(tfEmail.getText());
+    f.setDescf(tfDescript.getText());
 
-if (nom == null || nom.isEmpty() || !nom.matches("[a-zA-Z]+")) {
+    f.setIdf(Integer.parseInt(lbidannoncef.getText()));   
+    Serviceannoncef sf = new Serviceannoncef();
+    sf.modifier(f);
+    fnshowtout();
+    fnshow();
+    pnMesAnnoncef.toFront();
+   
+    tfDescript.setText("");
+    tfAdresse.setText("");
+    tfEmail.setText("");
+    tfNom.setText("");
+} else {
     Alert alert = new Alert(AlertType.ERROR);
     alert.setTitle("Erreur de saisie");
-    alert.setHeaderText("Nom invalide");
-    alert.setContentText("Veuillez saisir un nom valide (lettres uniquement).");
+    alert.setHeaderText("Veuillez vérifier les champs saisis !");
     alert.showAndWait();
-    return; 
 }
 
-// Vérification de l'adresse
-if (adresse == null || adresse.isEmpty()) {
-    Alert alert = new Alert(AlertType.ERROR);
-    alert.setTitle("Erreur de saisie");
-    alert.setHeaderText("Adresse manquante");
-    alert.setContentText("Veuillez saisir une adresse valide.");
-    alert.showAndWait();
-    return; 
-}
-
-if (email == null || email.isEmpty() || !email.matches("\\b[\\w.%-]+@[-.\\w]+\\.[A-Za-z]{2,4}\\b")) {
-    Alert alert = new Alert(AlertType.ERROR);
-    alert.setTitle("Erreur de saisie");
-    alert.setHeaderText("Email invalide");
-    alert.setContentText("Veuillez saisir une adresse email valide.");
-    alert.showAndWait();
-    return; 
-}
-
-if (description == null || description.isEmpty()) {
-    Alert alert = new Alert(AlertType.ERROR);
-    alert.setTitle("Erreur de saisie");
-    alert.setHeaderText("Description manquante");
-    alert.setContentText("Veuillez saisir une description valide.");
-    alert.showAndWait();
-    return; 
-}
-
-
-Annoncef p = new Annoncef();
-p.setNomf(nom);
-p.setAdresse(adresse);
-p.setEmailf(email);
-p.setDescf(description);
-p.setIdu(1);
-
-Serviceannoncef sp = new Serviceannoncef();
-sp.add(p);
-fnshow();
-fnshowtout();
-pnMesAnnoncef.toFront();
-tfDescript.setText("");
-tfAdresse.setText("");
-tfEmail.setText("");
-tfNom.setText("");
 
     }
 
@@ -434,112 +405,7 @@ Annoncef p=new Annoncef();
 Serviceannoncef sp = new Serviceannoncef();
        tvMesAnnoncef.setItems(sp.searchByNameAnnoncef(cherche.getText()))  ;
     }
-/*
-@FXML
-private void handleExport(ActionEvent event) {
-   FileChooser fileChooser = new FileChooser();
-   fileChooser.setTitle("Exporter les annonces");
-   fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Fichier Excel (*.xlsx)", "*.xlsx"));
-   Stage stage = (Stage) exportButton.getScene().getWindow();
-   File file = fileChooser.showSaveDialog(stage);
-   if (file != null) {
-       try {
-           FileOutputStream outputStream;
-           if (!file.exists()) {
-               file.createNewFile();
-           }
-           try (XSSFWorkbook workbook = new XSSFWorkbook()) {
-               org.apache.poi.ss.usermodel.Sheet sheet = workbook.createSheet("Annoncef");
-               Row headerRow = sheet.createRow(0);
-               headerRow.createCell(0).setCellValue("nomf");
-               headerRow.createCell(1).setCellValue("adresse");
-               headerRow.createCell(2).setCellValue("emailf");
-               headerRow.createCell(3).setCellValue("descf");
-               ObservableList<Annoncef> annonces = tvMesAnnoncef.getItems();
-               for (int i = 0; i < annonces.size(); i++) {
-                   Annoncef annonce = annonces.get(i);
-                   Row row = sheet.createRow(i + 1);
-                   row.createCell(0).setCellValue(annonce.getNomf());
-                   row.createCell(1).setCellValue(annonce.getAdresse());
-                   row.createCell(2).setCellValue(annonce.getEmailf());
-                   row.createCell(3).setCellValue(annonce.getDescf());
-               }
-               outputStream = new FileOutputStream(file);
-               workbook.write(outputStream);
-           }
-           outputStream.close();
-       } catch (IOException e) {
-       }
-   }
-}
 
-*/
-
-   /* @FXML
-private void handleExport(ActionEvent event) {
-    FileChooser fileChooser = new FileChooser();
-    fileChooser.setTitle("Exporter les annonces");
-    fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Fichier Excel (.xlsx)", ".xlsx"));
-    Stage stage = (Stage) exportButton.getScene().getWindow();
-    File file = fileChooser.showSaveDialog(stage);
-    if (file != null) {
-        try {
-            FileOutputStream outputStream;
-            if (!file.exists()) {
-                file.createNewFile();
-            }
-            XSSFWorkbook workbook = new XSSFWorkbook();
-            XSSFSheet sheet = workbook.createSheet("Annoncef");
-            XSSFRow headerRow = sheet.createRow(0);
-            headerRow.createCell(0).setCellValue("nomf");
-            headerRow.createCell(1).setCellValue("adresse");
-            headerRow.createCell(2).setCellValue("emailf");
-            headerRow.createCell(3).setCellValue("descf");
-            ObservableList<Annoncef> annonces = tvMesAnnoncef.getItems();
-
-            for (int i = 0; i < annonces.size(); i++) {
-                Annoncef annonce = annonces.get(i);
-                XSSFRow row = sheet.createRow(i + 1);
-                row.createCell(0).setCellValue(annonce.getNomf());
-                row.createCell(1).setCellValue(annonce.getAdresse());
-                row.createCell(2).setCellValue(annonce.getEmailf());
-                row.createCell(3).setCellValue(annonce.getDescf());
-            }
-            outputStream = new FileOutputStream(file);
-            workbook.write(outputStream);
-            outputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-}*/
-
-
-
-    /*
-   public void handleExport() throws Exception {
-    
-    PrintWriter writer = new PrintWriter( new OutputStreamWriter(new FileOutputStream("C:\\Users\\imtinen\\Desktop\\annonce.csv"), "UTF-8"));
-
-Serviceannoncef sp = new Serviceannoncef();
-        
-        List<Annoncef> annonce = sp.afficher();
-       writer.write("Nom,Type,Description\n");
-               for (Annoncef obj : annonce) {
-                   
-            writer.write(obj.getNomf().toString());
-            writer.write(",");
-            writer.write(obj.getAdresse().toString());
-            writer.write(",");
-            writer.write(obj.getEmailf().toString());
-            writer.write("\n");
-             writer.write(obj.getDescf().toString());
-            writer.write("\n");
-
-               }
-               writer.flush();
-               writer.close();
-}  */
     @FXML
     private void TriNom(ActionEvent event) throws SQLException {
      
