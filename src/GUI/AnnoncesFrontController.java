@@ -128,6 +128,15 @@ public class AnnoncesFrontController implements Initializable {
  ServiceAnnonces sp=new ServiceAnnonces();
  public static Annonces currentannonces;
    
+    @FXML
+    private Button btnAjouterr;
+    @FXML
+    private Label lbidannoncess;
+    @FXML
+    private Pane pnLesAnnonces;
+    @FXML
+    private Label lbLesAnnoncef;
+   
     /**
      * Initializes the controller class.
      * @param url
@@ -157,6 +166,9 @@ public class AnnoncesFrontController implements Initializable {
      
       
     }
+    
+     
+    
 
     private void fnMenuMesaostes(MouseEvent event) {
         pnMesAnnonces.toFront();
@@ -390,6 +402,8 @@ tfNom1.setText("");
 
     @FXML
     private void fnMenuMesAnnonces(MouseEvent event) {
+                pnMesAnnonces.toFront();
+
     }
 
    /* @FXML
@@ -425,9 +439,9 @@ colNumero.setCellValueFactory(new PropertyValueFactory<Annonces, Integer>("numer
   list=sp.getAllTriNom();
        tvMesAnnonces.setItems(list)  ;
     }
+   
 
-    
-       
+  
 
    
 }

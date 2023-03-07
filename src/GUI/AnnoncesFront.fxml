@@ -18,34 +18,6 @@
  <children>
       <StackPane layoutX="245.0" layoutY="11.0" prefHeight="600.0" prefWidth="582.0" style="-fx-background-color: #ffffff;">
          <children>
-            <Pane fx:id="pnMesAnnonces" prefHeight="622.0" prefWidth="603.0" style="-fx-background-color: #ffffff;">
-               <children>
-                  <Label layoutX="29.0" layoutY="29.0" prefHeight="58.0" prefWidth="237.0" text="Mes Annonces :">
-                     <font>
-                        <Font size="31.0" />
-                     </font>
-                  </Label>
-      <TableView fx:id="tvMesAnnonces" layoutX="14.0" layoutY="125.0" onMouseClicked="#fnSelectiannonces" prefHeight="318.0" prefWidth="361.0">
-                     <columns>
-                        <TableColumn fx:id="colNom" prefWidth="75.0" text="nom" />
-                        <TableColumn fx:id="colEmail" prefWidth="105.0" text="email" />
-                        <TableColumn fx:id="colNumero" prefWidth="106.0" text="numero" />
-                        <TableColumn fx:id="colAdresse" prefWidth="75.0" text="adresse" />
-                     </columns>
-                  </TableView>
-                  <Button fx:id="btnAjouter" layoutX="424.0" layoutY="514.0" mnemonicParsing="false" onAction="#fnAjouter" prefHeight="31.0" prefWidth="127.0" style="-fx-background-color: #4e5e64;" text="Ajouter" textFill="WHITE" />
-                  <HBox fx:id="hboxbutton" alignment="CENTER" layoutX="48.0" layoutY="480.0" prefHeight="100.0" prefWidth="200.0" spacing="15.0" visible="false">
-                     <children>
-                        <Button fx:id="btnSupprimer" mnemonicParsing="false" onAction="#fnSupprimer" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: #4e5e64;" text="Supprimer" textFill="WHITE" />
-                        <Button fx:id="btnModifier" mnemonicParsing="false" onAction="#fnModifier" prefHeight="31.0" prefWidth="78.0" style="-fx-background-color: #4e5e64;" text="Modifier" textFill="WHITE" />
-                     </children>
-                  </HBox>
-                  <Label fx:id="lbidAnnonces" layoutX="439.0" layoutY="70.0" visible="false" />
-                  <HBox alignment="CENTER" layoutX="449.0" layoutY="6.0" prefHeight="27.0" prefWidth="198.0" AnchorPane.rightAnchor="7.0" />
-                  <TextField fx:id="chercher" layoutX="365.0" layoutY="46.0" onKeyPressed="#Recherche" promptText="Recherche" />
-                  <Button fx:id="TriNom" layoutX="462.0" layoutY="79.0" mnemonicParsing="false" onAction="#TriNom" style="-fx-background-color: #4e5e64;" text="TriNom" textFill="WHITE" />
-               </children>
-            </Pane>
             <Pane fx:id="pnNouveau1" prefHeight="609.0" prefWidth="582.0" style="-fx-background-color: #ffffff;">
                <children>
                   <Label fx:id="lbTItreNouveau1" layoutX="14.0" layoutY="19.0" prefHeight="58.0" prefWidth="421.0" text="un nouveau annonce societe:">
@@ -107,11 +79,40 @@
                   </Label>
                </children>
             </Pane>
+            <Pane fx:id="pnMesAnnonces" prefHeight="609.0" prefWidth="603.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <Label layoutX="14.0" layoutY="17.0" prefHeight="58.0" prefWidth="237.0" text="Mes Annonces :">
+                     <font>
+                        <Font size="31.0" />
+                     </font>
+                  </Label>
+      <TableView fx:id="tvMesAnnonces" layoutX="14.0" layoutY="130.0" onMouseClicked="#fnSelectiannonces" prefHeight="318.0" prefWidth="361.0">
+                     <columns>
+                        <TableColumn fx:id="colNom" prefWidth="75.0" text="nom" />
+                        <TableColumn fx:id="colEmail" prefWidth="105.0" text="email" />
+                        <TableColumn fx:id="colNumero" prefWidth="106.0" text="numero" />
+                        <TableColumn fx:id="colAdresse" prefWidth="75.0" text="adresse" />
+                     </columns>
+                  </TableView>
+                  <Button fx:id="btnAjouter" layoutX="424.0" layoutY="514.0" mnemonicParsing="false" onAction="#fnAjouter" prefHeight="31.0" prefWidth="127.0" style="-fx-background-color: #4e5e64;" text="Ajouter" textFill="WHITE" />
+                  <HBox fx:id="hboxbutton" alignment="CENTER" layoutX="48.0" layoutY="480.0" prefHeight="100.0" prefWidth="200.0" spacing="15.0" visible="false">
+                     <children>
+                        <Button fx:id="btnSupprimer" mnemonicParsing="false" onAction="#fnSupprimer" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: #4e5e64;" text="Supprimer" textFill="WHITE" />
+                        <Button fx:id="btnModifier" mnemonicParsing="false" onAction="#fnModifier" prefHeight="31.0" prefWidth="78.0" style="-fx-background-color: #4e5e64;" text="Modifier" textFill="WHITE" />
+                     </children>
+                  </HBox>
+                  <Label fx:id="lbidAnnonces" layoutX="439.0" layoutY="70.0" visible="false" />
+                  <HBox alignment="CENTER" layoutX="449.0" layoutY="6.0" prefHeight="27.0" prefWidth="198.0" AnchorPane.rightAnchor="7.0" />
+                  <TextField fx:id="chercher" layoutX="365.0" layoutY="46.0" onKeyPressed="#Recherche" promptText="Recherche" />
+                  <Button fx:id="TriNom" layoutX="462.0" layoutY="79.0" mnemonicParsing="false" onAction="#TriNom" style="-fx-background-color: #4e5e64;" text="TriNom" textFill="WHITE" />
+               </children>
+            </Pane>
          </children>
       </StackPane>
       <VBox prefHeight="622.0" prefWidth="219.0" style="-fx-background-color: #4e5e64;">
          <children>
             <ImageView fitHeight="158.0" fitWidth="219.0" pickOnBounds="true" preserveRatio="true" />
+                   
             <Label fx:id="lbMesAnnonces" alignment="CENTER" onMouseClicked="#fnMenuMesAnnonces" prefHeight="93.0" prefWidth="213.0" text="Mes Annonces Societe" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />

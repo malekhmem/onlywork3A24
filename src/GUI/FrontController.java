@@ -71,7 +71,7 @@ public class FrontController implements Initializable {
     @FXML
     private void fnBack(ActionEvent event) {
                 try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("back.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("back1.fxml"));
             Parent root = loader.load();
             btnAnnonces.getScene().setRoot(root);
            } catch (IOException ex) {

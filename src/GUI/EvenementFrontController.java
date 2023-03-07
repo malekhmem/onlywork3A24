@@ -190,7 +190,7 @@ public class EvenementFrontController implements Initializable {
        //@Override
     public void initialize(URL url, ResourceBundle rb) {
         pnMesEvenement.toFront();
-        tfNom_societe.setText(AnnoncesFrontController.currentannonces.getNoms());
+       // tfNom_societe.setText(AnnoncesFrontController.currentannonces.getNoms());
         System.out.println("+++++++++++++++++");
         fnshow();
 
@@ -535,8 +535,15 @@ private void btnGenPDF(ActionEvent event) throws DocumentException, FileNotFound
     com.itextpdf.text.Document document = new com.itextpdf.text.Document();
 
     try {
+        com.itextpdf.text.Image img = com.itextpdf.text.Image.getInstance("C:\\Users\\chino\\Documents\\image\\logo.png");
+               img.scaleAbsoluteWidth(200);
+               img.scaleAbsoluteHeight(50);
+               img.setAlignment(com.itextpdf.text.Image.ALIGN_CENTER);
+        
         PdfWriter.getInstance(document, new FileOutputStream(String.valueOf(DateLyoum + ".pdf")));
         document.open();
+                document.add(img);
+
 // Ajouter le logo
        /* Image logo = Image.getInstance("C://xampp//htdocs//onlywork/logo.png");
         logo.scaleAbsolute(100, 100);
@@ -582,6 +589,7 @@ private void btnGenPDF(ActionEvent event) throws DocumentException, FileNotFound
         });
 
         document.add(table);
+
     } catch (Exception e) {
         System.out.println(e);
     }
