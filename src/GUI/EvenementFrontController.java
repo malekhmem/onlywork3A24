@@ -312,11 +312,10 @@ return;
 
 }
 Evenement p=new Evenement();
-
 p.setNomss(tfNom_societe.getText());
 p.setDescription(tfDescription.getText());
 p.setTitre(tfTitre.getText());
-p.setIds(AnnoncesFrontController.currentannonces.getIds());
+//p.setIds(AnnoncesFrontController.currentannonces.getIds());
 ServiceEvenement sp = new ServiceEvenement();
 sp.add(p);
 fnshow();

@@ -50,7 +50,8 @@ public class ServiceEvenement implements IService<Evenement>{
         ServiceAnnonces an = new ServiceAnnonces();
         Annonces annonce = new Annonces();
         try { 
-        String qry ="INSERT INTO `evenement`( `titre`, `description`,`nomss` ,`ids`) VALUES ('"+t.getTitre()+"','"+t.getDescription()+"','"+t.getNomss()+"','"+t.getIds()+"')";
+        //String qry ="INSERT INTO `evenement`( `titre`, `description`,`nomss` ,`ids`) VALUES ('"+t.getTitre()+"','"+t.getDescription()+"','"+t.getNomss()+"','"+t.getIds()+"')";
+         String qry ="INSERT INTO `evenement`( `titre`, `description`,`nomss` ,`ids`) VALUES ('"+t.getTitre()+"','"+t.getDescription()+"','"+t.getNomss()+"','"+1+"')";
       cnx = MyDB.getInstance().getCnx();
             
             Statement stm =cnx.createStatement();
