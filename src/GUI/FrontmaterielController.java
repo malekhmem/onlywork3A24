@@ -24,8 +24,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import entities.Materiel;
 import entities.Annoncef;
-import Services.Serviceannoncef;
-import Services.Servicemateriel;
+import services.Serviceannoncef;
+import services.Servicemateriel;
 import static com.microsoft.schemas.office.excel.STObjectType.Enum.table;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -174,7 +174,7 @@ public class FrontmaterielController implements Initializable {
         fnshowtout();
 
         Serviceannoncef sc=new Serviceannoncef();
-        ObservableList<String>  list =FXCollections.observableArrayList(sc.afficherNom(1)); // TODO
+        ObservableList<String>  list =FXCollections.observableArrayList(sc.afficherNom(2)); // TODO
         for(int i = 0 ; i<list.size();i++){
            list.get(i);
         }
@@ -187,7 +187,7 @@ public class FrontmaterielController implements Initializable {
     public void fnshow(){
         Servicemateriel sp=new Servicemateriel();
         Materiel m=new Materiel();
-         ObservableList<Materiel> list =FXCollections.observableList(sp.afficherByID(1)); 
+         ObservableList<Materiel> list =FXCollections.observableList(sp.afficherByID(2)); 
      
      
      colMarque.setCellValueFactory(new PropertyValueFactory<>("marque"));
@@ -330,7 +330,7 @@ Materiel m=new Materiel();
 if (tfAnnoncef.getValue() != null && !tfDescript.getText().isEmpty() && !tfPrix.getText().isEmpty() 
         && !tfMarque.getText().isEmpty() && !tfNom.getText().isEmpty()) {
     if (tfPrix.getText().matches("[0-9]+") && tfNom.getText().matches("[a-zA-Z]+") && tfMarque.getText().matches("[a-zA-Z]+")) {
-        m.setIdu(1);
+        m.setIdu(2);
         Serviceannoncef sc= new Serviceannoncef();
         Annoncef f = sc.SelectOneAnnoncefByNom(tfAnnoncef.getValue());
         m.setAnnoncef(f);    
@@ -373,7 +373,7 @@ Materiel m=new Materiel();
 Serviceannoncef sc= new Serviceannoncef();
 Annoncef f = sc.SelectOneAnnoncefByNom(tfAnnoncef.getValue());
 m.setAnnoncef(f);
-m.setIdu(1);
+m.setIdu(2);
 if (!tfPrix.getText().isEmpty() && tfPrix.getText().matches("\\d+")
         && !tfMarque.getText().isEmpty() && tfMarque.getText().matches("[a-zA-Z]+")
         && !tfNom.getText().isEmpty() && tfNom.getText().matches("[a-zA-Z]+")) {

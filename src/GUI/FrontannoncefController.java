@@ -22,7 +22,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import entities.Annoncef;
-import Services.Serviceannoncef;
+import services.Serviceannoncef;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -180,7 +180,7 @@ public class FrontannoncefController implements Initializable {
     }    
     public void fnshow(){
         Serviceannoncef sp=new Serviceannoncef();
-         ObservableList<Annoncef> list =FXCollections.observableList(sp.afficherByID(1)); 
+         ObservableList<Annoncef> list =FXCollections.observableList(sp.afficherByID(2)); 
      colAdresse.setCellValueFactory(new PropertyValueFactory<>("adresse"));
      colMail.setCellValueFactory(new PropertyValueFactory<>("emailf"));
       colNom.setCellValueFactory(new PropertyValueFactory<>("nomf"));
@@ -303,7 +303,7 @@ if (description == null || description.isEmpty()) {
     return;
 }
 Annoncef p=new Annoncef();
-p.setIdu(1);
+p.setIdu(2);
 p.setDescf(description);
 p.setEmailf(email);
 p.setAdresse(adresse);
@@ -324,7 +324,7 @@ tfNom.setText("");
     @FXML
     private void fnConfModifier(ActionEvent event) {
 Annoncef f=new Annoncef();
-f.setIdu(1);
+f.setIdu(2);
 if (!tfNom.getText().isEmpty() && tfNom.getText().matches("[a-zA-Z]+")
         && !tfAdresse.getText().isEmpty() && tfAdresse.getText().matches("[a-zA-Z]+")
         && !tfEmail.getText().isEmpty() && tfEmail.getText().matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {

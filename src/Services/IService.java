@@ -3,16 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Services;
-import java.util.List;
-/*
- *
- * @author imtinen
- */
+package services;
 
+import java.util.List;
+
+/**
+ *
+ * @author zeine
+ */
 public interface IService <T> {
-   public void add(T t);
+    public void add(T t);
     public List<T> afficher();
-    public void modifier(T t);
-   // public void supprimer();
+   // public void modifier(T t);
+    //public void supprimer(T t);
 }

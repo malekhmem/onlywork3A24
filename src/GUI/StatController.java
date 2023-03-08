@@ -43,7 +43,7 @@ public class StatController {
         DefaultPieDataset dataset = new DefaultPieDataset();
         
         String qry = "SELECT marque, prix FROM materiel WHERE nomm = ?";
-        cnx = Utils.MyDB.getInstance().getCnx();
+        cnx = utils.MyDB.getInstance().getCnx();
         PreparedStatement stm = cnx.prepareStatement(qry);
         stm.setString(1, materialName);
         ResultSet rs = stm.executeQuery();

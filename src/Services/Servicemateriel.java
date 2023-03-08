@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package Services;
+package services;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -13,7 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import entities.Materiel;
-import Utils.MyDB;
+import utils.MyDB;
 import entities.Annoncef;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -128,7 +128,7 @@ catch (SQLException ex) {
     }
 
 
-    @Override
+
     public void modifier(Materiel t) {
             try {
         String qry ="UPDATE `materiel` SET `nomm`='"+t.getNomm()+"',`marque`='"+t.getMarque()+"',`prix`='"+t.getPrix()+"',`descm`='"+t.getDescm()+"',`image`='"+t.getImage()+"' WHERE idm="+t.getIdm()+";";

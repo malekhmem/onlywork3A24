@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 
-package Services;
+package services;
 
-import Utils.MyDB;
+import utils.MyDB;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -165,7 +165,7 @@ public class Serviceannoncef implements IService<Annoncef>{
  
 
    
-    @Override
+   
     public void modifier(Annoncef t) {
             try {
         String qry ="UPDATE `annoncef` SET `nomf`='"+t.getNomf()+"',`adresse`='"+t.getAdresse()+"',`emailf`='"+t.getEmailf()+"',`descf`='"+t.getDescf()+"' WHERE idf="+t.getIdf()+";";

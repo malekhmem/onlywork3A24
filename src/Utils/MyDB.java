@@ -3,16 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Utils;
+package utils;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+
 /**
  *
- * @author imtinen
+ * @author zeine
  */
 public class MyDB {
- final String URL ="jdbc:mysql://127.0.0.1:3306/onlywork";
+    final String URL ="jdbc:mysql://127.0.0.1:3306/onlywork";
     final String USERNAME="root";
     final String PWD ="";
    private  Connection cnx;
@@ -35,5 +37,4 @@ public class MyDB {
     public Connection getCnx(){
         return cnx;
     } 
-    
 }
