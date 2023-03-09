@@ -3,14 +3,25 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/onlywork/src/Services/ServiceEvenement.java</file>
-            <file>file:/C:/xampp/htdocs/onlywork/src/GUI/EvenementFrontController.java</file>
-            <file>file:/C:/xampp/htdocs/onlywork/src/Services/ServiceAnnonces.java</file>
-            <file>file:/C:/xampp/htdocs/onlywork/src/GUI/Back1Controller.java</file>
-            <file>file:/C:/xampp/htdocs/onlywork/src/GUI/FrontController.java</file>
-            <file>file:/C:/xampp/htdocs/onlywork/src/GUI/back1.fxml</file>
-            <file>file:/C:/xampp/htdocs/onlywork/src/GUI/AnnoncesFrontController.java</file>
-            <file>file:/C:/xampp/htdocs/onlywork/src/GUI/NewFXMain.java</file>
+            <file>file:/C:/Users/bouchrit/Downloads/gestion_user/gestion_user/src/GUI/ModifierPasswordPrestatairefxml.fxml</file>
+            <file>file:/C:/Users/bouchrit/Downloads/gestion_user/gestion_user/src/services/ServiceCategorie.java</file>
+            <file>file:/C:/Users/bouchrit/Downloads/gestion_user/gestion_user/src/services/IService.java</file>
+            <file>file:/C:/Users/bouchrit/Downloads/gestion_user/gestion_user/src/utils/MyDB.java</file>
+            <file>file:/C:/Users/bouchrit/Downloads/gestion_user/gestion_user/src/GUI/home.fxml</file>
+            <file>file:/C:/Users/bouchrit/Downloads/gestion_user/gestion_user/src/entities/Utilisateur.java</file>
+            <file>file:/C:/Users/bouchrit/Downloads/gestion_user/gestion_user/src/GUI/HomeController.java</file>
+            <file>file:/C:/Users/bouchrit/Downloads/gestion_user/gestion_user/src/utils/MyD.java</file>
+            <file>file:/C:/Users/bouchrit/Downloads/gestion_user/gestion_user/src/GUI/PostFrontController.java</file>
+            <file>file:/C:/Users/bouchrit/Downloads/gestion_user/gestion_user/src/GUI/PostBack.fxml</file>
+            <file>file:/C:/Users/bouchrit/Downloads/gestion_user/gestion_user/src/services/ServicePoste.java</file>
+            <file>file:/C:/Users/bouchrit/Downloads/gestion_user/gestion_user/src/entities/Poste.java</file>
+            <file>file:/C:/Users/bouchrit/Downloads/gestion_user/gestion_user/src/GUI/AdminDashboardFXML.fxml</file>
+            <file>file:/C:/Users/bouchrit/Downloads/gestion_user/gestion_user/src/gestion_user/Gestion_user.java</file>
+            <file>file:/C:/Users/bouchrit/Downloads/gestion_user/gestion_user/src/GUI/PostFront.fxml</file>
+            <file>file:/C:/Users/bouchrit/Downloads/gestion_user/gestion_user/src/services/Iutilisateur.java</file>
+            <file>file:/C:/Users/bouchrit/Downloads/gestion_user/gestion_user/src/entities/Categorie.java</file>
+            <file>file:/C:/Users/bouchrit/Downloads/gestion_user/gestion_user/src/GUI/PostBackController.java</file>
+            <file>file:/C:/Users/bouchrit/Downloads/gestion_user/gestion_user/src/controllers/LoginfxmlController.java</file>
         </group>
     </open-files>
 </project-private>

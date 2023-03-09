@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="anch" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FrontmaterielController">
+    <children>
+      <VBox layoutX="-1.0" prefHeight="600.0" prefWidth="218.0" style="-fx-background-color: #4e5e64;">
+         <children>
+            <ImageView fitHeight="158.0" fitWidth="219.0" pickOnBounds="true" preserveRatio="true" />
+                     <Label fx:id="lbLesMateriels" alignment="CENTER" onMouseClicked="#fnMenuLesMateriels" prefHeight="97.0" prefWidth="219.0" text="Les Materiels" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+            <Label fx:id="lbMesMateriel" alignment="CENTER" onMouseClicked="#fnMenuMesMateriels" prefHeight="97.0" prefWidth="219.0" text="Mes Materiels" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbNouveau" alignment="CENTER" layoutX="10.0" layoutY="10.0" onMouseClicked="#fnMenuNouveau" prefHeight="97.0" prefWidth="219.0" text="Nouveau" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+                  <Label fx:id="lbRetour" alignment="CENTER" layoutX="10.0" layoutY="107.0" onMouseClicked="#fnfront" prefHeight="97.0" prefWidth="219.0" text="Retour" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="150.0" />
+                     </VBox.margin>
+                  </Label>
+         </children>
+      </VBox>
+      <StackPane layoutX="218.0" prefHeight="600.0" prefWidth="582.0">
+         <children>
+            <Pane fx:id="pnNouveau" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <Label fx:id="lbTItreNouveau" layoutX="24.0" layoutY="33.0" prefHeight="58.0" prefWidth="299.0" text="un nouveau Materiel:">
+                     <font>
+                        <Font size="31.0" />
+                     </font>
+                  </Label>
+                  <VBox layoutX="57.0" layoutY="125.0" prefHeight="406.0" prefWidth="481.0">
+                     <children>
+                        <HBox prefHeight="324.0" prefWidth="481.0">
+                           <children>
+                              <VBox prefHeight="324.0" prefWidth="202.0">
+                                 <children>
+                                    <Label prefHeight="71.0" prefWidth="207.0" text="Nom :">
+                                       <font>
+                                          <Font size="29.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="10.0" layoutY="10.0" prefHeight="71.0" prefWidth="207.0" text="Marque:">
+                                       <font>
+                                          <Font size="29.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="10.0" layoutY="81.0" prefHeight="71.0" prefWidth="207.0" text="Prix:">
+                                       <font>
+                                          <Font size="29.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="10.0" layoutY="152.0" prefHeight="71.0" prefWidth="207.0" text="Description:">
+                                       <font>
+                                          <Font size="29.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="10.0" layoutY="223.0" prefHeight="71.0" prefWidth="207.0" text="l'annonce :">
+                                       <font>
+                                          <Font size="29.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="10.0" layoutY="270.0" prefHeight="71.0" prefWidth="207.0" text="image : ">
+                                       <font>
+                                          <Font size="29.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="10.0" layoutY="10.0" prefHeight="324.0" prefWidth="312.0" spacing="22.0">
+                                 <children>
+                                    <TextField fx:id="tfNom" prefHeight="46.0" prefWidth="296.0" />
+                                    <TextField fx:id="tfMarque" layoutX="10.0" layoutY="10.0" prefHeight="46.0" prefWidth="296.0" />
+                                    <TextField fx:id="tfPrix" layoutX="10.0" layoutY="56.0" prefHeight="46.0" prefWidth="296.0" />
+                                    <TextField fx:id="tfDescript" layoutX="10.0" layoutY="102.0" prefHeight="46.0" prefWidth="296.0" />
+                                    <ComboBox fx:id="tfAnnoncef" prefHeight="40.0" prefWidth="308.0" />
+                                     <Button fx:id="btnajouterimage" layoutX="10.0" layoutY="140.0" mnemonicParsing="false" onAction="#ajouterimage" prefHeight="46.0" prefWidth="296.0" style="-fx-background-color: #4e5e64;" text="ajouter image" textFill="WHITE" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="77.0" prefWidth="481.0" spacing="15.0">
+                           <children>
+                              <Button fx:id="btnAnuller" mnemonicParsing="false" onAction="#fnAnnuler" prefHeight="31.0" prefWidth="78.0" style="-fx-background-color: #4e5e64;" text="Annuler" textFill="WHITE" />
+                              <Button fx:id="btnConfModifier" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#fnConfModifier" prefHeight="31.0" prefWidth="78.0" style="-fx-background-color: #4e5e64;" text="Modifier" textFill="WHITE" visible="false" />
+                              <Button fx:id="btnConfAjouter" layoutX="401.0" layoutY="33.0" mnemonicParsing="false" onAction="#fnConfAjouter" prefHeight="31.0" prefWidth="78.0" style="-fx-background-color: #4e5e64;" text="Ajouter" textFill="WHITE" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <Label fx:id="lbTItreUpdate" layoutX="24.0" layoutY="33.0" prefHeight="58.0" prefWidth="299.0" text="modifier ce Materiel:" visible="false">
+                     <font>
+                        <Font size="31.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="pnMesMateriels" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <Label layoutX="25.0" layoutY="22.0" prefHeight="58.0" prefWidth="207.0" text="Mes Materiels :">
+                     <font>
+                        <Font size="31.0" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="tvMesMateriels" layoutX="29.0" layoutY="125.0" onMouseClicked="#fnSelectionMateriel" prefHeight="318.0" prefWidth="337.0">
+                    <columns>
+                      <TableColumn fx:id="colNom" prefWidth="75.0" text="nom" />
+                      <TableColumn fx:id="colMarque" prefWidth="105.0" text="Marque" />
+                        <TableColumn fx:id="colPrix" prefWidth="156.0" text="Prix" />
+                        <TableColumn fx:id="colDescript" prefWidth="156.0" text="Description" />
+                      <TableColumn fx:id="colImage" prefWidth="156.0" text="image" visible="false" />
+                    </columns>
+                  </TableView>
+                  <Button fx:id="btnAjouter" layoutX="424.0" layoutY="514.0" mnemonicParsing="false" onAction="#fnAjouter" prefHeight="31.0" prefWidth="127.0" style="-fx-background-color: #4e5e64;" text="Ajouter" textFill="WHITE" />
+                  <VBox fx:id="vboxDetail" layoutX="374.0" layoutY="125.0" prefHeight="318.0" prefWidth="200.0" visible="false">
+                     <children>
+                        <Label prefHeight="48.0" prefWidth="201.0" text="l'annonce: ">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                                                
+
+                        <Label fx:id="lbAnnoncef" layoutX="10.0" layoutY="10.0" prefHeight="48.0" prefWidth="201.0">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                  <ImageView fx:id="materielimage" fitHeight="150.0" fitWidth="186.0" />
+                  <Label fx:id="filr_path" layoutX="367.0" layoutY="602.0" opacity="0.0" prefHeight="34.0" prefWidth="278.0" />
+
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+                           <children>
+                              <Button fx:id="btnSupprimer" mnemonicParsing="false" onAction="#fnSupprimer" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: #4e5e64;" text="Supprimer" textFill="WHITE" />
+                              <Button fx:id="btnModifier" mnemonicParsing="false" onAction="#fnModifier" prefHeight="31.0" prefWidth="78.0" style="-fx-background-color: #4e5e64;" text="Modifier" textFill="WHITE" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <Label fx:id="lbidmateriel" layoutX="439.0" layoutY="70.0" visible="false" />
+                    <TextField fx:id="cherche" layoutX="29.0" layoutY="87.0" onKeyPressed="#Rechercher" prefHeight="25.0" prefWidth="162.0" promptText="Recherche" />
+               </children>
+            </Pane>
+                        <Pane fx:id="pnLesMateriels" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+                     <children>
+                        <Label layoutX="25.0" layoutY="22.0" prefHeight="58.0" prefWidth="432.0" text="Les Materiels :">
+                           <font>
+                              <Font size="31.0" />
+                           </font>
+                        </Label>
+                        <TableView fx:id="tvLesMateriels" layoutX="29.0" layoutY="125.0" onMouseClicked="#fnSelectlesmateriels" prefHeight="318.0" prefWidth="337.0">
+                          <columns>
+                            <TableColumn fx:id="colNomm" prefWidth="75.0" text="nom" />
+                            <TableColumn fx:id="colMarquee" prefWidth="105.0" text="Marque" />
+                              <TableColumn fx:id="colPrixx" prefWidth="156.0" text="Prix" />
+                              <TableColumn fx:id="colDescriptt" prefWidth="156.0" text="description" />
+                            <TableColumn fx:id="colImagee" prefWidth="156.0" text="image" visible="false" />
+                          </columns>
+                        </TableView>
+                        <Button fx:id="btnAjouterr" layoutX="424.0" layoutY="514.0" mnemonicParsing="false" onAction="#fnAjouter" prefHeight="31.0" prefWidth="127.0" style="-fx-background-color: #4e5e64;" text="Ajouter" textFill="WHITE" />
+                        <Label fx:id="lbidmateriell" layoutX="439.0" layoutY="70.0" visible="false" />
+                        
+                     <TextField fx:id="chercher" layoutX="29.0" layoutY="87.0" onKeyPressed="#Recherche" prefHeight="25.0" prefWidth="162.0" promptText="Recherche" />
+                                      <VBox fx:id="vboxDetaill" layoutX="374.0" layoutY="125.0" prefHeight="318.0" prefWidth="200.0" visible="false">
+                     <children>
+
+                                                
+
+
+                  <ImageView fx:id="materielimagee" fitHeight="150.0" fitWidth="186.0" />
+                     </children>
+                  </VBox>
+                     </children>
+                  </Pane>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>

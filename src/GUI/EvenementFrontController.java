@@ -5,10 +5,10 @@
  */
 package GUI;
 
-import Entities.Evenement;
-import Services.ServiceEvenement;
+import entities.Evenement;
+import services.ServiceEvenement;
 
-import Entities.Evenement;
+import entities.Evenement;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -31,7 +31,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import Services.ServiceEvenement;
+import services.ServiceEvenement;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
@@ -222,7 +222,7 @@ public class EvenementFrontController implements Initializable {
    @FXML
     private void fnfront(MouseEvent event) {
                        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("front.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("front1.fxml"));
             Parent root = loader.load();
             lbRetour.getScene().setRoot(root);
            } catch (IOException ex) {
@@ -534,7 +534,7 @@ private void btnGenPDF(ActionEvent event) throws DocumentException, FileNotFound
     com.itextpdf.text.Document document = new com.itextpdf.text.Document();
 
     try {
-        com.itextpdf.text.Image img = com.itextpdf.text.Image.getInstance("C:\\Users\\chino\\Documents\\image\\logo.png");
+        com.itextpdf.text.Image img = com.itextpdf.text.Image.getInstance("C:\\Users\\bouchrit\\Videos\\logo.png");
                img.scaleAbsoluteWidth(200);
                img.scaleAbsoluteHeight(50);
                img.setAlignment(com.itextpdf.text.Image.ALIGN_CENTER);
@@ -649,7 +649,7 @@ public void start(Evenement u) {
         System.out.println("Success...");
         
     } catch (WriterException ex) {
-        Logger.getLogger(NewFXMain.class.getName()).log(Level.SEVERE, null, ex);
+      //  Logger.getLogger(NewFXMain.class.getName()).log(Level.SEVERE, null, ex);
     }
 }
  

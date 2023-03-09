@@ -3,19 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Services;
+package services;
 
 import java.util.List;
 
 /**
  *
- * @author chino
- * @param <T>
+ * @author zeine
  */
-public interface IService<T> {
-     public void add(T t);
+public interface IService <T> {
+    public void add(T t);
     public List<T> afficher();
    // public void modifier(T t);
     //public void supprimer(T t);
-//    public List<T>RechercheAnnonces(String noms);
 }

@@ -5,10 +5,11 @@
  */
 package GUI;
 
+
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
-import java.io.IOException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,62 +22,59 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+
 /**
  * FXML Controller class
  *
- * @author chino
+ * @author imtinen
  */
 public class FrontController implements Initializable {
-     @FXML
+
+    @FXML
     private Button btnBack;
         public void ouvrirDeuxiemeInterface() throws IOException {
         Stage stage = new Stage();
-        stage.show();}
-         @FXML
-    private Button btnAnnonces;
+        stage.show();
+    }
+    
     @FXML
-    private Button btnEvenement;
+    private Button btnAnnoncef;
+    @FXML
+    private Button btnMateriel;
 
-    AnchorPane GestionAnnonces;
-
+    AnchorPane GestionAnnoncef;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+
+
+    } 
+
+
     @FXML
     private void fnAnnonce(ActionEvent event) throws IOException {
                try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("AnnoncesFront.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("frontannoncef.fxml"));
             Parent root = loader.load();
-            btnAnnonces.getScene().setRoot(root);
+            btnAnnoncef.getScene().setRoot(root);
            } catch (IOException ex) {
                System.out.print(ex.getMessage());
         }
     }
 
     @FXML
-    private void fnEvenement(ActionEvent event) {      
+    private void fnMaterieel(ActionEvent event) {      
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("EvenementFront.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("frontmateriel.fxml"));
             Parent root = loader.load();
-            btnAnnonces.getScene().setRoot(root);
+            btnAnnoncef.getScene().setRoot(root);
            } catch (IOException ex) {
                System.out.print(ex.getMessage());
         }
     }
 
-    @FXML
-    private void fnBack(ActionEvent event) {
-                try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("back1.fxml"));
-            Parent root = loader.load();
-            btnAnnonces.getScene().setRoot(root);
-           } catch (IOException ex) {
-               System.out.print(ex.getMessage());
-        }
-    }
+  
     
 }

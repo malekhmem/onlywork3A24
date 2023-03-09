@@ -4,180 +4,174 @@
  * and open the template in the editor.
  */
 package GUI;
-import Services.ServiceAnnonces;
-import Services.ServiceEvenement;
 
-
-import Entities.Annonces;
-import Entities.Evenement;
-import com.google.zxing.BarcodeFormat;
-import com.google.zxing.WriterException;
-import com.google.zxing.qrcode.QRCodeWriter;
-
-
-import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Element;
-import com.itextpdf.text.Font;
-import com.itextpdf.text.FontFactory;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.Phrase;
-import com.itextpdf.text.pdf.PdfPCell;
-import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfWriter;
-import java.awt.Color;
-import java.awt.Desktop;
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Locale;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import entities.Annoncef;
+import services.Serviceannoncef;
+import entities.Materiel;
+import services.Servicemateriel;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import java.io.IOException;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
  * FXML Controller class
  *
- * @author chino
+ * @author imtinen
  */
 public class BackController implements Initializable {
 
     @FXML
-    private Label lbLesAnnonces;
-    @FXML
-    private Label lbLesEvenements;
+    private Label lbLesAnnoncef;
     @FXML
     private Label lbRetour;
     @FXML
-    private Pane pnLesAnnonces;
+    private Pane pnLesAnnoncef;
     @FXML
-    private TableView<Annonces> tvLesAnnonces;
+    private TableView<Annoncef> tvLesAnnoncef;
     @FXML
-    private TableColumn<Annonces, String> colNom;
+    private TableColumn<Annoncef, String> colNom;
     @FXML
-    private TableColumn<Annonces, String> colEmail;
+    private TableColumn<Annoncef, String> colAdresse;
     @FXML
-    private TableColumn<Annonces, Integer> colNumero;
+    private TableColumn<Annoncef, String> colMail;
     @FXML
-    private TableColumn<Annonces, String> colAdresse;
+    private TableColumn<Annoncef, String> colDescript;
     @FXML
     private VBox vboxDetail;
     @FXML
+    private Label lbDescription;
+    @FXML
     private Button btnSupprimer;
     @FXML
-    private Label lbidannonces;
+    private Label lbidannoncef;
     @FXML
-    private Pane pnLesEvenements;
+    private Label lbLesMateriels;
     @FXML
-    private TableView<Evenement> tvLesEvenement;
+    private Pane pnLesMateriels;
     @FXML
-    private TableColumn<Evenement, String> colTitre;
+    private TableView<Materiel> tvLesMateriels;
     @FXML
-    private TableColumn<Evenement, String> colDescription;
+    private TableColumn<Materiel, String> colNomm;
     @FXML
-    private TableColumn<Evenement, String> colNoms;
+    private TableColumn<Materiel, String> colMarque;
+    @FXML
+    private TableColumn<Materiel, String> colPrix;
+    @FXML
+    private TableColumn<Materiel, String> colDescriptt;
     @FXML
     private VBox vboxDetaill;
     @FXML
-    private Label lbAnnonces;
-    @FXML
     private Button btnSupprimerr;
     @FXML
-    private Label lbidevenement;
-    private TextField Recherche;
+    private Label lbidmateriel;
     @FXML
-    private Button TriNom;
+    private Label lbAnnoncef;
     @FXML
-    private Button TriTitre;
+    private Button exportButton;
     @FXML
-    private Button PDF; 
+    private TableColumn<Materiel, String> colImage;
     @FXML
-    private TextField ann;
+    private ImageView materielimage;
     @FXML
-    private TextField mayasine;
-    @FXML
-    private ImageView QRcode;
-  
+    private Label filr_path;
+    
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-           pnLesAnnonces.toFront();
+                pnLesAnnoncef.toFront();
         fnshow();
         // TODO
     }    
-public void fnshow(){
-        ServiceAnnonces sp=new ServiceAnnonces();
-         ObservableList<Annonces> list =FXCollections.observableList(sp.afficher());   
-     colAdresse.setCellValueFactory(new PropertyValueFactory<>("adresses"));
-     colEmail.setCellValueFactory(new PropertyValueFactory<>("emails"));
-      colNom.setCellValueFactory(new PropertyValueFactory<>("noms"));
-      colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
-      tvLesAnnonces.setItems(list);
+   public void fnshow(){
+        Serviceannoncef sp=new Serviceannoncef();
+         ObservableList<Annoncef> list =FXCollections.observableList(sp.afficher());   
+     colAdresse.setCellValueFactory(new PropertyValueFactory<>("adresse"));
+     colMail.setCellValueFactory(new PropertyValueFactory<>("emailf"));
+      colNom.setCellValueFactory(new PropertyValueFactory<>("nomf"));
+      colDescript.setCellValueFactory(new PropertyValueFactory<>("descf"));
+      tvLesAnnoncef.setItems(list);
      
      
    }
- public void fnshowtout(){
-        ServiceEvenement sp=new ServiceEvenement();
-         ObservableList<Evenement> list =FXCollections.observableList(sp.afficher()); 
+       
+   public void fnshowtout(){
+        Servicemateriel sp=new Servicemateriel();
+         ObservableList<Materiel> list =FXCollections.observableList(sp.afficher()); 
      
      
-     colTitre.setCellValueFactory(new PropertyValueFactory<>("titre"));
-     colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
-          colNoms.setCellValueFactory(new PropertyValueFactory<>("nomss"));
-     tvLesEvenement.setItems(list);
+     colMarque.setCellValueFactory(new PropertyValueFactory<>("marque"));
+     colPrix.setCellValueFactory(new PropertyValueFactory<>("Prix"));
+          colNomm.setCellValueFactory(new PropertyValueFactory<>("nomm"));
+         colDescriptt.setCellValueFactory(new PropertyValueFactory<>("descm"));
+           colImage.setCellValueFactory(new PropertyValueFactory<>("image"));
+     tvLesMateriels.setItems(list);
      
      
       
     }
-
-    @FXML
-    private void fnMenuLesAnnonces(MouseEvent event) {
-                 pnLesAnnonces.toFront();
+   
+    public void updateTable(){
+        Servicemateriel sm = new Servicemateriel();
+        
+        List<Materiel> materiel = sm.afficher();
+        ObservableList<Materiel> listM=FXCollections.observableArrayList(materiel);
+        colNomm.setCellValueFactory(new PropertyValueFactory<Materiel,String>("nomm"));
+        colMarque.setCellValueFactory(new PropertyValueFactory<Materiel,String>("marque"));
+        //colPrix.setCellValueFactory(new PropertyValueFactory<Materiel,Integer>("prix"));
+        colDescriptt.setCellValueFactory(new PropertyValueFactory<Materiel,String>("descm"));
+        colImage.setCellValueFactory(new PropertyValueFactory<Materiel,String>("image"));
+        tvLesMateriels.setItems(listM);
 
     }
-
     @FXML
-    private void fnMenuLesEvenements(MouseEvent event) {
-        pnLesEvenements.toFront();
-            fnshowtout();
+    private void fnMenuLesAnnoncef(MouseEvent event) {
+         pnLesAnnoncef.toFront();
     }
 
     @FXML
     private void fnfront(MouseEvent event) {
-         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("front.fxml"));
+                               try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("home.fxml"));
             Parent root = loader.load();
             lbRetour.getScene().setRoot(root);
            } catch (IOException ex) {
@@ -186,169 +180,108 @@ public void fnshow(){
     }
 
     @FXML
-    private void fnSelectiannonces(MouseEvent event) {
-         Annonces f = tvLesAnnonces.getSelectionModel().getSelectedItem();
-         lbidannonces.setText(f.getIds()+"");
+    private void fnSelectiannoncef(MouseEvent event) {
+                 Annoncef f = tvLesAnnoncef.getSelectionModel().getSelectedItem();
+         lbidannoncef.setText(f.getIdf()+"");
          vboxDetail.setVisible(true);
                  fnshow();
+                 
+
     }
 
     @FXML
     private void fnSupprimer(ActionEvent event) {
-        ServiceAnnonces sp=new ServiceAnnonces();
-        System.out.println(lbidannonces.getText());
-        sp.supprimer(Integer.parseInt(lbidannonces.getText()));
+       Serviceannoncef sp=new Serviceannoncef();
+        System.out.println(lbidannoncef.getText());
+        sp.supprimer(Integer.parseInt(lbidannoncef.getText()));
         fnshow();
         vboxDetail.setVisible(false);
     }
 
     @FXML
-    private void fnSelectionevenement(MouseEvent event) {
-         Evenement m = tvLesEvenement.getSelectionModel().getSelectedItem();
-         lbidevenement.setText(m.getIde()+"");
-         vboxDetaill.setVisible(true);
-         ServiceAnnonces sc=new ServiceAnnonces();
-         Annonces f=sc.SelectOneAnnonces(m.getIds());
-         lbAnnonces.setText(f.getNoms());
+    private void fnMenuLesMateriels(MouseEvent event) {
+            pnLesMateriels.toFront();
+            fnshowtout();
     }
+
+    @FXML
+    private void fnSelectionmateriel(MouseEvent event) {
+           Servicemateriel sp=new Servicemateriel();
+         Materiel m = tvLesMateriels.getSelectionModel().getSelectedItem();
+         lbidmateriel.setText(m.getIdm()+"");
+         vboxDetaill.setVisible(true);
+
+        int index = tvLesMateriels.getSelectionModel().getSelectedIndex();
+        if (index <= -1){
+            return;
+        }String picture ="file:" +  colImage.getCellData(index).toString();
+        filr_path.setText(colImage.getCellData(index).toString());
+    Image image1 = new Image(picture, 110, 110, false, true);            
+            materielimage.setImage(image1);
+    }
+         
+    
 
     @FXML
     private void fnSupprimerr(ActionEvent event) {
-         ServiceEvenement sp=new ServiceEvenement();
-        System.out.println(lbidevenement.getText());
-        sp.supprimer(Integer.parseInt(lbidevenement.getText()));
+                Servicemateriel sp=new Servicemateriel();
+        System.out.println(lbidmateriel.getText());
+        sp.supprimer(Integer.parseInt(lbidmateriel.getText()));
         fnshowtout();
         vboxDetaill.setVisible(false);
     }
-    
-     @FXML
-    private void ann(KeyEvent event)throws SQLException   {
-        Annonces p=new Annonces();
-ServiceAnnonces sp = new ServiceAnnonces();
-       tvLesAnnonces.setItems(sp.searchByAnnonces(ann.getText()))  ;
+
+    @FXML
+    private void handleExport(ActionEvent event) {
+          FileChooser fileChooser = new FileChooser();
+    fileChooser.setTitle("Exporter les annonces");
+    fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Fichier Excel (.xlsx)", ".xlsx"));
+    Stage stage = (Stage) exportButton.getScene().getWindow();
+    File file = fileChooser.showSaveDialog(stage);
+    if (file != null) {
+        try {
+            FileOutputStream outputStream;
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            XSSFWorkbook workbook = new XSSFWorkbook();
+            XSSFSheet sheet = workbook.createSheet("Annoncef");
+            XSSFRow headerRow = sheet.createRow(0);
+            headerRow.createCell(0).setCellValue("nomf");
+            headerRow.createCell(1).setCellValue("adresse");
+            headerRow.createCell(2).setCellValue("emailf");
+            headerRow.createCell(3).setCellValue("descf");
+            ObservableList<Annoncef> annonces = tvLesAnnoncef.getItems();
+
+            for (int i = 0; i < annonces.size(); i++) {
+                Annoncef annonce = annonces.get(i);
+                XSSFRow row = sheet.createRow(i + 1);
+                row.createCell(0).setCellValue(annonce.getNomf());
+                row.createCell(1).setCellValue(annonce.getAdresse());
+                row.createCell(2).setCellValue(annonce.getEmailf());
+                row.createCell(3).setCellValue(annonce.getDescf());
+            }
+            outputStream = new FileOutputStream(file);
+            workbook.write(outputStream);
+            outputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     }
 
     @FXML
-    private void mayasine(KeyEvent event) throws SQLException  {
-        Evenement p=new Evenement();
-ServiceEvenement sp = new ServiceEvenement();
-       tvLesEvenement.setItems(sp.searchByEvenement(mayasine.getText()))  ;
+    private void showStat(ActionEvent event) {
+                                       try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("stat.fxml"));
+            Parent root = loader.load();
+            lbRetour.getScene().setRoot(root);
+           } catch (IOException ex) {
+               System.out.print(ex.getMessage());
+        }
+         
+   }
     }
-
-      @FXML
-    private void TriNom(ActionEvent event) throws SQLException {
-     
-   colNom.setCellValueFactory(new PropertyValueFactory<Annonces,String>("noms"));
-      colEmail.setCellValueFactory(new PropertyValueFactory<Annonces,String>("emails"));
-colNumero.setCellValueFactory(new PropertyValueFactory<Annonces, Integer>("numeros"));
-   colAdresse.setCellValueFactory(new PropertyValueFactory<Annonces,String>("adresses"));
-
-ServiceAnnonces sp = new ServiceAnnonces();
-         ObservableList<Annonces> list ;
-
-  list=sp.getAllTriNom();
-       tvLesAnnonces.setItems(list)  ;
-    }
-
-    @FXML
-    private void TriTitre(ActionEvent event) {
-          colTitre.setCellValueFactory(new PropertyValueFactory<>("titre"));
-      colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
-   colNom.setCellValueFactory(new PropertyValueFactory<>("nomss"));
-
-ServiceEvenement sp = new ServiceEvenement();
- ObservableList<Evenement> list ;
-
-  list=sp.getAllTriTitre();
-       tvLesEvenement.setItems(list)  ;
-        
-    }
-
-    @FXML
-private void btnGenPDF(ActionEvent event) throws DocumentException, FileNotFoundException, IOException {
-    long millis = System.currentTimeMillis();
-    java.sql.Date DateRapport = new java.sql.Date(millis);
-
-    String DateLyoum = new SimpleDateFormat("yyyyMMddHHmmss", Locale.ENGLISH).format(DateRapport);
-    System.out.println("Date d'aujourdhui : " + DateLyoum);
-
-    com.itextpdf.text.Document document = new com.itextpdf.text.Document();
-
-    try {
-        PdfWriter.getInstance(document, new FileOutputStream(String.valueOf(DateLyoum + ".pdf")));
-        document.open();
-// Ajouter le logo
-       /* Image logo = Image.getInstance("C://xampp//htdocs//onlywork/logo.png");
-        logo.scaleAbsolute(100, 100);
-        logo.setAlignment(Element.ALIGN_CENTER);
-        document.add(logo);*/
-        // Ajouter un titre avec un style personnalisé
-        Font titleFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18, BaseColor.BLUE);
-        Paragraph title = new Paragraph("Rapport détaillé de notre application", titleFont);
-        title.setAlignment(Element.ALIGN_CENTER);
-        document.add(title);
-
-        // Ajouter un paragraphe avec un style personnalisé
-        Font paragraphFont = FontFactory.getFont(FontFactory.TIMES, 14, BaseColor.BLACK);
-        Paragraph ph1 = new Paragraph("Voici un rapport détaillé de notre application qui contient tous les événements. Pour chaque événement, nous fournissons des informations telles que la date d'aujourd'hui : " + DateRapport, paragraphFont);
-        ph1.setSpacingAfter(10);
-        document.add(ph1);
-
-        PdfPTable table = new PdfPTable(3);
-        table.setWidthPercentage(100);
-
-        // Créer une cellule avec un style personnalisé
-        Font cellFont = FontFactory.getFont(FontFactory.TIMES, 12, BaseColor.WHITE);
-        PdfPCell cell = new PdfPCell(new Phrase("Titre", cellFont));
-        cell.setBackgroundColor(BaseColor.BLUE);
-        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-        table.addCell(cell);
-
-        cell = new PdfPCell(new Phrase("Description", cellFont));
-        cell.setBackgroundColor(BaseColor.BLUE);
-        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-        table.addCell(cell);
-
-        cell = new PdfPCell(new Phrase("Nom société", cellFont));
-        cell.setBackgroundColor(BaseColor.BLUE);
-        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-        table.addCell(cell);
-   ServiceEvenement sp = new ServiceEvenement();
-
-        Evenement r = new Evenement();
-        sp.afficher().forEach(e -> {
-            table.addCell(String.valueOf(e.getTitre()));
-            table.addCell(String.valueOf(e.getDescription()));
-            table.addCell(String.valueOf(e.getNomss()));
-        });
-
-        document.add(table);
-    } catch (Exception e) {
-        System.out.println(e);
-    }
-    document.close();
-
-    // Ouvrir le fichier PDF
-    File file = new File(DateLyoum + ".pdf");
-    Desktop desktop = Desktop.getDesktop();
-    if (file.exists()) {
-        desktop.open(file);
-    }
-}
-
-
-
-
   
-
-    
-    
-   
-    
-
-    }
-    
-
-    
     
 

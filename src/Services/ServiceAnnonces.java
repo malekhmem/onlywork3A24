@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Services;
-import Entities.Annonces;
-import Utiles.MyDB;
+package services;
+import entities.Annonces;
+import utils.MyDB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -42,7 +42,7 @@ public class ServiceAnnonces implements IService<Annonces> {
     
     public void add(Annonces t) {
         try {
-        String qry ="INSERT INTO `annonces`( `noms`, `emails` ,`numeros`,`adresses`) VALUES ('"+t.getNoms()+"','"+t.getEmails()+"','"+t.getNumeros()+"','"+t.getAdresses()+"')";
+        String qry ="INSERT INTO `annonces`( `noms`, `emails` ,`numeros`,`adresses`,`idu`) VALUES ('"+t.getNoms()+"','"+t.getEmails()+"','"+t.getNumeros()+"','"+t.getAdresses()+"','"+t.getIdu()+"')";
      cnx = MyDB.getInstance().getCnx();
       
             Statement stm =cnx.createStatement();

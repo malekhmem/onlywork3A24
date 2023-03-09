@@ -22,9 +22,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import Entities.Annonces;
-import Entities.Evenement;
-import Services.ServiceAnnonces;
+import entities.Annonces;
+import entities.Evenement;
+import services.ServiceAnnonces;
 import java.io.IOException;
 import static java.lang.Integer.parseInt;
 import java.sql.SQLException;
@@ -182,7 +182,7 @@ public class AnnoncesFrontController implements Initializable {
  @FXML
     private void fnfront(MouseEvent event) {
                        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("front.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("front1.fxml"));
             Parent root = loader.load();
             lbRetour.getScene().setRoot(root);
            } catch (IOException ex) {
@@ -297,7 +297,7 @@ alert.showAndWait();
 } else {
 Annonces p=new Annonces();
 p.setAdresses(tfAdresse1.getText());
-p.setIdu(1);
+p.setIdu(9);
 p.setNumeros(Integer.parseInt(tfNumero1.getText()));
 p.setEmails(tfEmail1.getText());
 p.setNoms(tfNom1.getText());
@@ -383,7 +383,7 @@ if (!tfEmail1.getText().matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}
 }
 
 p.setAdresses(tfAdresse1.getText());
-p.setIdu(1);
+p.setIdu(9);
 p.setNumeros(Integer.parseInt(tfNumero1.getText()));
 p.setEmails(tfEmail1.getText());
 p.setNoms(tfNom1.getText());
