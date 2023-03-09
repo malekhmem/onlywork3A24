@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="1000.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminDashboardFXMLController">
+    <stylesheets>
+        <URL value="@admindashboardfxml.css" />
+    </stylesheets>
+   <children>
+      <TableView fx:id="tableView_user" layoutX="280.0" layoutY="496.0" prefHeight="200.0" prefWidth="509.0">
+        <columns>
+          <TableColumn fx:id="nom" prefWidth="75.0" text="nom" />
+          <TableColumn fx:id="prenom" prefWidth="75.0" text="prenom" />
+            <TableColumn fx:id="email" prefWidth="126.0" text="email" />
+            <TableColumn fx:id="phone" prefWidth="109.0" text="phone" />
+            <TableColumn fx:id="etatTexte" prefWidth="123.0" text="etat" />
+        </columns>
+      </TableView>
+      <TextField fx:id="nomTexte" editable="false" layoutX="494.0" layoutY="96.0" />
+      <TextField fx:id="prenomTexte" editable="false" layoutX="494.0" layoutY="150.0" />
+      <TextField fx:id="numTexte" editable="false" layoutX="494.0" layoutY="256.0" />
+      <TextField fx:id="emailTexte" editable="false" layoutX="494.0" layoutY="200.0" />
+      <Label layoutX="452.0" layoutY="101.0" text="nom" />
+      <Label layoutX="430.0" layoutY="150.0" text="prenom" />
+      <Label layoutX="450.0" layoutY="205.0" text="email" />
+      <Label layoutX="430.0" layoutY="261.0" text="num_tel" />
+      <ChoiceBox fx:id="ChoiceBox" layoutX="280.0" layoutY="435.0" prefWidth="150.0" />
+      <TextField fx:id="setPromptText" layoutX="449.0" layoutY="435.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4e5e64" height="758.0" layoutX="-9.0" layoutY="-6.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <Button layoutX="670.0" layoutY="460.0" mnemonicParsing="false" onAction="#changerEtat" prefHeight="25.0" prefWidth="105.0" text="changer etat" />
+      <Button layoutX="-1.0" layoutY="623.0" mnemonicParsing="false" onAction="#LogOut" prefHeight="25.0" prefWidth="189.0" text="logout" />
+      
+ <Button fx:id="lbRetour" layoutX="-3.0" layoutY="460.0" mnemonicParsing="false" onAction="#fnreturn" prefHeight="25.0" prefWidth="189.0" text="return" />     
+      <Label layoutX="670.0" layoutY="439.0" text="selectionner pour faire changer l etat" textFill="RED" />
+
+      <Label layoutX="349.0" layoutY="14.0" text="admin dashboard" textFill="#4e5e64">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+
+   </children>
+</AnchorPane>

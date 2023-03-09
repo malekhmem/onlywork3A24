@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.EvenementFrontController">
+    <children>
+      <StackPane layoutX="254.0" layoutY="5.0" prefHeight="600.0" prefWidth="582.0">
+         <children>
+            <Pane fx:id="pnNouveau" prefHeight="600.0" prefWidth="590.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <Label fx:id="lbTItreNouveau" layoutX="24.0" layoutY="33.0" prefHeight="58.0" prefWidth="360.0" text="un nouveau evenement:">
+                     <font>
+                        <Font size="31.0" />
+                     </font>
+                  </Label>
+                  <VBox layoutX="57.0" layoutY="152.0" prefHeight="406.0" prefWidth="481.0">
+                     <children>
+                        <HBox prefHeight="324.0" prefWidth="481.0">
+                           <children>
+                              <VBox prefHeight="324.0" prefWidth="202.0">
+                                 <children>
+                                    <Label prefHeight="71.0" prefWidth="207.0" text="Titre :">
+                                       <font>
+                                          <Font size="29.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="10.0" layoutY="10.0" prefHeight="71.0" prefWidth="207.0" text="Description:">
+                                       <font>
+                                          <Font size="29.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="10.0" layoutY="81.0" prefHeight="71.0" prefWidth="207.0" text="Nom_societe:">
+                                       <font>
+                                          <Font size="29.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="10.0" layoutY="10.0" prefHeight="324.0" prefWidth="312.0" spacing="22.0">
+                                 <children>
+                                    <TextField fx:id="tfTitre" prefHeight="46.0" prefWidth="296.0" />
+                                    <TextField fx:id="tfDescription" layoutX="10.0" layoutY="10.0" prefHeight="46.0" prefWidth="296.0" />
+                                    <TextField fx:id="tfNom_societe" layoutX="10.0" layoutY="56.0" prefHeight="46.0" prefWidth="296.0" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="77.0" prefWidth="481.0" spacing="15.0">
+                           <children>
+                              <Button fx:id="btnAnuller" mnemonicParsing="false" onAction="#fnAnnuler" prefHeight="31.0" prefWidth="78.0" style="-fx-background-color: #4e5e64;" text="Annuler" textFill="WHITE" />
+                              <Button fx:id="btnConfModifier" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#fnConfModifier" prefHeight="31.0" prefWidth="78.0" style="-fx-background-color: #4e5e64;" text="Modifier" textFill="WHITE" visible="false" />
+                              <Button fx:id="btnConfAjouter" layoutX="401.0" layoutY="33.0" mnemonicParsing="false" onAction="#fnConfAjouter" prefHeight="31.0" prefWidth="78.0" style="-fx-background-color: #4e5e64;" text="Ajouter" textFill="WHITE" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <Label fx:id="lbTItreUpdate" layoutX="24.0" layoutY="33.0" prefHeight="58.0" prefWidth="443.0" text="modifier cet evenement:" visible="false">
+                     <font>
+                        <Font size="31.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="pnMesEvenement" prefHeight="600.0" prefWidth="601.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <Label layoutX="25.0" layoutY="22.0" prefHeight="58.0" prefWidth="249.0" text="Mes Evenements :">
+                     <font>
+                        <Font size="31.0" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="tvMesEvenement" layoutX="29.0" layoutY="125.0" onMouseClicked="#fnSelectionEvenemnt" prefHeight="318.0" prefWidth="337.0">
+                     <columns>
+                        <TableColumn fx:id="colTitre" prefWidth="75.0" text="titre" />
+                        <TableColumn fx:id="colDescription" prefWidth="105.0" text="description" />
+                        <TableColumn fx:id="colNom_societe" prefWidth="156.0" text="nom_societe" />
+                     </columns>
+                  </TableView>
+                  <Button fx:id="btnAjouter" layoutX="424.0" layoutY="514.0" mnemonicParsing="false" onAction="#fnAjouter" prefHeight="31.0" prefWidth="127.0" style="-fx-background-color: #4e5e64;" text="Ajouter" textFill="WHITE" />
+                  <VBox fx:id="vboxDetail" layoutX="374.0" layoutY="125.0" prefHeight="318.0" prefWidth="200.0" visible="false">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+                           <children>
+                              <Button fx:id="btnSupprimer" mnemonicParsing="false" onAction="#fnSupprimer" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: #4e5e64;" text="Supprimer" textFill="WHITE" />
+                              <Button fx:id="btnModifier" mnemonicParsing="false" onAction="#fnModifier" prefHeight="31.0" prefWidth="78.0" style="-fx-background-color: #4e5e64;" text="Modifier" textFill="WHITE" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <Label fx:id="lbidevenement" layoutX="439.0" layoutY="70.0" visible="false" />
+                  <TextField fx:id="chercher" layoutX="390.0" layoutY="39.0" onKeyPressed="#Recherche" promptText="Recherche" />
+                  <Button fx:id="TriTitre" layoutX="480.0" layoutY="81.0" mnemonicParsing="false" onAction="#TriTitre" prefHeight="31.0" prefWidth="78.0" style="-fx-background-color: #4e5e64;" text="Tri" textFill="WHITE" />
+                  <Button fx:id="PDF" layoutX="480.0" layoutY="125.0" mnemonicParsing="false" onAction="#btnGenPDF" prefHeight="31.0" prefWidth="78.0" style="-fx-background-color: #4e5e64;" text="pdf" textFill="WHITE" />
+                  <ImageView fx:id="QRcode" fitHeight="150.0" fitWidth="200.0" layoutX="374.0" layoutY="284.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </Pane>
+         </children>
+      </StackPane>
+      <VBox layoutX="-5.0" prefHeight="610.0" prefWidth="249.0" style="-fx-background-color: #4e5e64;">
+         <children>
+            <ImageView fitHeight="158.0" fitWidth="219.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="lbMesEvenement" alignment="CENTER" onMouseClicked="#fnMenuMesEvenement" prefHeight="97.0" prefWidth="219.0" text="Mes Evenements" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbNouveau" alignment="CENTER" layoutX="10.0" layoutY="10.0" onMouseClicked="#fnMenuNouveau" prefHeight="97.0" prefWidth="219.0" text="Nouveau" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbRetour" alignment="CENTER" layoutX="10.0" layoutY="107.0" onMouseClicked="#fnfront" prefHeight="97.0" prefWidth="219.0" text="Retour" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="150.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+   </children> 
+</AnchorPane>

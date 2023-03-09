@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ConsulterController">
+     <children>
+      <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0">
+         <children>
+            <VBox layoutX="-1.0" prefHeight="600.0" prefWidth="218.0" style="-fx-background-color: #4e5e64;">
+                
+               <children>
+                  <ImageView fitHeight="158.0" fitWidth="189.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/324770143_910336280319023_6207557643931936768_n.png" />
+                     </image></ImageView>
+                  <Label fx:id="lbLesAnnoncef" alignment="CENTER" onMouseClicked="#fnMenuLesAnnoncef" prefHeight="97.0" prefWidth="219.0" text="Les Annonces des fournisseurs" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+
+   
+                    <Label fx:id="lbLesMateriels" alignment="CENTER" onMouseClicked="#fnMenuLesMateriels" prefHeight="97.0" prefWidth="219.0" text="Les Materiels" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                    <Label fx:id="lbLesPostes" alignment="CENTER" onMouseClicked="#fnMenuLesPostes" prefHeight="97.0" prefWidth="219.0" text="Les Postes" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                                   <Label fx:id="lbLesAnnonces" alignment="CENTER" onMouseClicked="#fnMenuLesAnnonces" prefHeight="97.0" prefWidth="219.0" text="Les Annonces des societés" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                                   <Label fx:id="lbLesEvenements" alignment="CENTER" onMouseClicked="#fnMenuLesEvenements" prefHeight="97.0" prefWidth="219.0" text="Les Evenements" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                                    <Label fx:id="lbRetour" alignment="CENTER" layoutX="10.0" layoutY="107.0" onMouseClicked="#fnlog" prefHeight="97.0" prefWidth="219.0" text="Quitter" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="150.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+            <StackPane layoutX="218.0" prefHeight="600.0" prefWidth="582.0">
+               <children>
+                  <Pane fx:id="pnLesAnnoncef" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+                     <children>
+                        <Label layoutX="25.0" layoutY="22.0" prefHeight="58.0" prefWidth="219.0" text="Les Annonces des fournisseurs:">
+                           <font>
+                              <Font size="31.0" />
+                           </font>
+                        </Label>
+                        <TableView fx:id="tvLesAnnoncef" layoutX="29.0" layoutY="125.0" prefHeight="318.0" prefWidth="337.0">
+                          <columns>
+                            <TableColumn fx:id="colNom" prefWidth="75.0" text="nom" />
+                            <TableColumn fx:id="colAdresse" prefWidth="105.0" text="Adresse" />
+                              <TableColumn fx:id="colMail" prefWidth="156.0" text="mail" />
+                              <TableColumn fx:id="colDescript" prefWidth="156.0" text="description" />
+                         
+                          </columns>
+                        </TableView>
+  <Label fx:id="lbidannoncef" layoutX="439.0" layoutY="70.0" prefHeight="48.0" prefWidth="125.0" visible="false" />
+                     </children>
+                  </Pane>
+ 
+ 
+ 
+             <Pane fx:id="pnLesMateriels" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <Label layoutX="25.0" layoutY="22.0" prefHeight="58.0" prefWidth="207.0" text="Mes Materiels :">
+                     <font>
+                        <Font size="31.0" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="tvLesMateriels" layoutX="29.0" layoutY="125.0" onMouseClicked="#fnSelectionMateriel" prefHeight="318.0" prefWidth="337.0">
+                    <columns>
+                      <TableColumn fx:id="colNomt" prefWidth="75.0" text="nom" />
+                      <TableColumn fx:id="colMarque" prefWidth="105.0" text="Marque" />
+                        <TableColumn fx:id="colPrix" prefWidth="156.0" text="Prix" />
+                        <TableColumn fx:id="colDescriptt" prefWidth="156.0" text="Description" />
+                      <TableColumn fx:id="colImage" prefWidth="156.0" text="image" visible="false" />
+                    </columns>
+                  </TableView>
+                 
+                  <VBox fx:id="vboxDetaill" layoutX="374.0" layoutY="125.0" prefHeight="318.0" prefWidth="200.0" visible="false">
+                     <children>
+                        <Label prefHeight="48.0" prefWidth="201.0" text="l'annonce: ">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                                                
+
+                        <Label fx:id="lbAnnoncef" layoutX="10.0" layoutY="10.0" prefHeight="48.0" prefWidth="201.0">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                  <ImageView fx:id="materielimage" fitHeight="150.0" fitWidth="186.0" />
+                  <Label fx:id="filr_path" layoutX="367.0" layoutY="602.0" opacity="0.0" prefHeight="34.0" prefWidth="278.0" />
+
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+                           <children>
+                           
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <Label fx:id="lbidmateriel" layoutX="439.0" layoutY="70.0" visible="false" />
+                   
+               </children>
+            </Pane>
+
+
+
+
+
+
+            <Pane fx:id="pnLesPostes" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <Label layoutX="32.0" layoutY="21.0" prefHeight="58.0" prefWidth="207.0" text="Les Postes :">
+                     <font>
+                        <Font size="31.0" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="tvLesPostes" layoutX="32.0" layoutY="141.0" onMouseClicked="#fnSelectionPoste" prefHeight="318.0" prefWidth="337.0">
+                     <columns>
+                        <TableColumn fx:id="colNomp" prefWidth="75.0" text="nom" />
+                        <TableColumn fx:id="colDomain" prefWidth="105.0" text="domaine" />
+                        <TableColumn fx:id="colMaill" prefWidth="156.0" text="mail" />
+                     </columns>
+                  </TableView>
+                  <VBox fx:id="vboxDetail" layoutX="378.0" layoutY="141.0" prefHeight="318.0" prefWidth="200.0" visible="false">
+                     <children>
+                        <Label prefHeight="48.0" prefWidth="201.0" text="Categorie: ">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbCategorie" layoutX="10.0" layoutY="10.0" prefHeight="48.0" prefWidth="201.0">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="10.0" prefHeight="48.0" prefWidth="201.0" text="Description:">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbDescription" layoutX="10.0" layoutY="58.0" prefHeight="87.0" prefWidth="200.0">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <Label fx:id="lbidposte" visible="false" />
+                  
+               </children>
+            </Pane>
+
+
+
+
+  <Pane fx:id="pnLesAnnonces" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+                     <children>
+                        <Label layoutX="25.0" layoutY="22.0" prefHeight="58.0" prefWidth="219.0" text="Les Annonces :">
+                           <font>
+                              <Font size="31.0" />
+                           </font>
+                        </Label>
+                        <TableView fx:id="tvLesAnnonces" layoutX="29.0" layoutY="125.0" onMouseClicked="#fnSelectiannonces" prefHeight="318.0" prefWidth="357.0">
+                          <columns>
+                            <TableColumn fx:id="colNomss" prefWidth="75.0" text="nom" />
+                            <TableColumn fx:id="colEmail" prefWidth="105.0" text="email" />
+                              <TableColumn fx:id="colNumero" prefWidth="79.0" text="numero" />
+                              <TableColumn fx:id="colAdresses" prefWidth="105.0" text="adresse" />
+                         
+                          </columns>
+                        </TableView>
+                 
+                        <VBox fx:id="vboxDetailll" layoutX="374.0" layoutY="125.0" prefHeight="318.0" prefWidth="200.0" visible="false">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+                                 <children>
+                               
+                             
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <Label fx:id="lbidevenement" layoutX="439.0" layoutY="70.0" visible="false" />
+  
+
+                     </children>
+                  </Pane>
+                                                    
+                                                    
+                                                    
+                                                    
+                                                                     <Pane fx:id="pnLesEvenements" prefHeight="600.0" prefWidth="594.0" style="-fx-background-color: #ffffff;">
+                     <children>
+                        <Label layoutX="25.0" layoutY="22.0" prefHeight="58.0" prefWidth="276.0" text="Les Evenements:">
+                           <font>
+                              <Font size="31.0" />
+                           </font>
+                        </Label>
+                        <TableView fx:id="tvLesEvenement" layoutX="29.0" layoutY="125.0" onMouseClicked="#fnSelectionevenement" prefHeight="318.0" prefWidth="337.0" style="-fx-background-color: #ffff;">
+                          <columns>
+                            <TableColumn fx:id="colTitre" prefWidth="75.0" text="titre" />
+                            <TableColumn fx:id="colDescription" prefWidth="105.0" text="description" />
+                              <TableColumn fx:id="colNoms" prefWidth="156.0" text="noms_societe" />
+                         
+                          </columns>
+                        </TableView>
+                 
+                        <VBox fx:id="vboxDetaillll" layoutX="374.0" layoutY="125.0" prefHeight="318.0" prefWidth="200.0" visible="false">
+                           <children>
+                       <Label fx:id="lbAnnonces" layoutX="10.0" layoutY="10.0" prefHeight="48.0" prefWidth="201.0">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+
+        
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+                                 <children>
+                                    
+                             
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <Label fx:id="lbidannonces" layoutX="439.0" layoutY="70.0" visible="false" />
+   
+                     </children>
+                  </Pane>
+                  
+               </children>
+            </StackPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+
+<AnchorPane id="AnchorPane" prefHeight="658.0" prefWidth="818.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.HomeController">
+  <children>
+      <AnchorPane id="AnchorPane" layoutX="-3.0" layoutY="-3.0" prefHeight="400.0" prefWidth="600.0" />
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="585.0" prefWidth="799.0">
+         <children>
+            <VBox alignment="CENTER" layoutX="116.0" layoutY="232.0" prefHeight="90.0" prefWidth="962.0" spacing="4.0">
+               <children>
+                  <HBox prefHeight="31.0" prefWidth="516.0" spacing="6.0" VBox.vgrow="NEVER">
+                     <children>
+      <Button fx:id="btmalek" layoutX="424.0" layoutY="514.0" mnemonicParsing="false" onAction="#fnmalek" prefHeight="25.0" prefWidth="260.0" style="-fx-background-color: #4e5e64;" text="evenement_annonce_societe" textFill="WHITE" />
+
+                                                                     </children>
+     
+                                                                                                       
+                  </HBox>
+               </children>
+            </VBox>
+
+                                                           <Button fx:id="btnPoste" layoutX="116.0" layoutY="189.0" mnemonicParsing="false" onAction="#fnPoste" prefHeight="25.0" prefWidth="260.0" style="-fx-background-color: #4e5e64;" text="categorie_poste" textFill="WHITE" />
+
+      
+                                                                          <Button fx:id="btnUtilisateur" layoutX="111.0" layoutY="108.0" mnemonicParsing="false" onAction="#fnUtilisateur" prefHeight="25.0" prefWidth="270.0" style="-fx-background-color: #4e5e64;" text="utilisateur" textFill="WHITE" />
+<Button fx:id="btnmateriel" layoutX="116.0" layoutY="338.0" mnemonicParsing="false" onAction="#fnmateriel" prefHeight="25.0" prefWidth="260.0" style="-fx-background-color: #4e5e64;" text="materiel_annoncefournisseur" textFill="WHITE" />
+<Button fx:id="btnquiter" layoutX="116.0" layoutY="338.0" mnemonicParsing="false" onAction="#fnquiter" prefHeight="25.0" prefWidth="260.0" style="-fx-background-color: #4e5e64;" text="quitter" textFill="WHITE" />
+              <ImageView fitHeight="178.0" fitWidth="200.0" layoutX="629.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                        <Image url="@../../img/324770143_910336280319023_6207557643931936768_n.png" />
+                     </image>
+            </ImageView>
+
+         </children>
+      </AnchorPane>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#174e7f" height="186.0" layoutX="-7.0" layoutY="-117.0" stroke="BLACK" strokeType="INSIDE" width="829.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#174e7f" height="68.0" layoutX="-7.0" layoutY="631.0" stroke="BLACK" strokeType="INSIDE" width="829.0" />
+  </children>  
+   
+</AnchorPane>
